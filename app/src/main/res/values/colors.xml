@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#8BC34A</color>
+    <color name="colorPrimaryLight">#DCEDC8</color>
+    <color name="colorPrimaryDark">#689F38</color>
+    <color name="colorAccent">#607D8B</color>
+
+    <!-- Color for primary text in activity-->
+    <color name="primary_text">#212121</color>
+
+    <!-- Color for secondary text in activity-->
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#212121</color>
+    <color name="divider">#BDBDBD</color>
+
+    <!-- Color for text in Splash Screen activity-->
+    <color name="colorTextSplashScreen">#fdfdfe</color>
+
+    <!-- First Color gradient splash screen background -->
+    <color name="endColorGradient">#3C3B3F</color>
+
+    <!-- Second Color gradient splash screen background -->
+    <color name="stratColorGradient">#605C3C</color>
+
+</resources>

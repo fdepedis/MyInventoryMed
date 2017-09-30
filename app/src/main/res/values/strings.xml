@@ -1,0 +1,15 @@
+<resources>
+    <!-- String for app name -->
+    <string name="app_name">My Inventory Med</string>
+
+    <!-- Text to display application label in splash screen -->
+    <string name="app_name_splash">Inventory Med</string>
+
+    <!-- Text to display application label in splash screen -->
+    <string name="legal_property">FDP development - rev.1.0</string>
+
+    <!-- Text to display label of main activity -->
+    <string name="label_main">Inventory Med</string>
+
+
+</resources>
