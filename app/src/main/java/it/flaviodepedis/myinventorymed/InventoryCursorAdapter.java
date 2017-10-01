@@ -1,3 +1,5 @@
+package it.flaviodepedis.myinventorymed;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.view.View;
