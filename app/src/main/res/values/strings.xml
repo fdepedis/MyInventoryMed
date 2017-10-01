@@ -11,5 +11,11 @@
     <!-- Text to display label of main activity -->
     <string name="label_main">Inventory Med</string>
 
+    <!-- Title text for the empty view, which describes the empty dog house image -->
+    <string name="empty_view_title_text">It\'s a bit lonely here...</string>
+
+    <!-- Subtitle text for the empty view that prompts the user to add a medicine -->
+    <string name="empty_view_subtitle_text">Get started by adding a medicine with button below</string>
+
 
 </resources>

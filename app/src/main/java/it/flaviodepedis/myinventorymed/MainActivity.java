@@ -1,11 +1,15 @@
 package it.flaviodepedis.myinventorymed;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ListView;
 
 import it.flaviodepedis.myinventorymed.data.InventoryMedContract.*;
 import it.flaviodepedis.myinventorymed.data.InventoryMedDbHelper;
@@ -26,32 +30,38 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         /** Define an instance of DBHelper class */
-        InventoryMedDbHelper mDbHelper = new InventoryMedDbHelper(this);
+        //InventoryMedDbHelper mDbHelper = new InventoryMedDbHelper(this);
 
         /** Insert dummy records to test */
-        insertMedicine();
+        //insertMedicine();
+
+        // Setup FAB to open EditorActivity
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Intent intent = new Intent(MainActivity.this, EditorActivity.class);
+                //startActivity(intent);
+            }
+        });
+
+        // Find the ListView which will be populated with the medicine data
+        ListView petListView = (ListView) findViewById(R.id.list);
+
+        // Find and set empty view on the ListView, so that it only shows when the list has 0 items.
+        View emptyView = findViewById(R.id.empty_view);
+        petListView.setEmptyView(emptyView);
 
         /** Read the table through a cursor */
         /*
         Cursor medicineCursor = mDbHelper.queryMedicine();
 
-        try {
-            while (medicineCursor.moveToNext()) {
-                Log.i(LOG_TAG,
-                        "Med Name: " + medicineCursor.getString(0) + "\n"
-                                + "Med Type: " + medicineCursor.getString(1) + "\n"
-                                + "Med Quantity: " + medicineCursor.getInt(2) + "\n"
-                                + "Med Expiry Date: " + medicineCursor.getString(3) + "\n"
-                                + "Med Note: " + medicineCursor.getString(4) + "\n" );
-            }
+
 
             // Fa la stessa cosa del Log.i dentro il ciclo while
             // Stampa tutto il contenuto del cursore
             // DatabaseUtils.dumpCursor(medicineCursor);
 
-        } finally {
-            medicineCursor.close();
-        }
         */
     }
 
