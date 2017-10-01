@@ -1,33 +1,29 @@
 package it.flaviodepedis.myinventorymed;
 
 import android.content.ContentValues;
-import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
 import it.flaviodepedis.myinventorymed.data.InventoryMedContract.*;
-import it.flaviodepedis.myinventorymed.data.InventoryMedDbHelper;
 
 /**
  * Created by flavio.depedis on 28/09/2017.
  */
-public class MainActivity extends AppCompatActivity {
+public class CatalogActivity extends AppCompatActivity {
 
     /**
      * Tag for the log messages
      */
-    public static final String LOG_TAG = MainActivity.class.getSimpleName();
+    public static final String LOG_TAG = CatalogActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_catalog);
 
         /** Define an instance of DBHelper class */
         //InventoryMedDbHelper mDbHelper = new InventoryMedDbHelper(this);
@@ -40,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(MainActivity.this, EditorActivity.class);
+                //Intent intent = new Intent(CatalogActivity.this, EditorActivity.class);
                 //startActivity(intent);
             }
         });
