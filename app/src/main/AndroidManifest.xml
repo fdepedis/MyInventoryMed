@@ -12,8 +12,7 @@
         <activity
             android:name=".CatalogActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:label="@string/label_main">
-        </activity>
+            android:label="@string/label_main"></activity>
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/SplashScreenTheme">
@@ -27,8 +26,9 @@
         <provider
             android:name=".data.InventoryMedProvider"
             android:authorities="it.flaviodepedis.myinventorymed"
-            android:exported="false">
-        </provider>
+            android:exported="false"></provider>
 
+        <activity android:name=".EditorActivity"></activity>
     </application>
+
 </manifest>
