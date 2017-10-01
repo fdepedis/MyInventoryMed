@@ -9,7 +9,10 @@
     <string name="legal_property">FDP development - rev.1.0</string>
 
     <!-- Text to display label of main activity -->
-    <string name="label_main">Inventory Med</string>
+    <string name="label_catalog">Inventory Medicine</string>
+
+    <!-- Text to display label of main activity -->
+    <string name="label_editor">Editor Medicine</string>
 
     <!-- Title text for the empty view, which describes the empty dog house image -->
     <string name="empty_view_title_text">It\'s a bit lonely here...</string>
