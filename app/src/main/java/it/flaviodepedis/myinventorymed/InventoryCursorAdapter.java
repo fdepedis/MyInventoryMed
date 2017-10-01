@@ -18,7 +18,7 @@ public class InventoryCursorAdapter extends CursorAdapter {
     }
 
     @Override
-    public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
+    public View newView(Context context, Cursor cursor, ViewGroup parent) {
         return null;
     }
 
