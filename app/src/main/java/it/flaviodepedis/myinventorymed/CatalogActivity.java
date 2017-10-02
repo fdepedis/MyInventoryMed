@@ -110,18 +110,21 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         return new CursorLoader(this,               // Parent activity context
                 InventoryMedEntry.CONTENT_URI,      // Provider content URI to query
                 projection,                         // Columns to include in the resulting Cursor
-                null,                               // Where clause
-                null,                               // Where arguments clause
-                null);                              // Order by
+                null,                               // No Where clause
+                null,                               // No Where arguments clause
+                null);                              // No Order by
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-
+        // Swap the new cursor cursor data.
+        mCursorAdapter.swapCursor(data);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-
+        // This is called when the last Cursor provided to onLoadFinished()
+        // above is about to be closed. We need to make sure we are no longer using it.
+        mCursorAdapter.swapCursor(null);
     }
 }

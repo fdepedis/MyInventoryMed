@@ -2,6 +2,7 @@ package it.flaviodepedis.myinventorymed;
 
 import android.app.LoaderManager;
 import android.content.Loader;
+import android.content.CursorLoader;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
