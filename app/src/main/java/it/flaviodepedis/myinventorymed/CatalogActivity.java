@@ -49,17 +49,10 @@ public class CatalogActivity extends AppCompatActivity {
         View emptyView = findViewById(R.id.empty_view);
         petListView.setEmptyView(emptyView);
 
-        /** Read the table through a cursor */
-        /*
-        Cursor medicineCursor = mDbHelper.queryMedicine();
 
+        // Stampa tutto il contenuto del cursore
+        // DatabaseUtils.dumpCursor(medicineCursor);
 
-
-            // Fa la stessa cosa del Log.i dentro il ciclo while
-            // Stampa tutto il contenuto del cursore
-            // DatabaseUtils.dumpCursor(medicineCursor);
-
-        */
     }
 
     /**
@@ -76,6 +69,9 @@ public class CatalogActivity extends AppCompatActivity {
         values.put(InventoryMedEntry.COLUMN_MED_TYPE, InventoryMedEntry.TYPE_PASTICCHE);
         values.put(InventoryMedEntry.COLUMN_MED_QUANTITY, 30);
         values.put(InventoryMedEntry.COLUMN_MED_EXP_DATE, "2020/01/01");
+        values.put(InventoryMedEntry.COLUMN_MED_PRICE, 20.00);
+        values.put(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT, 15.00);
+        //values.put(InventoryMedEntry.COLUMN_MED_IMAGE, "");
         values.put(InventoryMedEntry.COLUMN_MED_NOTE, "Headache");
 
         // Insert a new row for Toto into the provider using the ContentResolver.

@@ -228,11 +228,15 @@ public class InventoryMedProvider extends ContentProvider {
 
     /**
      * Method to sanityCheck the values in ContentValues object.
+     * The sanity check is implemented on the fields of table #TABLE_NAME
+     * for only NOT NULL clause.
      * This method is called from insertMedicine() and updateMedicine() method.
+     *
      * @param values key-value pairs of data
      */
     private void sanityCheck(ContentValues values) {
 
+        // Check valid data for column name
         if (values.containsKey(InventoryMedEntry.COLUMN_MED_NAME)) {
             // Check that the name is not null
             String name = values.getAsString(InventoryMedEntry.COLUMN_MED_NAME);
@@ -241,6 +245,7 @@ public class InventoryMedProvider extends ContentProvider {
             }
         }
 
+        // Check valid data for column type
         if (values.containsKey(InventoryMedEntry.COLUMN_MED_TYPE)) {
             // Check that the medicine type is valid
             String type = values.getAsString(InventoryMedEntry.COLUMN_MED_TYPE);
@@ -249,6 +254,7 @@ public class InventoryMedProvider extends ContentProvider {
             }
         }
 
+        // Check valid data for column quantity
         if (values.containsKey(InventoryMedEntry.COLUMN_MED_QUANTITY)) {
             // If the quantity is provided, check that it's greater than or equal to 0
             Integer quantity = values.getAsInteger(InventoryMedEntry.COLUMN_MED_QUANTITY);
@@ -257,6 +263,34 @@ public class InventoryMedProvider extends ContentProvider {
             }
         }
 
+        // Check valid data for column expiry date
+        if (values.containsKey(InventoryMedEntry.COLUMN_MED_EXP_DATE)) {
+            // Check that the expiry date is not null
+            String date = values.getAsString(InventoryMedEntry.COLUMN_MED_EXP_DATE);
+            if (date == null) {
+                throw new IllegalArgumentException("Medicine requires a valid date");
+            }
+        }
+
+        // Check valid data for column price
+        if (values.containsKey(InventoryMedEntry.COLUMN_MED_PRICE)) {
+            // Check that the expiry date is not null
+            Double price = values.getAsDouble(InventoryMedEntry.COLUMN_MED_PRICE);
+            if (price == null || price < 0) {
+                throw new IllegalArgumentException("Medicine requires a valid price");
+            }
+        }
+
+        // Check valid data for column price discount
+        if (values.containsKey(InventoryMedEntry.COLUMN_MED_EXP_DATE)) {
+            // Check that the expiry date is not null
+            Double price_discount = values.getAsDouble(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT);
+            if (price_discount == null || price_discount < 0) {
+                throw new IllegalArgumentException("Medicine requires a valid price discount");
+            }
+        }
+
+        // Check valid data for column expiry date
         if (values.containsKey(InventoryMedEntry.COLUMN_MED_EXP_DATE)) {
             // Check that the expiry date is not null
             String date = values.getAsString(InventoryMedEntry.COLUMN_MED_EXP_DATE);

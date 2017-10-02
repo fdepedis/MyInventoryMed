@@ -27,28 +27,42 @@ public class InventoryMedDbHelper extends SQLiteOpenHelper {
      */
     private static final int DATABASE_VERSION = 1;
 
+    /**
+     * Create a String that contains the SQL statement to create the medicines table
+     */
+    private final String SQL_CREATE_MEDICINES_TABLE = "CREATE TABLE "
+            + InventoryMedEntry.TABLE_NAME + " ("
+            + InventoryMedEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + InventoryMedEntry.COLUMN_MED_NAME + " TEXT NOT NULL, "
+            + InventoryMedEntry.COLUMN_MED_TYPE + " TEXT NOT NULL, "
+            + InventoryMedEntry.COLUMN_MED_QUANTITY + " INTEGER NOT NULL, "
+            + InventoryMedEntry.COLUMN_MED_EXP_DATE + " TEXT NOT NULL,"
+            + InventoryMedEntry.COLUMN_MED_PRICE + " REAL NOT NULL,"
+            + InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT + " REAL,"
+            + InventoryMedEntry.COLUMN_MED_IMAGE + " TEXT,"
+            + InventoryMedEntry.COLUMN_MED_NOTE + " TEXT);";
+
+    /**
+     * Create a String that contains the SQL statement to create the medicines table
+     */
+    private final String SQL_DROP_MEDICINES_TABLE = "DROP TABLE IF EXISTS "
+            + InventoryMedEntry.TABLE_NAME;
+
     public InventoryMedDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Create a String that contains the SQL statement to create the medicines table
-        String SQL_CREATE_MEDICINES_TABLE = "CREATE TABLE " + InventoryMedEntry.TABLE_NAME + " ("
-                + InventoryMedEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + InventoryMedEntry.COLUMN_MED_NAME + " TEXT NOT NULL, "
-                + InventoryMedEntry.COLUMN_MED_TYPE + " TEXT NOT NULL, "
-                + InventoryMedEntry.COLUMN_MED_QUANTITY + " INTEGER NOT NULL, "
-                + InventoryMedEntry.COLUMN_MED_EXP_DATE + " TEXT NOT NULL,"
-                + InventoryMedEntry.COLUMN_MED_NOTE + " TEXT);";
-
-        // Execute the SQL statement
+        // Execute the SQL statement to create table
         db.execSQL(SQL_CREATE_MEDICINES_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        // Execute the SQL statement to delete table and recreate again
+        sqLiteDatabase.execSQL(SQL_DROP_MEDICINES_TABLE);
+        onCreate(sqLiteDatabase);
     }
 
 }
