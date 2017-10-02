@@ -173,29 +173,8 @@ public class InventoryMedProvider extends ContentProvider {
      */
     private Uri insertMedicine(Uri uri, ContentValues values) {
 
-        // Check that the name is not null
-        String name = values.getAsString(InventoryMedEntry.COLUMN_MED_NAME);
-        if (name == null) {
-            throw new IllegalArgumentException("Medicine requires a name");
-        }
-
-        // Check that the medicine type is valid
-        String type = values.getAsString(InventoryMedEntry.COLUMN_MED_TYPE);
-        if (type == null || !InventoryMedEntry.isValidMedicineType(type)) {
-            throw new IllegalArgumentException("Medicine requires valid type");
-        }
-
-        // If the quantity is provided, check that it's greater than or equal to 0
-        Integer quantity = values.getAsInteger(InventoryMedEntry.COLUMN_MED_QUANTITY);
-        if (quantity != null && quantity < 0) {
-            throw new IllegalArgumentException("Medicine requires valid quantity");
-        }
-
-        // Check that the expiry date is not null
-        String date = values.getAsString(InventoryMedEntry.COLUMN_MED_EXP_DATE);
-        if (date == null) {
-            throw new IllegalArgumentException("Medicine requires a valid date");
-        }
+        // Check valid insert data
+        sanityCheck(values);
 
         // Get writable database
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
@@ -222,6 +201,37 @@ public class InventoryMedProvider extends ContentProvider {
      * Return the number of rows that were successfully updated.
      */
     private int updateMedicine(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+
+        // Check valid modified data
+        sanityCheck(values);
+
+        // If there are no values to update, then don't try to update the database
+        if (values.size() == 0) {
+            return 0;
+        }
+
+        // Get writable database
+        SQLiteDatabase database = mDbHelper.getWritableDatabase();
+
+        int rowsUpdated = database.update(InventoryMedEntry.TABLE_NAME, values, selection, selectionArgs);
+
+        // If 1 or more rows were updated, then notify all listeners that the data at the
+        // given URI has changed
+        if (rowsUpdated != 0) {
+            // Notify all listeners that the data has changed for the medicine content URI
+            getContext().getContentResolver().notifyChange(uri, null);
+        }
+
+        // Return the number of rows affected.
+        return rowsUpdated;
+    }
+
+    /**
+     * Method to sanityCheck the values in ContentValues object.
+     * This method is called from insertMedicine() and updateMedicine() method.
+     * @param values key-value pairs of data
+     */
+    private void sanityCheck(ContentValues values) {
 
         if (values.containsKey(InventoryMedEntry.COLUMN_MED_NAME)) {
             // Check that the name is not null
@@ -254,26 +264,6 @@ public class InventoryMedProvider extends ContentProvider {
                 throw new IllegalArgumentException("Medicine requires a valid date");
             }
         }
-
-        // If there are no values to update, then don't try to update the database
-        if (values.size() == 0) {
-            return 0;
-        }
-
-        // Get writable database
-        SQLiteDatabase database = mDbHelper.getWritableDatabase();
-
-        int rowsUpdated = database.update(InventoryMedEntry.TABLE_NAME, values, selection, selectionArgs);
-
-        // If 1 or more rows were updated, then notify all listeners that the data at the
-        // given URI has changed
-        if (rowsUpdated != 0) {
-            // Notify all listeners that the data has changed for the medicine content URI
-            getContext().getContentResolver().notifyChange(uri, null);
-        }
-
-        // Return the number of rows affected.
-        return rowsUpdated;
     }
 }
 
