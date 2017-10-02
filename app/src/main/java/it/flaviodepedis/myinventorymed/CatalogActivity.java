@@ -2,8 +2,11 @@ package it.flaviodepedis.myinventorymed;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +17,7 @@ import it.flaviodepedis.myinventorymed.data.InventoryMedContract.*;
 /**
  * Created by flavio.depedis on 28/09/2017.
  */
-public class CatalogActivity extends AppCompatActivity {
+public class CatalogActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     /**
      * Tag for the log messages
@@ -78,5 +81,21 @@ public class CatalogActivity extends AppCompatActivity {
         // Use the {@link InventoryMedEntry#CONTENT_URI} to indicate that we want to insert
         // into the medicines database table.
         Uri newUri = getContentResolver().insert(InventoryMedEntry.CONTENT_URI, values);
+    }
+
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return null;
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
     }
 }
