@@ -10,8 +10,6 @@
 
     <!-- Color for secondary text in activity-->
     <color name="secondary_text">#757575</color>
-    <color name="icons">#212121</color>
-    <color name="divider">#BDBDBD</color>
 
     <!-- Color for text in Splash Screen activity-->
     <color name="colorTextSplashScreen">#fdfdfe</color>
@@ -21,5 +19,10 @@
 
     <!-- Second Color gradient splash screen background -->
     <color name="stratColorGradient">#605C3C</color>
+
+    <!-- Color for background list -->
+    <color name="background_list_item">#e8e8e8</color>
+
+    <color name="icons">#212121</color>
 
 </resources>
