@@ -116,6 +116,7 @@
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:src="@drawable/ic_add"
+                android:scaleType="fitCenter"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/secondary_text_details" />
 
@@ -139,6 +140,7 @@
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:src="@drawable/ic_remove"
+                android:scaleType="fitCenter"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/secondary_text_details" />
         </LinearLayout>
