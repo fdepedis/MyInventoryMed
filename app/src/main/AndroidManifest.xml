@@ -12,13 +12,13 @@
         <activity
             android:name=".CatalogActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:label="@string/label_catalog">
-        </activity>
+            android:label="@string/label_catalog"></activity>
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -37,6 +37,15 @@
             android:exported="false">
         </provider>
 
+        <activity
+            android:name=".DetailsActivity"
+            android:label="@string/label_details"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:parentActivityName=".CatalogActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CatalogActivity" />
+        </activity>
     </application>
 
 </manifest>

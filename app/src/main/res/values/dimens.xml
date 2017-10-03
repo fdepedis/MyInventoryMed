@@ -9,9 +9,8 @@
     <!-- Padding for text in list item -->
     <dimen name="padding">10dp</dimen>
     <dimen name="padding_top">10dp</dimen>
-    <dimen name="padding_bottom">10dp</dimen>
+    <dimen name="padding_bottom">6dp</dimen>
     <dimen name="padding_start">10dp</dimen>
     <dimen name="padding_end">10dp</dimen>
-
 
 </resources>

@@ -8,6 +8,7 @@
     <!-- Labels -->
     <string name="label_legal_property">FDP development - rev.1.0</string>
     <string name="label_catalog">Inventory Medicine</string>
+    <string name="label_details">Medicine Details</string>
     <string name="label_editor">Editor Medicine</string>
     <string name="label_insert_dummy_med">Insert Dummy Med</string>
     <string name="label_positive_show_message">OK</string>
@@ -16,7 +17,7 @@
     <string name="label_title_show_message">Attention!!!</string>
     <string name="label_msg_show_message">"Are you sure to want to delete all medicines ?"</string>
     <string name="label_delete_dummy_med">Delete All Dummy Med</string>
-    <string name="label_exp_date">Exp Date: <xliff:g id="exp_date" example="2020/01/01">%s</xliff:g></string>
+    <string name="label_exp_date">Exp Date: <xliff:g example="2020/01/01" id="exp_date">%s</xliff:g></string>
 
     <!--
     Price for the medicine. It will be shown in the format of
@@ -24,13 +25,13 @@
     <string name="label_price">Price: €%.2f</string>
     <string name="label_price_discount">Discount: €%.2f</string>
     -->
-    <string name="label_price">Price: €<xliff:g id="price" example="€10">%.2f</xliff:g></string>
-    <string name="label_price_discount">Discount Price: €<xliff:g id="discount" example="€10">%.2f</xliff:g></string>
+    <string name="label_price">Price: €<xliff:g example="€10" id="price">%.2f</xliff:g></string>
+    <string name="label_price_discount">Discount Price: €<xliff:g example="€10" id="discount">%.2f</xliff:g></string>
 
     <!-- Info for empty messages -->
     <string name="empty_view_title_text">It\'s a bit lonely here...</string>
     <string name="empty_view_subtitle_text">Get started by adding a medicine with button below</string>
-    <string name="empty_discount_price">No discount: €<xliff:g id="no_discount" example="€00">%.2f</xliff:g></string>
+    <string name="empty_discount_price">No discount: €<xliff:g example="€00" id="no_discount">%.2f</xliff:g></string>
 
     <!-- Error messages -->
     <string name="error_delete_all_medicines">Failed to delete all medicines</string>

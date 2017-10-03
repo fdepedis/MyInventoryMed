@@ -13,6 +13,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telecom.Call;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -59,7 +60,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(CatalogActivity.this, EditorActivity.class);
+                Intent intent = new Intent(CatalogActivity.this, DetailsActivity.class);
 
                 Uri currentMedUri = ContentUris.withAppendedId(InventoryMedEntry.CONTENT_URI, id);
 
