@@ -135,72 +135,12 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         switch (item.getItemId()) {
             // Respond to a click on the "Insert dummy Med" menu option
             case R.id.insert_dummy_med:
-                insertMedicine();
+                Utils.insertMedicine(this);
                 return true;
             case R.id.delete_dummy_med:
-                showMessageDelete();
+                Utils.showMessageDeleteAll(this);
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * ----------------------- Insert dummy medicine ---------------------
-     * Helper method to insert hardcoded medicine data into the database.
-     * For debugging purposes only.
-     * -------------------------------------------------------------------
-     */
-    private void insertMedicine() {
-        // Create a ContentValues object where column names are the keys,
-        // and Momentdol medicine attributes are the values.
-        ContentValues values = new ContentValues();
-        values.put(InventoryMedEntry.COLUMN_MED_NAME, "Momentdol");
-        values.put(InventoryMedEntry.COLUMN_MED_TYPE, InventoryMedEntry.TYPE_PASTICCHE);
-        values.put(InventoryMedEntry.COLUMN_MED_QUANTITY, 30);
-        values.put(InventoryMedEntry.COLUMN_MED_EXP_DATE, "2020/01/01");
-        values.put(InventoryMedEntry.COLUMN_MED_PRICE, 20.00);
-        values.put(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT, 10.20);
-        //values.put(InventoryMedEntry.COLUMN_MED_IMAGE, "");
-        values.put(InventoryMedEntry.COLUMN_MED_NOTE, "Headache");
-
-        // Insert a new row for Toto into the provider using the ContentResolver.
-        // Use the {@link InventoryMedEntry#CONTENT_URI} to indicate that we want to insert
-        // into the medicines database table.
-        Uri newUri = getContentResolver().insert(InventoryMedEntry.CONTENT_URI, values);
-    }
-
-    /**
-     * ----------------------- Delete All dummy medicines ---------------------
-     * Helper method to delete all medicine data into the database.
-     * ------------------------------------------------------------------------
-     */
-    private void deleteAllMedicines() {
-        int rowsDeleted = getContentResolver().delete(InventoryMedEntry.CONTENT_URI, null, null);
-        Toast.makeText(CatalogActivity.this, getString(R.string.label_medicines_deleted), Toast.LENGTH_LONG).show();
-        Log.v("CatalogActivity", rowsDeleted + " rows deleted from medicine database");
-    }
-
-    private void showMessageDelete() {
-        // Create an AlertDialog.Builder and set the message, and click listeners
-        // for the postivie and negative buttons on the dialog.
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getString(R.string.label_title_show_message));
-        builder.setMessage(getString(R.string.label_msg_show_message));
-        builder.setPositiveButton(getString(R.string.label_positive_show_message), new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                deleteAllMedicines();
-            }
-        });
-        builder.setNegativeButton(getString(R.string.label_negative_show_message), new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(CatalogActivity.this, getString(R.string.label_negative_show_message),
-                        Toast.LENGTH_LONG).show();
-            }
-        });
-
-        // Create and show the AlertDialog
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-
     }
 }
