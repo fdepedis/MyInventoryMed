@@ -44,12 +44,12 @@ public class Utils {
         // Create a ContentValues object where column names are the keys,
         // and Momentdol medicine attributes are the values.
         ContentValues values = new ContentValues();
-        values.put(InventoryMedEntry.COLUMN_MED_NAME, "Momentdol");
+        values.put(InventoryMedEntry.COLUMN_MED_NAME, "Momentdol - 30mg");
         values.put(InventoryMedEntry.COLUMN_MED_TYPE, InventoryMedEntry.TYPE_PASTICCHE);
         values.put(InventoryMedEntry.COLUMN_MED_QUANTITY, 30);
-        values.put(InventoryMedEntry.COLUMN_MED_EXP_DATE, "2020/01/01");
-        values.put(InventoryMedEntry.COLUMN_MED_PRICE, 20.00);
-        values.put(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT, 10.20);
+        values.put(InventoryMedEntry.COLUMN_MED_EXP_DATE, "2023/01/01");
+        values.put(InventoryMedEntry.COLUMN_MED_PRICE, 120.00);
+        values.put(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT, 1.00);
         //values.put(InventoryMedEntry.COLUMN_MED_IMAGE, "");
         values.put(InventoryMedEntry.COLUMN_MED_NOTE, "Headache");
 

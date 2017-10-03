@@ -54,6 +54,7 @@ public class InventoryCursorAdapter extends CursorAdapter {
         String medName = cursor.getString(medNameColumnIndex);
         String medType = cursor.getString(medTypeColumnIndex);
         int medQuantity = cursor.getInt(medQuantityColumnIndex);
+        String medExpDate = cursor.getString(medExpDateColumnIndex);
         Double medPrice = cursor.getDouble(medPriceColumnIndex);
         Double medPriceDiscount = cursor.getDouble(medPriceDiscountColumnIndex);
 
@@ -62,7 +63,13 @@ public class InventoryCursorAdapter extends CursorAdapter {
         holder.tvMedType.setText(medType);
         holder.tvMedQuantity.setText((String.valueOf(medQuantity)));
         holder.tvMedPrice.setText(context.getString(R.string.label_price, medPrice));
-        holder.tvMedPriceDiscount.setText(context.getString(R.string.label_price_discount, medPriceDiscount));
+        //verify if discount exist
+        if(medPriceDiscount > 0){
+            holder.tvMedPriceDiscount.setText(context.getString(R.string.label_price_discount, medPriceDiscount));
+        } else {
+            holder.tvMedPriceDiscount.setText(context.getString(R.string.empty_discount_price, medPriceDiscount));
+        }
+        holder.tvMedExpDate.setText(context.getString(R.string.label_exp_date, medExpDate));
     }
 
     static class ViewHolder {
@@ -71,7 +78,7 @@ public class InventoryCursorAdapter extends CursorAdapter {
         @BindView(R.id.tv_med_price) TextView tvMedPrice;
         @BindView(R.id.tv_med_price_discount) TextView tvMedPriceDiscount;
         @BindView(R.id.tv_med_quantity) TextView tvMedQuantity;
-
+        @BindView(R.id.tv_med_exp_date) TextView tvMedExpDate;
 
         public ViewHolder(View view) {
             ButterKnife.bind(this, view);

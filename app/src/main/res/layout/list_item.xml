@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/list_margin"
+    android:paddingTop="@dimen/padding_top"
+    android:paddingStart="@dimen/padding_start"
+    android:paddingEnd="@dimen/padding_end"
     android:orientation="horizontal">
 
     <LinearLayout
@@ -39,6 +41,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_med_exp_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:paddingStart="@dimen/padding_start"
+                android:paddingTop="@dimen/padding_top"
+                android:text="@string/label_exp_date"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/primary_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingBottom="@dimen/padding_bottom"
             android:paddingTop="@dimen/padding_top">
@@ -69,6 +88,8 @@
                 android:textColor="@color/colorAccent" />
         </LinearLayout>
 
+
+
     </LinearLayout>
 
     <TextView
@@ -78,6 +99,7 @@
         android:layout_weight="1"
         android:background="@color/colorPrimaryLight"
         android:text="qty"
+        android:textSize="20sp"
         android:gravity="center"
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="@color/colorTextQty"
