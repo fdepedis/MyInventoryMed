@@ -15,7 +15,6 @@ import it.flaviodepedis.myinventorymed.data.InventoryMedContract.InventoryMedEnt
 /**
  * Created by flavio.depedis on 01/10/2017.
  */
-
 public class InventoryCursorAdapter extends CursorAdapter {
 
     private static Context mContext;
