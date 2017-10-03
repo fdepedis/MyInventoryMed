@@ -10,4 +10,9 @@
         android:title="@string/label_insert_dummy_med"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/delete_dummy_med"
+        android:title="@string/label_delete_dummy_med"
+        app:showAsAction="never" />
+
 </menu>
