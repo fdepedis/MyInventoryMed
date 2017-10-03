@@ -1,6 +1,7 @@
 package it.flaviodepedis.myinventorymed;
 
 import android.app.LoaderManager;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.Loader;
@@ -10,7 +11,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import it.flaviodepedis.myinventorymed.data.InventoryMedContract.*;
@@ -50,6 +53,21 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         // Find the ListView which will be populated with the medicine data
         ListView medListView = (ListView) findViewById(R.id.list);
 
+        medListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent intent = new Intent(CatalogActivity.this, EditorActivity.class);
+
+                Uri currentPetUri = ContentUris.withAppendedId(InventoryMedEntry.CONTENT_URI,id);
+
+                Log.w("CatalogActivity", InventoryMedEntry.CONTENT_URI + "/" + id );
+
+                intent.setData(currentPetUri);
+                startActivity(intent);
+            }
+        });
+
         // Find and set empty view on the ListView, so that it only shows when the list has 0 items.
         View emptyView = findViewById(R.id.empty_view);
         medListView.setEmptyView(emptyView);
@@ -63,7 +81,6 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 
         // Stampa tutto il contenuto del cursore
         // DatabaseUtils.dumpCursor(medicineCursor);
-
     }
 
     /**

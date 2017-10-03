@@ -1,23 +1,26 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- String for app name -->
     <string name="app_name">My Inventory Med</string>
 
-    <!-- Text to display application label in splash screen -->
+    <!-- Activity Titles -->
     <string name="app_name_splash">Inventory Med</string>
 
-    <!-- Text to display application label in splash screen -->
-    <string name="legal_property">FDP development - rev.1.0</string>
-
-    <!-- Text to display label of main activity -->
+    <!-- Labels -->
+    <string name="label_legal_property">FDP development - rev.1.0</string>
     <string name="label_catalog">Inventory Medicine</string>
-
-    <!-- Text to display label of main activity -->
     <string name="label_editor">Editor Medicine</string>
 
-    <!-- Title text for the empty view, which describes the empty dog house image -->
-    <string name="empty_view_title_text">It\'s a bit lonely here...</string>
+    <!--
+    <string name="label_price">Price: €%.2f</string>
+     Total price for the order summary. It will be shown in the format of
+    "Total: $10" where $10 is the price. [CHAR LIMIT=NONE]
+    -->
+    <string name="label_price">Price: <xliff:g id="price" example="€10">%s</xliff:g></string>
+    <string name="label_price_discount">Discount: €%.2f</string>
 
-    <!-- Subtitle text for the empty view that prompts the user to add a medicine -->
+
+    <!-- Info for empty sessages -->
+    <string name="empty_view_title_text">It\'s a bit lonely here...</string>
     <string name="empty_view_subtitle_text">Get started by adding a medicine with button below</string>
 
 

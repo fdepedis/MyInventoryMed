@@ -5,11 +5,17 @@
     <color name="colorPrimaryDark">#384226</color>
     <color name="colorAccent">#FF5722</color>
 
+    <!-- Color for each block item in the list items catalog activity-->
+    <color name="colorListItem">#c7ccc0</color>
+
     <!-- Color for primary text in activity-->
     <color name="primary_text">#212121</color>
 
     <!-- Color for secondary text in activity-->
     <color name="secondary_text">#757575</color>
+
+    <!-- Color for quantity stock in inventory -->
+    <color name="colorTextQty">#fdfdfe</color>
 
     <!-- Color for text in Splash Screen activity-->
     <color name="colorTextSplashScreen">#fdfdfe</color>
