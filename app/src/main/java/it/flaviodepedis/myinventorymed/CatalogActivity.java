@@ -12,6 +12,8 @@ import android.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -59,11 +61,11 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 
                 Intent intent = new Intent(CatalogActivity.this, EditorActivity.class);
 
-                Uri currentPetUri = ContentUris.withAppendedId(InventoryMedEntry.CONTENT_URI,id);
+                Uri currentMedUri = ContentUris.withAppendedId(InventoryMedEntry.CONTENT_URI,id);
 
                 Log.w("CatalogActivity", InventoryMedEntry.CONTENT_URI + "/" + id );
 
-                intent.setData(currentPetUri);
+                intent.setData(currentMedUri);
                 startActivity(intent);
             }
         });
@@ -143,5 +145,26 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         // This is called when the last Cursor provided to onLoadFinished()
         // above is about to be closed. We need to make sure we are no longer using it.
         mCursorAdapter.swapCursor(null);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu options from the res/menu/menu_catalog.xml file.
+        // This adds menu items to the app bar.
+        getMenuInflater().inflate(R.menu.menu_catalog, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // User clicked on a menu option in the app bar overflow menu
+        switch (item.getItemId()) {
+            // Respond to a click on the "Insert dummy Med" menu option
+            case R.id.insert_dummy_med:
+                insertMedicine();
+                return true;
+            // Respond to a click on the "Delete all entries" menu option;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

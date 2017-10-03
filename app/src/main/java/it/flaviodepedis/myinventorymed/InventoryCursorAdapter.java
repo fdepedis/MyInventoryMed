@@ -56,14 +56,15 @@ public class InventoryCursorAdapter extends CursorAdapter {
         // Read the medicine attributes from the Cursor for the current med
         String medName = cursor.getString(medNameColumnIndex);
         String medType = cursor.getString(medTypeColumnIndex);
-        String medPrice = cursor.getString(medPriceColumnIndex);
-        String medPriceDiscount = cursor.getString(medPriceDiscountColumnIndex);
+        Double medPrice = cursor.getDouble(medPriceColumnIndex);
+        Double medPriceDiscount = cursor.getDouble(medPriceDiscountColumnIndex);
         String medQuantity = cursor.getString(medQuantityColumnIndex);
 
+        // Update the TextViews with the attributes for the current med
         holder.tvMedName.setText(medName);
         holder.tvMedType.setText(medType);
         holder.tvMedPrice.setText(context.getString(R.string.label_price, medPrice));
-        holder.tvMedQuantity.setText(context.getString(R.string.label_price_discount, medPriceDiscount));
+        holder.tvMedPriceDiscount.setText(context.getString(R.string.label_price_discount, medPriceDiscount));
         holder.tvMedQuantity.setText(medQuantity);
     }
 

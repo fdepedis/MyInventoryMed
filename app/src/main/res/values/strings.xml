@@ -9,14 +9,15 @@
     <string name="label_legal_property">FDP development - rev.1.0</string>
     <string name="label_catalog">Inventory Medicine</string>
     <string name="label_editor">Editor Medicine</string>
+    <string name="label_insert_dummy_med">Insert Dummy Med</string>
 
     <!--
     <string name="label_price">Price: €%.2f</string>
      Total price for the order summary. It will be shown in the format of
     "Total: $10" where $10 is the price. [CHAR LIMIT=NONE]
     -->
-    <string name="label_price">Price: <xliff:g id="price" example="€10">%s</xliff:g></string>
-    <string name="label_price_discount">Discount: <xliff:g id="discount" example="€10">%s</xliff:g></string>
+    <string name="label_price">Price: <xliff:g id="price" example="€10">%.2f</xliff:g></string>
+    <string name="label_price_discount">Discount: <xliff:g id="discount" example="€10">%.2f</xliff:g></string>
     <!-- <string name="label_price_discount">Discount: €%.2f</string> -->
 
 
