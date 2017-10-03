@@ -40,7 +40,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         setContentView(R.layout.activity_catalog);
 
         /** Insert dummy records to test */
-        //insertMedicine();
+        insertMedicine();
 
         // Setup FAB to open EditorActivity
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -163,7 +163,6 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
             case R.id.insert_dummy_med:
                 insertMedicine();
                 return true;
-            // Respond to a click on the "Delete all entries" menu option;
         }
         return super.onOptionsItemSelected(item);
     }

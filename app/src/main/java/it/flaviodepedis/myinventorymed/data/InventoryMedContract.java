@@ -50,7 +50,7 @@ public class InventoryMedContract {
         public static final String _ID = BaseColumns._ID;
         public static final String COLUMN_MED_NAME = "med_name";                    // Type: TEXT
         public static final String COLUMN_MED_TYPE = "med_type";                    // Type: TEXT
-        public static final String COLUMN_MED_QUANTITY = "med_qty";                 // Type: INTEGER
+        public static final String COLUMN_MED_QUANTITY = "med_quantity";            // Type: INTEGER
         public static final String COLUMN_MED_EXP_DATE = "med_expiry_date";         // Type: TEXT
         public static final String COLUMN_MED_PRICE = "med_price";                  // Type: REAL
         public static final String COLUMN_MED_PRICE_DISCOUNT = "med_price_discount";// Type: REAL

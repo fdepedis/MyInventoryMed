@@ -33,12 +33,8 @@ public class InventoryCursorAdapter extends CursorAdapter {
         // otherwise, if convertView is not null, then inflate a new list item layout.
         LayoutInflater inflater = LayoutInflater.from(context);
         View listItemView = inflater.inflate(R.layout.list_item,parent,false);
-        if (listItemView != null) {
-            holder = (ViewHolder) listItemView.getTag();
-        } else {
-            holder = new ViewHolder(listItemView);
-            listItemView.setTag(holder);
-        }
+        holder = new ViewHolder(listItemView);
+        listItemView.setTag(holder);
         return listItemView;
     }
 
@@ -46,25 +42,27 @@ public class InventoryCursorAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
 
         // Find the columns of pet attributes that we're interested in
+        int idColumnIndex = cursor.getColumnIndex(InventoryMedEntry._ID);
         int medNameColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_NAME);
         int medTypeColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_TYPE);
+        int medQuantityColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_QUANTITY);
+        int medExpDateColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_EXP_DATE);
         int medPriceColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_PRICE);
         int medPriceDiscountColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT);
-        int medQuantityColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_QUANTITY);
 
         // Read the medicine attributes from the Cursor for the current med
         String medName = cursor.getString(medNameColumnIndex);
         String medType = cursor.getString(medTypeColumnIndex);
+        int medQuantity = cursor.getInt(medQuantityColumnIndex);
         Double medPrice = cursor.getDouble(medPriceColumnIndex);
         Double medPriceDiscount = cursor.getDouble(medPriceDiscountColumnIndex);
-        String medQuantity = cursor.getString(medQuantityColumnIndex);
 
         // Update the TextViews with the attributes for the current med
         holder.tvMedName.setText(medName);
         holder.tvMedType.setText(medType);
+        holder.tvMedQuantity.setText((String.valueOf(medQuantity)));
         holder.tvMedPrice.setText(context.getString(R.string.label_price, medPrice));
         holder.tvMedPriceDiscount.setText(context.getString(R.string.label_price_discount, medPriceDiscount));
-        holder.tvMedQuantity.setText(medQuantity);
     }
 
     static class ViewHolder {
