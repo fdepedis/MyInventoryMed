@@ -8,7 +8,7 @@
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
         android:layout_weight="3"
         android:background="@color/colorListItem"
@@ -45,7 +45,7 @@
 
             <TextView
                 android:id="@+id/tv_med_exp_date"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/dimen_0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
                 android:paddingStart="@dimen/padding_start"
@@ -64,7 +64,7 @@
 
             <TextView
                 android:id="@+id/tv_med_price"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/dimen_0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingStart="@dimen/padding_start"
@@ -79,7 +79,7 @@
 
             <TextView
                 android:id="@+id/tv_med_price_discount"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/dimen_0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
                 android:paddingStart="@dimen/padding_start"

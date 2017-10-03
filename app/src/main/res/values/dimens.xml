@@ -13,4 +13,16 @@
     <dimen name="padding_start">10dp</dimen>
     <dimen name="padding_end">10dp</dimen>
 
+    <!-- Padding for text in Details Activity -->
+    <dimen name="padding_generic_details">10dp</dimen>
+    <dimen name="padding_top_details">26dp</dimen>
+
+    <!-- Margin for text in Details Activity -->
+    <dimen name="margin_end_details">10dp</dimen>
+
+    <!-- Common Dimensions -->
+    <dimen name="dimen_0dp">0dp</dimen>
+    <dimen name="dimen_56dp">56dp</dimen>
+    <dimen name="dimen_80dp">80dp</dimen>
+
 </resources>

@@ -1,9 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="it.flaviodepedis.myinventorymed.DetailsActivity">
+    android:background="@color/background_list_item"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/med_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_80dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/padding_top_details"
+        android:paddingBottom="@dimen/padding_bottom"
+        android:paddingStart="@dimen/padding_start"
+        android:paddingEnd="@dimen/padding_end">
+
+        <TextView
+            android:id="@+id/tv_label_med_name"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/margin_end_details"
+            android:text="Medicine Name"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/primary_text"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:id="@+id/tv_value_med_name"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="Name"
+            android:paddingStart="@dimen/padding_start"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/secondary_text_details"
+            android:background="@color/colorPrimaryLight"
+            android:gravity="center_vertical"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+
