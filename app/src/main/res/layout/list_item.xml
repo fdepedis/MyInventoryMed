@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/med_name"
+            android:id="@+id/tv_med_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -27,7 +27,7 @@
             android:textColor="@color/primary_text" />
 
         <TextView
-            android:id="@+id/med_type"
+            android:id="@+id/tv_med_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
@@ -44,7 +44,7 @@
             android:paddingTop="@dimen/padding_top">
 
             <TextView
-                android:id="@+id/med_price"
+                android:id="@+id/tv_med_price"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -59,7 +59,7 @@
                 android:background="@color/colorPrimary" />
 
             <TextView
-                android:id="@+id/med_price_discount"
+                android:id="@+id/tv_med_price_discount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
@@ -72,6 +72,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tv_med_quantity"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -83,6 +84,7 @@
         android:textStyle="bold" />
 
     <ImageView
+        android:id="@+id/img_shopping_cart"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"

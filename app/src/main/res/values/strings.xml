@@ -16,7 +16,8 @@
     "Total: $10" where $10 is the price. [CHAR LIMIT=NONE]
     -->
     <string name="label_price">Price: <xliff:g id="price" example="€10">%s</xliff:g></string>
-    <string name="label_price_discount">Discount: €%.2f</string>
+    <string name="label_price_discount">Discount: <xliff:g id="discount" example="€10">%s</xliff:g></string>
+    <!-- <string name="label_price_discount">Discount: €%.2f</string> -->
 
 
     <!-- Info for empty sessages -->
