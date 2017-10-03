@@ -12,7 +12,7 @@
     <string name="label_insert_dummy_med">Insert Dummy Med</string>
     <string name="label_positive_show_message">OK</string>
     <string name="label_negative_show_message">Cancel</string>
-    <string name="label_medicines_deleted">Medicines deleted</string>
+    <string name="label_all_medicines_deleted">All medicines deleted</string>
     <string name="label_title_show_message">Attention!!!</string>
     <string name="label_msg_show_message">"Are you sure to want to delete all medicines ?"</string>
     <string name="label_delete_dummy_med">Delete All Dummy Med</string>
@@ -25,9 +25,12 @@
     <string name="label_price">Price: <xliff:g id="price" example="€10">%.2f</xliff:g></string>
     <string name="label_price_discount">Discount: <xliff:g id="discount" example="€10">%.2f</xliff:g></string>
 
-    <!-- Info for empty sessages -->
+    <!-- Info for empty messages -->
     <string name="empty_view_title_text">It\'s a bit lonely here...</string>
     <string name="empty_view_subtitle_text">Get started by adding a medicine with button below</string>
+
+    <!-- Error messages -->
+    <string name="error_delete_all_medicines">Failed to delete all medicines</string>
 
 
 </resources>

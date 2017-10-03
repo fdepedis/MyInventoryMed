@@ -8,12 +8,14 @@ import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
-import it.flaviodepedis.myinventorymed.data.InventoryMedContract;
+import it.flaviodepedis.myinventorymed.data.InventoryMedContract.InventoryMedEntry;
 
 /**
  * Created by flavio.depedis on 03/10/2017.
  */
 public class Utils {
+
+    public static final String LOG_TAG = Utils.class.getSimpleName();
 
     /**
      * ----------------------- Delete All dummy medicines ---------------------
@@ -21,9 +23,15 @@ public class Utils {
      * ------------------------------------------------------------------------
      */
     public static void deleteAllMedicines(Context context) {
-        int rowsDeleted = context.getContentResolver().delete(InventoryMedContract.InventoryMedEntry.CONTENT_URI, null, null);
-        Toast.makeText(context, R.string.label_medicines_deleted, Toast.LENGTH_LONG).show();
-        Log.v("CatalogActivity", rowsDeleted + " rows deleted from medicine database");
+        int rowsDeleted = context.getContentResolver().delete(InventoryMedEntry.CONTENT_URI, null, null);
+        if (rowsDeleted > 0) {
+            Toast.makeText(context, R.string.label_all_medicines_deleted,
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, R.string.error_delete_all_medicines,
+                    Toast.LENGTH_SHORT).show();
+            Log.w(LOG_TAG, String.valueOf(R.string.error_delete_all_medicines));
+        }
     }
 
     /**
@@ -36,19 +44,19 @@ public class Utils {
         // Create a ContentValues object where column names are the keys,
         // and Momentdol medicine attributes are the values.
         ContentValues values = new ContentValues();
-        values.put(InventoryMedContract.InventoryMedEntry.COLUMN_MED_NAME, "Momentdol");
-        values.put(InventoryMedContract.InventoryMedEntry.COLUMN_MED_TYPE, InventoryMedContract.InventoryMedEntry.TYPE_PASTICCHE);
-        values.put(InventoryMedContract.InventoryMedEntry.COLUMN_MED_QUANTITY, 30);
-        values.put(InventoryMedContract.InventoryMedEntry.COLUMN_MED_EXP_DATE, "2020/01/01");
-        values.put(InventoryMedContract.InventoryMedEntry.COLUMN_MED_PRICE, 20.00);
-        values.put(InventoryMedContract.InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT, 10.20);
+        values.put(InventoryMedEntry.COLUMN_MED_NAME, "Momentdol");
+        values.put(InventoryMedEntry.COLUMN_MED_TYPE, InventoryMedEntry.TYPE_PASTICCHE);
+        values.put(InventoryMedEntry.COLUMN_MED_QUANTITY, 30);
+        values.put(InventoryMedEntry.COLUMN_MED_EXP_DATE, "2020/01/01");
+        values.put(InventoryMedEntry.COLUMN_MED_PRICE, 20.00);
+        values.put(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT, 10.20);
         //values.put(InventoryMedEntry.COLUMN_MED_IMAGE, "");
-        values.put(InventoryMedContract.InventoryMedEntry.COLUMN_MED_NOTE, "Headache");
+        values.put(InventoryMedEntry.COLUMN_MED_NOTE, "Headache");
 
         // Insert a new row for Toto into the provider using the ContentResolver.
         // Use the {@link InventoryMedEntry#CONTENT_URI} to indicate that we want to insert
         // into the medicines database table.
-        Uri newUri = context.getContentResolver().insert(InventoryMedContract.InventoryMedEntry.CONTENT_URI, values);
+        Uri newUri = context.getContentResolver().insert(InventoryMedEntry.CONTENT_URI, values);
     }
 
     /**
