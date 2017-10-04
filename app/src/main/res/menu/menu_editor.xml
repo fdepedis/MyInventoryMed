@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".EditorActivity">
 
+    <item
+        android:id="@+id/delete_med"
+        android:icon="@drawable/ic_delete_med"
+        android:title="@string/label_menu_delete_med"
+        android:orderInCategory="2"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/save_med"
+        android:icon="@drawable/ic_save_med"
+        android:title="@string/label_menu_save_med"
+        android:orderInCategory="1"
+        app:showAsAction="always" />
 </menu>

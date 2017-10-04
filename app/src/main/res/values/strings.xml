@@ -19,8 +19,9 @@
     <string name="label_message_delete_all_med">"Are you sure to want to delete all medicines ?"</string>
     <string name="label_message_delete_med">"Are you sure to want to delete this medicine ?"</string>
     <string name="label_delete_dummy_med">Delete All Dummy Med</string>
-    <string name="label_delete_med">Delete</string>
-    <string name="label_edit_med">Edit</string>
+    <string name="label_menu_delete_med">Delete</string>
+    <string name="label_menu_edit_med">Edit</string>
+    <string name="label_menu_save_med">Save</string>
     <string name="label_exp_date">Exp Date: <xliff:g example="2020/01/01" id="exp_date">%s</xliff:g></string>
     <string name="label_details_med_name">Name</string>
     <string name="label_details_med_type">Type</string>
