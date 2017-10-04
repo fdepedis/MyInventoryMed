@@ -32,7 +32,7 @@ public class DetailsActivity extends AppCompatActivity
     private static final int MED_INC = 1;
     private static final int MED_DEC = -1;
 
-    /** Declare all TextView in this activity */
+    /** Declare all view in this activity */
     // TextView for label
     @BindView(R.id.tv_label_med_name) TextView tvLabelMedName;
     @BindView(R.id.tv_label_med_type) TextView tvLabelMedType;

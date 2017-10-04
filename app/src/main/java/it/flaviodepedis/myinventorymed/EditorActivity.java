@@ -13,7 +13,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import it.flaviodepedis.myinventorymed.data.InventoryMedContract.InventoryMedEntry;
 
 public class EditorActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -24,10 +27,14 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
     private String mMedType = InventoryMedEntry.TYPE_UNKNOWN;
 
+    /** Declare all view in this activity */
+    @BindView(R.id.spinner_med_type) Spinner mMedSpinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
+        ButterKnife.bind(this);
 
         Intent intent = getIntent();
         mCurrentMedUri = intent.getData();
