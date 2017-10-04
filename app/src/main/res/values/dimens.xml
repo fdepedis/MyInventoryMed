@@ -20,6 +20,7 @@
 
     <!-- Margin for text in Details Activity -->
     <dimen name="margin_end_details">10dp</dimen>
+    <dimen name="margin_end_editor">10dp</dimen>
 
     <!-- Common Dimensions -->
     <dimen name="dimen_0dp">0dp</dimen>

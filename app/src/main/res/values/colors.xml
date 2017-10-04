@@ -3,7 +3,7 @@
     <color name="colorPrimary">#626d4e</color>
     <color name="colorPrimaryLight">#abb39c</color>
     <color name="colorPrimaryDark">#384226</color>
-    <color name="colorAccent">#a7340f</color>
+    <color name="colorAccent">#c1451d</color>
 
     <!-- Color for each block item in the list items catalog activity -->
     <color name="colorListItem">#c7ccc0</color>
@@ -15,7 +15,7 @@
     <color name="secondary_text">#757575</color>
 
     <!-- Color for secondary text in activity details -->
-    <color name="secondary_text_details">#423b2a</color>
+    <color name="secondary_text_edit_details">#423b2a</color>
 
     <!-- Color for quantity stock in inventory -->
     <color name="colorTextQty">#fdfdfe</color>

@@ -42,7 +42,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         if (mCurrentMedUri == null) {
             setTitle(getResources().getString(R.string.label_editor_activity_title_new_med));
             // Invalidate the options menu, so the "Delete" menu option can be hidden.
-            // (It doesn't make sense to delete a pet that hasn't been created yet.)
+            // (It doesn't make sense to delete a medicine that hasn't been created yet.)
             invalidateOptionsMenu();
         } else {
             setTitle(getResources().getString(R.string.label_editor_activity_title_edit_med));

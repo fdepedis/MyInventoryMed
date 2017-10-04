@@ -47,7 +47,7 @@
                 android:paddingStart="@dimen/padding_start"
                 android:text="Name"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_details" />
+                android:textColor="@color/secondary_text_edit_details" />
         </LinearLayout>
 
         <LinearLayout
@@ -82,7 +82,7 @@
                 android:paddingStart="@dimen/padding_start"
                 android:text="Type"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_details" />
+                android:textColor="@color/secondary_text_edit_details" />
         </LinearLayout>
 
         <LinearLayout
@@ -118,7 +118,7 @@
                 android:src="@drawable/ic_add"
                 android:scaleType="fitCenter"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_details" />
+                android:textColor="@color/secondary_text_edit_details" />
 
             <TextView
                 android:id="@+id/tv_value_med_quantity"
@@ -130,7 +130,7 @@
                 android:gravity="center"
                 android:text="Quantity"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_details" />
+                android:textColor="@color/secondary_text_edit_details" />
 
             <ImageButton
                 android:id="@+id/img_med_dec"
@@ -142,7 +142,7 @@
                 android:src="@drawable/ic_remove"
                 android:scaleType="fitCenter"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_details" />
+                android:textColor="@color/secondary_text_edit_details" />
         </LinearLayout>
 
         <LinearLayout
@@ -177,7 +177,7 @@
                 android:paddingStart="@dimen/padding_start"
                 android:text="Price"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_details" />
+                android:textColor="@color/secondary_text_edit_details" />
         </LinearLayout>
 
         <LinearLayout
@@ -212,7 +212,7 @@
                 android:paddingStart="@dimen/padding_start"
                 android:text="Discount"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_details" />
+                android:textColor="@color/secondary_text_edit_details" />
         </LinearLayout>
 
         <LinearLayout
@@ -247,7 +247,7 @@
                 android:paddingStart="@dimen/padding_start"
                 android:text="Date"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_details" />
+                android:textColor="@color/secondary_text_edit_details" />
         </LinearLayout>
 
         <ImageView
@@ -293,7 +293,7 @@
                 android:paddingStart="@dimen/padding_start"
                 android:text="XXX"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_details" />
+                android:textColor="@color/secondary_text_edit_details" />
         </LinearLayout>
 
         <View
