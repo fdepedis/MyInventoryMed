@@ -49,7 +49,7 @@ public class Utils {
         values.put(InventoryMedEntry.COLUMN_MED_QUANTITY, 30);
         values.put(InventoryMedEntry.COLUMN_MED_EXP_DATE, "2023/01/01");
         values.put(InventoryMedEntry.COLUMN_MED_PRICE, 120.00);
-        values.put(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT, 1.00);
+        values.put(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT, 0.00);
         //values.put(InventoryMedEntry.COLUMN_MED_IMAGE, "");
         values.put(InventoryMedEntry.COLUMN_MED_NOTE, "Headache");
 

@@ -108,7 +108,7 @@
                 android:textColor="@color/primary_text" />
 
             <ImageButton
-                android:id="@+id/tv_value_med_inc"
+                android:id="@+id/img_med_inc"
                 android:layout_width="@dimen/dimen_0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/margin_end_details"
@@ -133,7 +133,7 @@
                 android:textColor="@color/secondary_text_details" />
 
             <ImageButton
-                android:id="@+id/tv_value_med_dec"
+                android:id="@+id/img_med_dec"
                 android:layout_width="@dimen/dimen_0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
@@ -256,7 +256,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/dimen_50dp"
-            android:layout_marginTop="@dimen/dimen_30dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
             android:layout_marginEnd="@dimen/dimen_30dp"
             android:layout_marginStart="@dimen/dimen_30dp"
             android:background="@color/colorListItem"
