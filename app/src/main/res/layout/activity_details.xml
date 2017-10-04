@@ -255,7 +255,7 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/dimen_50dp"
+            android:layout_marginBottom="@dimen/dimen_30dp"
             android:layout_marginTop="@dimen/dimen_20dp"
             android:layout_marginEnd="@dimen/dimen_30dp"
             android:layout_marginStart="@dimen/dimen_30dp"

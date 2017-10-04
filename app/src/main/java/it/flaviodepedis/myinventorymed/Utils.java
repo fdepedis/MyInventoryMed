@@ -84,4 +84,22 @@ public class Utils {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
+    public static void adjustInventory(
+            Context context, Uri mCurrentProductUri, String previousValue, int variance){
+
+        int currQuantity;
+
+        // if greater than 1
+        if(variance > 0){
+            currQuantity = Integer.parseInt(previousValue) + variance;
+        } else {
+            currQuantity = Integer.parseInt(previousValue) + variance;
+        }
+
+        ContentValues values = new ContentValues();
+        values.put(InventoryMedEntry.COLUMN_MED_QUANTITY, currQuantity);
+        context.getContentResolver().update(mCurrentProductUri, values, null, null);
+
+    }
 }

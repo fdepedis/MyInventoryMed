@@ -1,6 +1,5 @@
 package it.flaviodepedis.myinventorymed;
 
-import android.app.Activity;
 import android.app.LoaderManager;
 import com.squareup.picasso.Picasso;
 import android.content.CursorLoader;
@@ -8,7 +7,6 @@ import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,19 +14,21 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import it.flaviodepedis.myinventorymed.data.InventoryMedContract.InventoryMedEntry;
 
-public class DetailsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
+public class DetailsActivity extends AppCompatActivity
+        implements LoaderManager.LoaderCallbacks<Cursor>, View.OnClickListener{
 
     public static final String LOG_TAG = DetailsActivity.class.getSimpleName();
 
     private Uri mCurrentProductUri;
 
     private static final int MED_LOADER_ID = 0;
+    private static final int MED_INC = 1;
+    private static final int MED_DEC = -1;
 
     /** Declare all TextView in this activity */
     // TextView for label
@@ -65,6 +65,9 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         if(mCurrentProductUri != null) {
             getLoaderManager().initLoader(MED_LOADER_ID, null, this);
         }
+
+        imgBtnAdd.setOnClickListener(this);
+        imgBtnRemove.setOnClickListener(this);
     }
 
     @Override
@@ -141,7 +144,33 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         tvValueMedQuantity.setText("");
         tvValueMedPrice.setText("");
         tvValueMedDiscountPrice.setText("");
+        imgMedicine.setImageURI(null);
         tvValueMedExpDate.setText("");
         tvValueMedNote.setText("");
+    }
+
+    /**
+     * Get the view and define which action submit
+     * @param view
+     */
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        switch (id){
+            case R.id.img_med_inc:
+                Utils.adjustInventory(
+                        getBaseContext(),
+                        mCurrentProductUri,
+                        String.valueOf(tvValueMedQuantity.getText()),
+                        MED_INC);
+                break;
+            case R.id.img_med_dec:
+                Utils.adjustInventory(
+                        getBaseContext(),
+                        mCurrentProductUri,
+                        String.valueOf(tvValueMedQuantity.getText()),
+                        MED_DEC);
+                break;
+        }
     }
 }
