@@ -26,7 +26,7 @@ public class DetailsActivity extends AppCompatActivity
 
     public static final String LOG_TAG = DetailsActivity.class.getSimpleName();
 
-    private Uri mCurrentProductUri;
+    private Uri mCurrentMedUri;
 
     private static final int MED_LOADER_ID = 0;
     private static final int MED_INC = 1;
@@ -63,8 +63,8 @@ public class DetailsActivity extends AppCompatActivity
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        mCurrentProductUri = intent.getData();
-        if(mCurrentProductUri != null) {
+        mCurrentMedUri = intent.getData();
+        if(mCurrentMedUri != null) {
             getLoaderManager().initLoader(MED_LOADER_ID, null, this);
         }
 
@@ -76,7 +76,7 @@ public class DetailsActivity extends AppCompatActivity
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return new CursorLoader(
                 this,                       // Parent activity context
-                mCurrentProductUri,         // Provider content URI to query
+                mCurrentMedUri,             // Provider content URI to query
                 null,                       // Columns to include in the resulting Cursor
                 null,                       // No Where clause
                 null,                       // No Where arguments clause
@@ -162,14 +162,14 @@ public class DetailsActivity extends AppCompatActivity
             case R.id.img_med_inc:
                 Utils.adjustInventory(
                         getBaseContext(),
-                        mCurrentProductUri,
+                        mCurrentMedUri,
                         String.valueOf(tvValueMedQuantity.getText()),
                         MED_INC);
                 break;
             case R.id.img_med_dec:
                 Utils.adjustInventory(
                         getBaseContext(),
-                        mCurrentProductUri,
+                        mCurrentMedUri,
                         String.valueOf(tvValueMedQuantity.getText()),
                         MED_DEC);
                 break;
@@ -189,7 +189,7 @@ public class DetailsActivity extends AppCompatActivity
 
         switch (item.getItemId()) {
             case R.id.delete_med:
-                Utils.showMessageDelete(this, mCurrentProductUri);
+                Utils.showMessageDelete(this, mCurrentMedUri);
                 //this.finish();
                 return true;
             case R.id.edit_med:
@@ -204,7 +204,7 @@ public class DetailsActivity extends AppCompatActivity
      */
     private void openEditorActivity() {
         Intent intent = new Intent(DetailsActivity.this, EditorActivity.class);
-        intent.setData(mCurrentProductUri);
+        intent.setData(mCurrentMedUri);
         startActivity(intent);
     }
 }

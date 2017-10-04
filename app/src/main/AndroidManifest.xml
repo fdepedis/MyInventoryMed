@@ -27,7 +27,6 @@
         </activity>
         <activity
             android:name=".EditorActivity"
-            android:label="@string/label_editor"
             android:parentActivityName=".CatalogActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
