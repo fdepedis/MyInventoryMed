@@ -43,15 +43,16 @@
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/primary_text" />
 
-            <TextView
-                android:id="@+id/tv_value_med_name"
+            <EditText
+                android:id="@+id/et_value_editor_med_name"
                 android:layout_width="@dimen/dimen_0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center_vertical"
-                android:paddingStart="@dimen/padding_start"
                 android:hint="@string/label_hint_editor_med_name"
+                android:inputType="text"
+                android:paddingStart="@dimen/padding_start"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/secondary_text_edit_details" />
         </LinearLayout>
@@ -85,9 +86,9 @@
                 android:layout_weight="2"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:spinnerMode="dropdown"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details"
-                android:spinnerMode="dropdown" />
+                android:textColor="@color/secondary_text_edit_details" />
 
         </LinearLayout>
 
@@ -113,14 +114,15 @@
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/primary_text" />
 
-            <TextView
-                android:id="@+id/tv_value_editor_med_quantity"
+            <EditText
+                android:id="@+id/et_value_editor_med_quantity"
                 android:layout_width="@dimen/dimen_0dp"
                 android:layout_height="match_parent"
-                android:hint="@string/label_hint_editor_med_quantity"
                 android:layout_weight="2"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:hint="@string/label_hint_editor_med_quantity"
+                android:inputType="number"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/secondary_text_edit_details" />
         </LinearLayout>
@@ -147,15 +149,16 @@
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/primary_text" />
 
-            <TextView
-                android:id="@+id/tv_value_editor_med_price"
+            <EditText
+                android:id="@+id/et_value_editor_med_price"
                 android:layout_width="@dimen/dimen_0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center_vertical"
-                android:paddingStart="@dimen/padding_start"
                 android:hint="@string/label_hint_editor_med_price"
+                android:inputType="numberDecimal"
+                android:paddingStart="@dimen/padding_start"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/secondary_text_edit_details" />
         </LinearLayout>
@@ -182,15 +185,16 @@
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/primary_text" />
 
-            <TextView
-                android:id="@+id/tv_value_editor_med_discount"
+            <EditText
+                android:id="@+id/et_value_editor_med_discount"
                 android:layout_width="@dimen/dimen_0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center_vertical"
-                android:paddingStart="@dimen/padding_start"
                 android:hint="@string/label_hint_editor_med_disc_price"
+                android:inputType="numberDecimal"
+                android:paddingStart="@dimen/padding_start"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/secondary_text_edit_details" />
         </LinearLayout>
@@ -217,15 +221,16 @@
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/primary_text" />
 
-            <TextView
-                android:id="@+id/tv_value_editor_med_exp_date"
+            <EditText
+                android:id="@+id/et_value_editor_med_exp_date"
                 android:layout_width="@dimen/dimen_0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center_vertical"
-                android:paddingStart="@dimen/padding_start"
                 android:hint="@string/label_hint_editor_med_exp_date"
+                android:inputType="date"
+                android:paddingStart="@dimen/padding_start"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/secondary_text_edit_details" />
         </LinearLayout>
@@ -236,11 +241,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/dimen_30dp"
-            android:layout_marginTop="@dimen/dimen_20dp"
             android:layout_marginEnd="@dimen/dimen_30dp"
             android:layout_marginStart="@dimen/dimen_30dp"
-            android:src="@drawable/ic_image_not_found"
-            android:scaleType="centerCrop" />
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_image_not_found" />
 
         <LinearLayout
             android:id="@+id/editor_med_note"
@@ -262,24 +267,24 @@
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/primary_text" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_value_editor_med_note"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_100dp"
-                android:maxLines="10"
-                android:ellipsize="end"
                 android:background="@color/colorPrimaryLight"
+                android:ellipsize="end"
                 android:gravity="center_vertical|top"
-                android:paddingStart="@dimen/padding_start"
                 android:hint="@string/label_hint_editor_med_note"
+                android:inputType="text"
+                android:maxLines="10"
+                android:paddingStart="@dimen/padding_start"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/secondary_text_edit_details" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_30dp">
-        </View>
+            android:layout_height="@dimen/dimen_30dp"></View>
 
     </LinearLayout>
 

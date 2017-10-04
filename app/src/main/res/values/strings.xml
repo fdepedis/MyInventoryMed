@@ -41,7 +41,7 @@
     <string name="label_hint_editor_med_quantity">1</string>
     <string name="label_hint_editor_med_price">Insert price</string>
     <string name="label_hint_editor_med_disc_price">Insert Discount (if applicable)</string>
-    <string name="label_hint_editor_med_exp_date">Insert Exp Date</string>
+    <string name="label_hint_editor_med_exp_date">(yyyy/mm/dd)</string>
     <string name="label_hint_editor_med_note">Insert note (if applicable)</string>
     <string name="label_editor_med_info">Required *</string>
     <string name="label_type_med_liquido">Liquido</string>

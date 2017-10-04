@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import butterknife.BindView;
@@ -30,6 +31,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     private String mMedType = InventoryMedEntry.TYPE_UNKNOWN;
 
     /** Declare all view in this activity */
+    @BindView(R.id.et_value_editor_med_name) EditText etMedName;
     @BindView(R.id.spinner_med_type) Spinner mMedSpinner;
 
     @Override
@@ -132,7 +134,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         switch (item.getItemId()) {
             case R.id.delete_med:
                 Utils.showMessageDelete(this, mCurrentMedUri);
-                //this.finish();
                 return true;
             case R.id.save_med:
                 //saveMedicine();
