@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="it.flaviodepedis.myinventorymed">
 
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,7 +14,8 @@
         <activity
             android:name=".CatalogActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:label="@string/label_catalog"></activity>
+            android:label="@string/label_catalog">
+        </activity>
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/SplashScreenTheme">
@@ -30,13 +33,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CatalogActivity" />
         </activity>
-
-        <provider
-            android:name=".data.InventoryMedProvider"
-            android:authorities="it.flaviodepedis.myinventorymed"
-            android:exported="false">
-        </provider>
-
         <activity
             android:name=".DetailsActivity"
             android:label="@string/label_details"
@@ -46,6 +42,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CatalogActivity" />
         </activity>
+
+        <provider
+            android:name=".data.InventoryMedProvider"
+            android:authorities="it.flaviodepedis.myinventorymed"
+            android:exported="false">
+        </provider>
+
     </application>
 
 </manifest>

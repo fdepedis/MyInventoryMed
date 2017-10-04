@@ -41,6 +41,7 @@
     <string name="empty_view_subtitle_text">Get started, add a medicine with button below</string>
     <string name="empty_discount_price">No discount: € <xliff:g example="€00" id="no_discount">%.2f</xliff:g></string>
     <string name="empty_discount_price_details">No discount</string>
+    <string name="empty_image_med_details">No image medicine available</string>
 
     <!-- Error messages -->
     <string name="error_delete_all_medicines">Failed to delete all medicines</string>

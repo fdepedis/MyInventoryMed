@@ -252,16 +252,16 @@
 
         <ImageView
             android:id="@+id/image_product"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/dimen_50dp"
             android:layout_marginTop="@dimen/dimen_20dp"
             android:layout_marginEnd="@dimen/dimen_30dp"
             android:layout_marginStart="@dimen/dimen_30dp"
-            android:background="@color/colorListItem"
-            android:contentDescription="test"
-            android:padding="@dimen/padding" />
+            android:background="@color/colorPrimaryLight"
+            android:src="@drawable/ic_image_not_found"
+            android:scaleType="center" />
 
         <LinearLayout
             android:id="@+id/med_note"

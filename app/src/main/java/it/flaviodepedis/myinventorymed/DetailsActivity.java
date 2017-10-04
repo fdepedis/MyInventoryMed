@@ -1,18 +1,22 @@
 package it.flaviodepedis.myinventorymed;
 
+import android.app.Activity;
 import android.app.LoaderManager;
-import android.content.Context;
+import com.squareup.picasso.Picasso;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -91,6 +95,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
             int medExpDateColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_EXP_DATE);
             int medPriceColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_PRICE);
             int medPriceDiscountColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT);
+            int medImageColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_IMAGE);
             int medNoteColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_NOTE);
 
             // Extract out the value from the Cursor for the given column index
@@ -100,6 +105,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
             String medExpDate = cursor.getString(medExpDateColumnIndex);
             Double medPrice = cursor.getDouble(medPriceColumnIndex);
             Double medPriceDiscount = cursor.getDouble(medPriceDiscountColumnIndex);
+            String image = cursor.getString(medImageColumnIndex);
             String medNote = cursor.getString(medNoteColumnIndex);
 
             // Set TextView text with the value from the database
@@ -107,23 +113,35 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
             tvValueMedType.setText(medType);
             tvValueMedQuantity.setText(String.valueOf(medQuantity));
             tvValueMedPrice.setText(String.valueOf(medPrice));
-            //tvValueMedDiscountPrice.setText(String.valueOf(medPriceDiscount));
+
             if(medPriceDiscount > 0){
                 tvValueMedDiscountPrice.setText(String.valueOf(medPriceDiscount));
                 tvValueMedDiscountPrice.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
             } else {
                 tvValueMedDiscountPrice.setText(getString(R.string.empty_discount_price_details));
             }
+
+            // verify if image medicine exist
+            if(image == null) {
+                Picasso.with(getApplicationContext()).load(R.drawable.ic_image_not_found).into(imgMedicine);
+            } else {
+                Uri uri = Uri.parse(image);
+                imgMedicine.setImageURI(uri);
+            }
             tvValueMedExpDate.setText(medExpDate);
             tvValueMedNote.setText(medNote);
         }
-
-
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-
+        // If the loader is invalidated, clear out all the data from the input fields.
+        tvValueMedName.setText("");
+        tvValueMedType.setText("");
+        tvValueMedQuantity.setText("");
+        tvValueMedPrice.setText("");
+        tvValueMedDiscountPrice.setText("");
+        tvValueMedExpDate.setText("");
+        tvValueMedNote.setText("");
     }
-
 }
