@@ -72,8 +72,6 @@
     <string name="error_delete_all_medicines">Failed to delete all medicines</string>
     <string name="error_delete_med_failed">Failed to delete current medicine</string>
     <string name="error_delete_med_successful">Medicine successfully deleted</string>
-
-
-
+    <string name="error_picking_image">Error picking image</string>
 
 </resources>

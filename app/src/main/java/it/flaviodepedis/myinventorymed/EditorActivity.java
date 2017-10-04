@@ -7,16 +7,20 @@ import android.content.Loader;
 import android.content.CursorLoader;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,11 +32,29 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
     private static final int EXISTING_MED_LOADER = 0;
 
+    /**
+     * Initialize the spinner to TYPE_UNKNOWN
+     */
     private String mMedType = InventoryMedEntry.TYPE_UNKNOWN;
+
+    /**
+     * Boolean flag that keeps track of whether the medicine has been edited (true) or not (false)
+     */
+    private boolean mMedHasChanged = false;
+
+    //Stores the URI of image
+    private Uri mPickedImage;
+    private static final int IMAGE_REQUEST_CODE = 0;
 
     /** Declare all view in this activity */
     @BindView(R.id.et_value_editor_med_name) EditText etMedName;
     @BindView(R.id.spinner_med_type) Spinner mMedSpinner;
+    @BindView(R.id.et_value_editor_med_quantity) EditText etMedQuantity;
+    @BindView(R.id.et_value_editor_med_price) EditText etMedPrice;
+    @BindView(R.id.et_value_editor_med_discount) EditText etMedDiscountPrice;
+    @BindView(R.id.et_value_editor_med_exp_date) EditText etMedExpDate;
+    @BindView(R.id.image_editor_med) ImageView imageMed;
+    @BindView(R.id.et_value_editor_med_note) EditText etMedNote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +78,33 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
         setupSpinner();
 
+        // Setup OnTouchListeners on all the input fields, so we can determine if the user
+        // has touched or modified them. This will let us know if there are unsaved changes
+        // or not, if the user tries to leave the editor without saving.
+        etMedName.setOnTouchListener(mTouchListener);
+        mMedSpinner.setOnTouchListener(mTouchListener);
+        etMedQuantity.setOnTouchListener(mTouchListener);
+        etMedPrice.setOnTouchListener(mTouchListener);
+        etMedDiscountPrice.setOnTouchListener(mTouchListener);
+        etMedExpDate.setOnTouchListener(mTouchListener);
+        imageMed.setOnTouchListener(mTouchListener);
+        etMedNote.setOnTouchListener(mTouchListener);
+
+        //Image picker intent
+        imageMed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+                    intent = new Intent(Intent.ACTION_GET_CONTENT);
+                } else {
+                    intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                    intent.addCategory(Intent.CATEGORY_OPENABLE);
+                }
+                intent.setType("image/*");
+                startActivityForResult(intent, IMAGE_REQUEST_CODE);
+            }
+        });
     }
 
     @Override
@@ -71,6 +120,44 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
 
+    }
+
+    /**
+     * OnTouchListener that listens for any user touches on a View, implying that they are modifying
+     * the view, and we change the mMedHasChanged boolean to true.
+     */
+    private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            mMedHasChanged = true;
+            return false;
+        }
+    };
+
+    /**
+     * Executes when user returns from Image picker intent
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data contains the URI of image the user picked
+     */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            //Return early and show message if there was error during picking image
+            if (data == null) {
+                Toast.makeText(this, getString(R.string.error_picking_image), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            //Store the URI of picked image
+            mPickedImage = data.getData();
+            //Set it on the ImageView
+            imageMed.setImageURI(mPickedImage);
+            //Change scaleType from centerInside to centerCrop
+            imageMed.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        }
     }
 
     /**
@@ -125,6 +212,24 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         // Inflate the menu options from the res/menu/menu_details.xml file.
         // This adds menu items to the app bar.
         getMenuInflater().inflate(R.menu.menu_editor, menu);
+        return true;
+    }
+
+    /**
+     * This method is called after invalidateOptionsMenu(), so that the
+     * menu can be updated (some menu items can be hidden or made visible).
+     * <p>
+     * Consente di nascondere delle parti di menu in base alle esigenze. In questo caso,
+     * se si sta inserendo un nuovo medicinale il menu "Delete" viene nascosto.
+     */
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        // If this is a new medicine, hide the "Delete" menu item.
+        if (mCurrentMedUri == null) {
+            MenuItem menuItem = menu.findItem(R.id.delete_med);
+            menuItem.setVisible(false);
+        }
         return true;
     }
 
