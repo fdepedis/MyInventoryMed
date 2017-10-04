@@ -161,14 +161,14 @@ public class DetailsActivity extends AppCompatActivity
         switch (id){
             case R.id.img_med_inc:
                 Utils.adjustInventory(
-                        getBaseContext(),
+                        this,
                         mCurrentMedUri,
                         String.valueOf(tvValueMedQuantity.getText()),
                         MED_INC);
                 break;
             case R.id.img_med_dec:
                 Utils.adjustInventory(
-                        getBaseContext(),
+                        this,
                         mCurrentMedUri,
                         String.valueOf(tvValueMedQuantity.getText()),
                         MED_DEC);

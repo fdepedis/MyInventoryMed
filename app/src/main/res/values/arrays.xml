@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- These are the options displayed in the medicine drop-down Spinner -->
+    <string-array name="array_med_type_options">
+        <item>@string/label_type_med_liquido</item>
+        <item>@string/label_type_med_supposte</item>
+        <item>@string/label_type_med_pasticche</item>
+        <item>@string/label_type_med_sciroppo</item>
+        <item>@string/label_type_med_crema</item>
+        <item>@string/label_type_med_gel</item>
+        <item>@string/label_type_med_unknown</item>
+    </string-array>
+</resources>

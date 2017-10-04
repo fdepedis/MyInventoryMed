@@ -6,7 +6,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import it.flaviodepedis.myinventorymed.data.InventoryMedContract.InventoryMedEntry;
@@ -149,8 +153,15 @@ public class Utils {
         alertDialog.show();
     }
 
+    /**
+     * Helper method to adjust quantity medicine data into the database.
+     * @param context Context of activity
+     * @param mCurrentProductUri
+     * @param previousValue
+     * @param variance
+     */
     public static void adjustInventory(
-            Context context, Uri mCurrentProductUri, String previousValue, int variance){
+            Activity context, Uri mCurrentProductUri, String previousValue, int variance){
 
         int currQuantity;
 
@@ -164,6 +175,5 @@ public class Utils {
         ContentValues values = new ContentValues();
         values.put(InventoryMedEntry.COLUMN_MED_QUANTITY, currQuantity);
         context.getContentResolver().update(mCurrentProductUri, values, null, null);
-
     }
 }
