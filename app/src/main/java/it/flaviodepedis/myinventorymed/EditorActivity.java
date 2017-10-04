@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -23,6 +24,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -111,17 +114,95 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
-        return null;
+
+        // Since the editor shows all medicine attributes, define a projection that contains
+        // all columns from the medicines table
+        String[] projection = {
+                InventoryMedEntry._ID,
+                InventoryMedEntry.COLUMN_MED_NAME,
+                InventoryMedEntry.COLUMN_MED_TYPE,
+                InventoryMedEntry.COLUMN_MED_QUANTITY,
+                InventoryMedEntry.COLUMN_MED_PRICE,
+                InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT,
+                InventoryMedEntry.COLUMN_MED_IMAGE,
+                InventoryMedEntry.COLUMN_MED_EXP_DATE,
+                InventoryMedEntry.COLUMN_MED_NOTE
+        };
+
+        return new CursorLoader(this,               // Parent activity context
+                mCurrentMedUri,                     // Provider content URI to query
+                projection,                         // Columns to include in the resulting Cursor
+                null,                               // No Where clause
+                null,                               // No Where arguments clause
+                null);                              // No Order by
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
 
+        if (cursor == null || cursor.getCount() < 1) {
+            return;
+        }
+
+        // When you receive a Cursor result from the loader, remember to move the cursor to
+        // the 0th position, before you start extracting out column values from it.
+        if (cursor.moveToFirst()) {
+            // Find the columns of medicine attributes that we're interested in
+            int medNameColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_NAME);
+            int medTypeColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_TYPE);
+            int medQuantityColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_QUANTITY);
+            int medExpDateColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_EXP_DATE);
+            int medPriceColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_PRICE);
+            int medPriceDiscountColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT);
+            int medImageColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_IMAGE);
+            int medNoteColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_NOTE);
+
+            // Extract out the value from the Cursor for the given column index
+            String medName = cursor.getString(medNameColumnIndex);
+            String medType = cursor.getString(medTypeColumnIndex);
+            int medQuantity = cursor.getInt(medQuantityColumnIndex);
+            String medExpDate = cursor.getString(medExpDateColumnIndex);
+            Double medPrice = cursor.getDouble(medPriceColumnIndex);
+            Double medPriceDiscount = cursor.getDouble(medPriceDiscountColumnIndex);
+            String image = cursor.getString(medImageColumnIndex);
+            String medNote = cursor.getString(medNoteColumnIndex);
+
+            // Set TextView text with the value from the database
+            etMedName.setText(medName);
+            mMedSpinner.setSelection(Integer.parseInt(medType));
+            etMedQuantity.setText(String.valueOf(medQuantity));
+            etMedPrice.setText(String.valueOf(medPrice));
+
+            if(medPriceDiscount > 0){
+                etMedDiscountPrice.setText(String.valueOf(medPriceDiscount));
+                etMedDiscountPrice.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
+            } else {
+                etMedDiscountPrice.setText(getString(R.string.empty_discount_price_details));
+            }
+
+            // verify if image medicine exist
+            if(image == null) {
+                Picasso.with(getApplicationContext()).load(R.drawable.ic_image_not_found).into(imageMed);
+            } else {
+                Uri uri = Uri.parse(image);
+                imageMed.setImageURI(uri);
+            }
+            etMedExpDate.setText(medExpDate);
+            etMedNote.setText(medNote);
+        }
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-
+        // If the loader is invalidated, clear out all the data from the input fields.
+        etMedName.setText("");
+        mMedSpinner.setSelection(Integer.parseInt(InventoryMedEntry.TYPE_UNKNOWN));
+        etMedQuantity.setText("");
+        etMedPrice.setText("");
+        etMedDiscountPrice.setText("");
+        etMedExpDate.setText("");
+        imageMed.setImageURI(null);
+        etMedNote.setText("");
     }
 
     /**
