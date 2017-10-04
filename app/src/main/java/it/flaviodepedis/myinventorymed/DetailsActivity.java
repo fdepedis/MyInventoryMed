@@ -48,7 +48,7 @@ public class DetailsActivity extends AppCompatActivity
 
     // TextView for values
     @BindView(R.id.tv_value_med_name) TextView tvValueMedName;
-    @BindView(R.id.spinner_med_type) Spinner spinnerValueMedType;
+    @BindView(R.id.tv_value_med_type) TextView tvValueMedType;
     @BindView(R.id.tv_value_med_quantity) TextView tvValueMedQuantity;
     @BindView(R.id.tv_value_med_price) TextView tvValueMedPrice;
     @BindView(R.id.tv_value_med_discount) TextView tvValueMedDiscountPrice;
@@ -116,8 +116,8 @@ public class DetailsActivity extends AppCompatActivity
 
             // Extract out the value from the Cursor for the given column index
             String medName = cursor.getString(medNameColumnIndex);
-            int medType = cursor.getInt(medTypeColumnIndex);
-            int medQuantity = cursor.getInt(medQuantityColumnIndex);
+            String medType = cursor.getString(medTypeColumnIndex);
+            Integer medQuantity = cursor.getInt(medQuantityColumnIndex);
             String medExpDate = cursor.getString(medExpDateColumnIndex);
             Double medPrice = cursor.getDouble(medPriceColumnIndex);
             Double medPriceDiscount = cursor.getDouble(medPriceDiscountColumnIndex);
@@ -127,30 +127,33 @@ public class DetailsActivity extends AppCompatActivity
             // Set TextView text with the value from the database
             tvValueMedName.setText(medName);
             // Set spinner
+            /*
             switch (medType) {
                 case InventoryMedEntry.TYPE_LIQUIDO:
-                    spinnerValueMedType.setSelection(1);
+                    medTypeString = getString(R.string.label_type_med_liquido);
                     break;
                 case InventoryMedEntry.TYPE_SUPPOSTE:
-                    spinnerValueMedType.setSelection(2);
+                    medTypeString = getString(R.string.label_type_med_supposte);
                     break;
                 case InventoryMedEntry.TYPE_PASTICCHE:
-                    spinnerValueMedType.setSelection(3);
+                    medTypeString = getString(R.string.label_type_med_pasticche);
                     break;
                 case InventoryMedEntry.TYPE_SCIROPPO:
-                    spinnerValueMedType.setSelection(4);
+                    medTypeString = getString(R.string.label_type_med_sciroppo);
                     break;
                 case InventoryMedEntry.TYPE_CREMA:
-                    spinnerValueMedType.setSelection(5);
+                    medTypeString = getString(R.string.label_type_med_crema);
                     break;
                 case InventoryMedEntry.TYPE_GEL:
-                    spinnerValueMedType.setSelection(6);
+                    medTypeString = getString(R.string.label_type_med_gel);
                     break;
                 default:
-                    spinnerValueMedType.setSelection(0);
+                    medTypeString = getString(R.string.label_type_med_unknown);
                     break;
             }
-
+            tvValueMedType.setText(medTypeString);
+            */
+            tvValueMedType.setText(medType);
             tvValueMedQuantity.setText(String.valueOf(medQuantity));
             tvValueMedPrice.setText(String.valueOf(medPrice));
 
@@ -177,7 +180,7 @@ public class DetailsActivity extends AppCompatActivity
     public void onLoaderReset(Loader<Cursor> loader) {
         // If the loader is invalidated, clear out all the data from the input fields.
         tvValueMedName.setText("");
-        spinnerValueMedType.setSelection(InventoryMedEntry.TYPE_UNKNOWN);
+        tvValueMedType.setText("");
         tvValueMedQuantity.setText("");
         tvValueMedPrice.setText("");
         tvValueMedDiscountPrice.setText("");
