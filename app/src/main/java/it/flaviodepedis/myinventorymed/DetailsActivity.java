@@ -10,6 +10,8 @@ import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -172,5 +174,37 @@ public class DetailsActivity extends AppCompatActivity
                         MED_DEC);
                 break;
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu options from the res/menu/menu_details.xml file.
+        // This adds menu items to the app bar.
+        getMenuInflater().inflate(R.menu.menu_details, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.delete_med:
+                Utils.showMessageDelete(this, mCurrentProductUri);
+                //this.finish();
+                return true;
+            case R.id.edit_med:
+                openEditorActivity();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Helper method to open EditorActivity
+     */
+    private void openEditorActivity() {
+        Intent intent = new Intent(DetailsActivity.this, EditorActivity.class);
+        intent.setData(mCurrentProductUri);
+        startActivity(intent);
     }
 }

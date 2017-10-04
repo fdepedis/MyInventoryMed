@@ -15,9 +15,19 @@
     <string name="label_negative_show_message">Cancel</string>
     <string name="label_all_medicines_deleted">All medicines deleted</string>
     <string name="label_title_show_message">Attention!!!</string>
-    <string name="label_msg_show_message">"Are you sure to want to delete all medicines ?"</string>
+    <string name="label_message_delete_all_med">"Are you sure to want to delete all medicines ?"</string>
+    <string name="label_message_delete_med">"Are you sure to want to delete this medicine ?"</string>
     <string name="label_delete_dummy_med">Delete All Dummy Med</string>
+    <string name="label_delete_med">Delete</string>
+    <string name="label_edit_med">Edit</string>
     <string name="label_exp_date">Exp Date: <xliff:g example="2020/01/01" id="exp_date">%s</xliff:g></string>
+    <string name="label_details_med_name">Name</string>
+    <string name="label_details_med_type">Type</string>
+    <string name="label_details_med_quantity">Quantity</string>
+    <string name="label_details_med_price">Price (€) </string>
+    <string name="label_details_med_disc_price">Discount Price (€) </string>
+    <string name="label_details_med_exp_date">Expiry Date</string>
+    <string name="label_details_med_note">Note</string>
     <!--
     Price for the medicine. It will be shown in the format of
     "Price: €10" where €10 is the price.
@@ -26,15 +36,6 @@
     -->
     <string name="label_price">Price: €<xliff:g example="€10" id="price">%.2f</xliff:g></string>
     <string name="label_price_discount">Discount Price: € <xliff:g example="€10" id="discount">%.2f</xliff:g></string>
-
-    <!-- Labels for Details Activity -->
-    <string name="label_details_med_name">Name</string>
-    <string name="label_details_med_type">Type</string>
-    <string name="label_details_med_quantity">Quantity</string>
-    <string name="label_details_med_price">Price (€) </string>
-    <string name="label_details_med_disc_price">Discount Price (€) </string>
-    <string name="label_details_med_exp_date">Expiry Date</string>
-    <string name="label_details_med_note">Note</string>
 
     <!-- Info for empty messages -->
     <string name="empty_view_title_text">It\'s a bit lonely here...</string>
@@ -45,6 +46,10 @@
 
     <!-- Error messages -->
     <string name="error_delete_all_medicines">Failed to delete all medicines</string>
+    <string name="error_delete_med_failed">Failed to delete current medicine</string>
+    <string name="error_delete_med_successful">Medicine successfully deleted</string>
+
+
 
 
 </resources>

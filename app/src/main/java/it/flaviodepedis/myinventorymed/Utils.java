@@ -1,5 +1,6 @@
 package it.flaviodepedis.myinventorymed;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -35,6 +36,33 @@ public class Utils {
     }
 
     /**
+     * ------------------ Delete medicine in Details Activity -----------------
+     * Helper method to delete the current medicine data into the database.
+     * ------------------------------------------------------------------------
+     */
+    public static void deleteMedicine(final Activity context, Uri mCurrentMedUri) {
+
+        // Only perform the delete if this is an existing medicine.
+        if (mCurrentMedUri != null) {
+            // Call the ContentResolver to delete the medicine at the given content URI.
+            // Pass in null for the selection and selection args because the mCurrentMedUri
+            // content URI already identifies the medicine that we want.
+            int rowsDeleted = context.getContentResolver().delete(mCurrentMedUri, null, null);
+
+            if (rowsDeleted == 0) {
+                // If no rows were deleted, then there was an error with the delete.
+                Toast.makeText(context, R.string.error_delete_med_failed,
+                        Toast.LENGTH_SHORT).show();
+            } else {
+                // Otherwise, the delete was successful and we can display a toast.
+                Toast.makeText(context, R.string.error_delete_med_successful,
+                        Toast.LENGTH_SHORT).show();
+            }
+            context.finish();
+        }
+    }
+
+    /**
      * ----------------------- Insert dummy medicine ---------------------
      * Helper method to insert hardcoded medicine data into the database.
      * For debugging purposes only.
@@ -60,6 +88,37 @@ public class Utils {
     }
 
     /**
+     * Show message before delete current medicine in inventory
+     */
+    public static void showMessageDelete(final Activity context, final Uri mCurrentProductUri) {
+        // Create an AlertDialog.Builder and set the message, and click listeners
+        // for the positive and negative buttons on the dialog.
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(R.string.label_title_show_message);
+        builder.setMessage(R.string.label_message_delete_med);
+        builder.setPositiveButton(R.string.label_positive_show_message, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                deleteMedicine(context, mCurrentProductUri);
+            }
+        });
+        builder.setNegativeButton(R.string.label_negative_show_message, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(context, R.string.label_negative_show_message,
+                        Toast.LENGTH_LONG).show();
+                // User clicked the "Cancel" button, so dismiss the dialog
+                // and continue editing the pet.
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+            }
+        });
+
+        // Create and show the AlertDialog
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    /**
      * Show message before delete all medicines in inventory
      */
     public static void showMessageDeleteAll(final Context context) {
@@ -67,7 +126,7 @@ public class Utils {
         // for the positive and negative buttons on the dialog.
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(R.string.label_title_show_message);
-        builder.setMessage(R.string.label_msg_show_message);
+        builder.setMessage(R.string.label_message_delete_all_med);
         builder.setPositiveButton(R.string.label_positive_show_message, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 deleteAllMedicines(context);
@@ -77,6 +136,11 @@ public class Utils {
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(context, R.string.label_negative_show_message,
                         Toast.LENGTH_LONG).show();
+                // User clicked the "Cancel" button, so dismiss the dialog
+                // and continue editing the pet.
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
             }
         });
 
