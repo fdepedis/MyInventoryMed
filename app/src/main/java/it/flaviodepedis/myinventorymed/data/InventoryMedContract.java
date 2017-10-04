@@ -60,12 +60,13 @@ public class InventoryMedContract {
         /**
          * Name of constants for medicines
          */
-        public static final String TYPE_LIQUIDO = "liquido";
-        public static final String TYPE_SUPPOSTE = "supposte";
-        public static final String TYPE_PASTICCHE = "pasticche";
-        public static final String TYPE_SCIROPPO = "sciroppo";
-        public static final String TYPE_CREMA = "crema";
-        public static final String TYPE_GEL = "gel";
+        public static final String TYPE_LIQUIDO = "Liquido";
+        public static final String TYPE_SUPPOSTE = "Supposte";
+        public static final String TYPE_PASTICCHE = "Pasticche";
+        public static final String TYPE_SCIROPPO = "Sciroppo";
+        public static final String TYPE_CREMA = "Crema";
+        public static final String TYPE_GEL = "Gel";
+        public static final String TYPE_UNKNOWN = "Sconosciuto";
 
         /**
          * Returns whether or not the given type medicine value is valid
@@ -73,7 +74,7 @@ public class InventoryMedContract {
         public static boolean isValidMedicineType(String type) {
             if (type.equals(TYPE_LIQUIDO) || type.equals(TYPE_SUPPOSTE) ||
                     type.equals(TYPE_PASTICCHE) || type.equals(TYPE_SCIROPPO) ||
-                    type.equals(TYPE_CREMA) || type.equals(TYPE_GEL) ) {
+                    type.equals(TYPE_CREMA) || type.equals(TYPE_GEL) || type.equals(TYPE_UNKNOWN)) {
                 return true;
             }
             return false;
