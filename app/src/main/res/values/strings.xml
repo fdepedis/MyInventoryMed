@@ -9,7 +9,7 @@
     <string name="label_legal_property">FDP development - rev.1.0</string>
     <string name="label_catalog">Inventory Medicine</string>
     <string name="label_details">Medicine Details</string>
-    <string name="label_editor_activity_title_new_med">Add new medicine</string>
+    <string name="label_editor_activity_title_new_med">Add New Medicine</string>
     <string name="label_editor_activity_title_edit_med">Edit Medicine</string>
     <string name="label_insert_dummy_med">Insert Dummy Med</string>
     <string name="label_positive_show_message">OK</string>
