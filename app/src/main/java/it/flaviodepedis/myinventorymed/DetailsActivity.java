@@ -6,6 +6,7 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -27,6 +29,8 @@ public class DetailsActivity extends AppCompatActivity
     public static final String LOG_TAG = DetailsActivity.class.getSimpleName();
 
     private Uri mCurrentMedUri;
+
+    private String medTypeString;
 
     private static final int MED_LOADER_ID = 0;
     private static final int MED_INC = 1;
@@ -44,7 +48,7 @@ public class DetailsActivity extends AppCompatActivity
 
     // TextView for values
     @BindView(R.id.tv_value_med_name) TextView tvValueMedName;
-    @BindView(R.id.tv_value_med_type) TextView tvValueMedType;
+    @BindView(R.id.spinner_med_type) Spinner spinnerValueMedType;
     @BindView(R.id.tv_value_med_quantity) TextView tvValueMedQuantity;
     @BindView(R.id.tv_value_med_price) TextView tvValueMedPrice;
     @BindView(R.id.tv_value_med_discount) TextView tvValueMedDiscountPrice;
@@ -86,6 +90,13 @@ public class DetailsActivity extends AppCompatActivity
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
 
+        /**
+         * ------------------------------------------------------------------------------
+         * Prints all cursor content (Thank you at my last reviewer on the last project)
+         * ------------------------------------------------------------------------------
+         */
+        DatabaseUtils.dumpCursor(cursor);
+
         if (cursor == null || cursor.getCount() < 1) {
             return;
         }
@@ -105,7 +116,7 @@ public class DetailsActivity extends AppCompatActivity
 
             // Extract out the value from the Cursor for the given column index
             String medName = cursor.getString(medNameColumnIndex);
-            String medType = cursor.getString(medTypeColumnIndex);
+            int medType = cursor.getInt(medTypeColumnIndex);
             int medQuantity = cursor.getInt(medQuantityColumnIndex);
             String medExpDate = cursor.getString(medExpDateColumnIndex);
             Double medPrice = cursor.getDouble(medPriceColumnIndex);
@@ -115,7 +126,31 @@ public class DetailsActivity extends AppCompatActivity
 
             // Set TextView text with the value from the database
             tvValueMedName.setText(medName);
-            tvValueMedType.setText(medType);
+            // Set spinner
+            switch (medType) {
+                case InventoryMedEntry.TYPE_LIQUIDO:
+                    spinnerValueMedType.setSelection(1);
+                    break;
+                case InventoryMedEntry.TYPE_SUPPOSTE:
+                    spinnerValueMedType.setSelection(2);
+                    break;
+                case InventoryMedEntry.TYPE_PASTICCHE:
+                    spinnerValueMedType.setSelection(3);
+                    break;
+                case InventoryMedEntry.TYPE_SCIROPPO:
+                    spinnerValueMedType.setSelection(4);
+                    break;
+                case InventoryMedEntry.TYPE_CREMA:
+                    spinnerValueMedType.setSelection(5);
+                    break;
+                case InventoryMedEntry.TYPE_GEL:
+                    spinnerValueMedType.setSelection(6);
+                    break;
+                default:
+                    spinnerValueMedType.setSelection(0);
+                    break;
+            }
+
             tvValueMedQuantity.setText(String.valueOf(medQuantity));
             tvValueMedPrice.setText(String.valueOf(medPrice));
 
@@ -142,7 +177,7 @@ public class DetailsActivity extends AppCompatActivity
     public void onLoaderReset(Loader<Cursor> loader) {
         // If the loader is invalidated, clear out all the data from the input fields.
         tvValueMedName.setText("");
-        tvValueMedType.setText("");
+        spinnerValueMedType.setSelection(InventoryMedEntry.TYPE_UNKNOWN);
         tvValueMedQuantity.setText("");
         tvValueMedPrice.setText("");
         tvValueMedDiscountPrice.setText("");

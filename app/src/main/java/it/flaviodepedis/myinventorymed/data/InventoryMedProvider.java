@@ -248,7 +248,7 @@ public class InventoryMedProvider extends ContentProvider {
         // Check valid data for column type
         if (values.containsKey(InventoryMedEntry.COLUMN_MED_TYPE)) {
             // Check that the medicine type is valid
-            String type = values.getAsString(InventoryMedEntry.COLUMN_MED_TYPE);
+            Integer type = values.getAsInteger(InventoryMedEntry.COLUMN_MED_TYPE);
             if (type == null || !InventoryMedEntry.isValidMedicineType(type)) {
                 throw new IllegalArgumentException("Medicine requires valid type");
             }

@@ -41,7 +41,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     /**
      * Initialize the spinner to TYPE_UNKNOWN
      */
-    private String mMedType = InventoryMedEntry.TYPE_UNKNOWN;
+    private int mMedType = InventoryMedEntry.TYPE_UNKNOWN;
 
     /**
      * Boolean flag that keeps track of whether the medicine has been edited (true) or not (false)
@@ -142,10 +142,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
 
         /**
-         * ----------------------------------------------------
-         * Prints all cursor content
-         * (Thank you at my last reviewer on the last project)
-         * ----------------------------------------------------
+         * ------------------------------------------------------------------------------
+         * Prints all cursor content (Thank you at my last reviewer on the last project)
+         * ------------------------------------------------------------------------------
          */
         DatabaseUtils.dumpCursor(cursor);
 
@@ -168,7 +167,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
             // Extract out the value from the Cursor for the given column index
             String medName = cursor.getString(medNameColumnIndex);
-            String medType = cursor.getString(medTypeColumnIndex);
+            int medType = cursor.getInt(medTypeColumnIndex);
             int medQuantity = cursor.getInt(medQuantityColumnIndex);
             String medExpDate = cursor.getString(medExpDateColumnIndex);
             Double medPrice = cursor.getDouble(medPriceColumnIndex);
@@ -178,7 +177,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
             // Set TextView text with the value from the database
             etMedName.setText(medName);
-            mMedSpinner.setSelection(Integer.parseInt(medType));
+            mMedSpinner.setSelection(medType);
             etMedQuantity.setText(String.valueOf(medQuantity));
             etMedPrice.setText(String.valueOf(medPrice));
 
@@ -205,7 +204,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     public void onLoaderReset(Loader<Cursor> loader) {
         // If the loader is invalidated, clear out all the data from the input fields.
         etMedName.setText("");
-        mMedSpinner.setSelection(Integer.parseInt(InventoryMedEntry.TYPE_UNKNOWN));
+        mMedSpinner.setSelection(InventoryMedEntry.TYPE_UNKNOWN);
         etMedQuantity.setText("");
         etMedPrice.setText("");
         etMedDiscountPrice.setText("");
@@ -361,5 +360,31 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * This method is called when the back button is pressed.
+     */
+    @Override
+    public void onBackPressed() {
+        // If the medicine hasn't changed, continue with handling back button press
+        if (!mMedHasChanged) {
+            super.onBackPressed();
+            return;
+        }
+
+        // Otherwise if there are unsaved changes, setup a dialog to warn the user.
+        // Create a click listener to handle the user confirming that changes should be discarded.
+        DialogInterface.OnClickListener discardButtonClickListener =
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // User clicked "Discard" button, close the current activity.
+                        finish();
+                    }
+                };
+
+        // Show dialog that there are unsaved changes
+        Utils.showUnsavedChangesDialog(this, discardButtonClickListener);
     }
 }
