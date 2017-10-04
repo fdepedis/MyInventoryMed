@@ -60,21 +60,21 @@ public class InventoryMedContract {
         /**
          * Name of constants for medicines
          */
-        public static final String TYPE_LIQUIDO = "Liquido";
-        public static final String TYPE_SUPPOSTE = "Supposte";
-        public static final String TYPE_PASTICCHE = "Pasticche";
-        public static final String TYPE_SCIROPPO = "Sciroppo";
-        public static final String TYPE_CREMA = "Crema";
-        public static final String TYPE_GEL = "Gel";
-        public static final String TYPE_UNKNOWN = "Sconosciuto";
+        public static final int TYPE_UNKNOWN = 0;                                //"Sconosciuto"
+        public static final int TYPE_LIQUIDO = 1;                                //"Liquido"
+        public static final int TYPE_SUPPOSTE = 2;                               //"Supposte"
+        public static final int TYPE_PASTICCHE = 3;                              //"Pasticche"
+        public static final int TYPE_SCIROPPO = 4;                               //"Sciroppo"
+        public static final int TYPE_CREMA = 5;                                  //"Crema"
+        public static final int TYPE_GEL = 6;                                    //"Gel"
 
         /**
          * Returns whether or not the given type medicine value is valid
          */
-        public static boolean isValidMedicineType(String type) {
-            if (type.equals(TYPE_LIQUIDO) || type.equals(TYPE_SUPPOSTE) ||
-                    type.equals(TYPE_PASTICCHE) || type.equals(TYPE_SCIROPPO) ||
-                    type.equals(TYPE_CREMA) || type.equals(TYPE_GEL) || type.equals(TYPE_UNKNOWN)) {
+        public static boolean isValidMedicineType(int type) {
+            if (type == TYPE_LIQUIDO || type == TYPE_SUPPOSTE || type == TYPE_PASTICCHE ||
+                    type == TYPE_SCIROPPO || type == TYPE_CREMA || type == TYPE_GEL ||
+                    type == TYPE_UNKNOWN) {
                 return true;
             }
             return false;

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.Loader;
 import android.content.CursorLoader;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NavUtils;
@@ -139,6 +140,14 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+
+        /**
+         * ----------------------------------------------------
+         * Prints all cursor content
+         * (Thank you at my last reviewer on the last project)
+         * ----------------------------------------------------
+         */
+        DatabaseUtils.dumpCursor(cursor);
 
         if (cursor == null || cursor.getCount() < 1) {
             return;
