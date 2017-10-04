@@ -27,7 +27,7 @@ public class Utils {
      * Helper method to delete all medicine data into the database.
      * ------------------------------------------------------------------------
      */
-    public static void deleteAllMedicines(Context context) {
+    public static void deleteAllMedicines(Activity context) {
         int rowsDeleted = context.getContentResolver().delete(InventoryMedEntry.CONTENT_URI, null, null);
         if (rowsDeleted > 0) {
             Toast.makeText(context, R.string.label_all_medicines_deleted,
@@ -72,7 +72,7 @@ public class Utils {
      * For debugging purposes only.
      * -------------------------------------------------------------------
      */
-    public static void insertMedicine(Context context) {
+    public static void insertMedicine(Activity context) {
         // Create a ContentValues object where column names are the keys,
         // and Momentdol medicine attributes are the values.
         ContentValues values = new ContentValues();
@@ -89,6 +89,30 @@ public class Utils {
         // Use the {@link InventoryMedEntry#CONTENT_URI} to indicate that we want to insert
         // into the medicines database table.
         Uri newUri = context.getContentResolver().insert(InventoryMedEntry.CONTENT_URI, values);
+    }
+
+    /**
+     * Helper method to adjust quantity medicine data into the database.
+     * @param context Context of activity
+     * @param mCurrentProductUri
+     * @param previousValue
+     * @param variance
+     */
+    public static void adjustInventory(Activity context, Uri mCurrentProductUri,
+                                       String previousValue, int variance){
+
+        int currQuantity;
+
+        // if greater than 1
+        if(variance > 0){
+            currQuantity = Integer.parseInt(previousValue) + variance;
+        } else {
+            currQuantity = Integer.parseInt(previousValue) + variance;
+        }
+
+        ContentValues values = new ContentValues();
+        values.put(InventoryMedEntry.COLUMN_MED_QUANTITY, currQuantity);
+        context.getContentResolver().update(mCurrentProductUri, values, null, null);
     }
 
     /**
@@ -125,7 +149,7 @@ public class Utils {
     /**
      * Show message before delete all medicines in inventory
      */
-    public static void showMessageDeleteAll(final Context context) {
+    public static void showMessageDeleteAll(final Activity context) {
         // Create an AlertDialog.Builder and set the message, and click listeners
         // for the positive and negative buttons on the dialog.
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -154,26 +178,31 @@ public class Utils {
     }
 
     /**
-     * Helper method to adjust quantity medicine data into the database.
-     * @param context Context of activity
-     * @param mCurrentProductUri
-     * @param previousValue
-     * @param variance
+     * Show a dialog that warns the user there are unsaved changes that will be lost
+     * if they continue leaving the editor.
+     *
+     * @param discardButtonClickListener is the click listener for what to do when
+     *                                   the user confirms they want to discard their changes
      */
-    public static void adjustInventory(
-            Activity context, Uri mCurrentProductUri, String previousValue, int variance){
+    public static void showUnsavedChangesDialog(final Activity context,
+            DialogInterface.OnClickListener discardButtonClickListener) {
+        // Create an AlertDialog.Builder and set the message, and click listeners
+        // for the positive and negative buttons on the dialog.
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage(R.string.unsaved_changes_dialog_msg);
+        builder.setPositiveButton(R.string.label_discard_show_message, discardButtonClickListener);
+        builder.setNegativeButton(R.string.label_keep_editing_show_message, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked the "Keep editing" button, so dismiss the dialog
+                // and continue editing the pet.
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+            }
+        });
 
-        int currQuantity;
-
-        // if greater than 1
-        if(variance > 0){
-            currQuantity = Integer.parseInt(previousValue) + variance;
-        } else {
-            currQuantity = Integer.parseInt(previousValue) + variance;
-        }
-
-        ContentValues values = new ContentValues();
-        values.put(InventoryMedEntry.COLUMN_MED_QUANTITY, currQuantity);
-        context.getContentResolver().update(mCurrentProductUri, values, null, null);
+        // Create and show the AlertDialog
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }
