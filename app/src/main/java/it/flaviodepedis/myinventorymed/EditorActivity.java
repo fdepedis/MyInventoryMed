@@ -10,6 +10,8 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -114,5 +116,28 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 mMedType = InventoryMedEntry.TYPE_UNKNOWN; // Unknown
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu options from the res/menu/menu_details.xml file.
+        // This adds menu items to the app bar.
+        getMenuInflater().inflate(R.menu.menu_editor, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.delete_med:
+                Utils.showMessageDelete(this, mCurrentMedUri);
+                //this.finish();
+                return true;
+            case R.id.save_med:
+                //saveMedicine();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
