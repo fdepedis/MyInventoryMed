@@ -1,10 +1,7 @@
 package it.flaviodepedis.myinventorymed;
 
-import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.ContentUris;
-import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
@@ -13,14 +10,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telecom.Call;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import it.flaviodepedis.myinventorymed.data.InventoryMedContract.*;
 
@@ -81,9 +76,6 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 
         // Start the loader
         getLoaderManager().initLoader(MED_LOADER_ID, null, this);
-
-        // Stampa tutto il contenuto del cursore
-        // DatabaseUtils.dumpCursor(medicineCursor);
     }
 
     @Override
