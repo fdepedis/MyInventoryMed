@@ -251,8 +251,8 @@
 
         <ImageView
             android:id="@+id/image_product"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_200dp"
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/dimen_30dp"
             android:layout_marginTop="@dimen/dimen_20dp"

@@ -21,7 +21,7 @@
     <string name="label_insert_med_successful">Medicine successfully inserted</string>
     <string name="label_update_med_successful">Medicine successfully updated</string>
     <string name="label_title_show_message">Attention!!!</string>
-    <string name="label_message_delete_all_med">"Are you sure to want to delete all medicines ?"</string>
+    <string name="label_message_delete_all_med">"Are you sure to want to delete all medicines inventory ?"</string>
     <string name="label_message_delete_med">"Are you sure to want to delete this medicine ?"</string>
     <string name="label_delete_dummy_med">Delete All Dummy Med</string>
     <string name="label_menu_delete_med">Delete</string>
@@ -39,7 +39,7 @@
     <string name="label_editor_med_type">Type *</string>
     <string name="label_editor_med_quantity">Quantity *</string>
     <string name="label_editor_med_price">Price(€) *</string>
-    <string name="label_editor_med_disc_price">Discount Price(€) *</string>
+    <string name="label_editor_med_disc_price">Discount Price(€)</string>
     <string name="label_editor_med_exp_date">Expiry Date *</string>
     <string name="label_editor_med_note">Note</string>
     <string name="label_hint_editor_med_name">Insert name of medicine</string>
@@ -48,7 +48,7 @@
     <string name="label_hint_editor_med_disc_price">Insert Discount (if applicable)</string>
     <string name="label_hint_editor_med_exp_date">(yyyy/mm/dd)</string>
     <string name="label_hint_editor_med_note">Insert note (if applicable)</string>
-    <string name="label_editor_med_info">Required *</string>
+    <string name="label_editor_med_info">Required fields *</string>
     <string name="label_type_med_liquido">Liquido</string>
     <string name="label_type_med_supposte">Supposte</string>
     <string name="label_type_med_pasticche">Pasticche</string>
@@ -56,6 +56,7 @@
     <string name="label_type_med_crema">Crema</string>
     <string name="label_type_med_gel">Gel</string>
     <string name="label_type_med_unknown">Sconosciuto</string>
+    <string name="label_create_chooser_activity">Select Picture</string>
     <!--
     Price for the medicine. It will be shown in the format of
     "Price: €10" where €10 is the price.
@@ -74,6 +75,8 @@
     <string name="empty_discount_price">No discount: € <xliff:g example="€00" id="no_discount">%.2f</xliff:g></string>
     <string name="empty_discount_price_details">No discount</string>
     <string name="empty_image_med_details">No image medicine available</string>
+    <string name="empty_info_med">Insert all fields required to save medicine data</string>
+    <string name="empty_image">Image required for this insertion</string>
 
     <!-- Error messages -->
     <string name="error_delete_all_medicines">Failed to delete all medicines</string>

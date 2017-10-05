@@ -49,7 +49,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     private static final int IMAGE_REQUEST_CODE = 0;
     private static final int EXISTING_MED_LOADER = 0;
 
-    /** Variables to check data from input fields */
+    /**
+     * Variables to check data from input fields
+     */
     String nameMed;
     int typeMed;
     String quantityMed;
@@ -58,6 +60,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     String expDateMed;
     String noteMed;
     String image = null;
+    Double price;
+    Double discountPrice;
 
     /**
      * Declare all view in this activity
@@ -117,7 +121,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                     intent.addCategory(Intent.CATEGORY_OPENABLE);
                 }
                 intent.setType("image/*");
-                startActivityForResult(intent, IMAGE_REQUEST_CODE);
+                startActivityForResult(Intent.createChooser(
+                        intent, getString(R.string.label_create_chooser_activity)), IMAGE_REQUEST_CODE);
             }
         });
     }
@@ -198,7 +203,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             }
 
             // verify if image medicine exist
-            if (medImage == null) {
+            if (medImage == null || medImage.equals("")) {
                 Picasso.with(getApplicationContext()).load(R.drawable.ic_image_not_found).into(imageMed);
             } else {
                 Uri uri = Uri.parse(medImage);
@@ -343,6 +348,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 return true;
             case R.id.save_med:
                 saveMedicine();
+                //finish();
                 return true;
             // Respond to a click on the "Up" arrow button in the app bar
             case android.R.id.home:
@@ -404,61 +410,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
      */
     private void saveMedicine() {
 
-        boolean check = verifyInput();
-
-        if(check){
-
-            // Create a new map of values, where column names are the keys
-            ContentValues values = new ContentValues();
-            values.put(InventoryMedEntry.COLUMN_MED_NAME, nameMed);
-            values.put(InventoryMedEntry.COLUMN_MED_TYPE, typeMed);
-            values.put(InventoryMedEntry.COLUMN_MED_QUANTITY, quantityMed);
-            values.put(InventoryMedEntry.COLUMN_MED_EXP_DATE, expDateMed);
-            values.put(InventoryMedEntry.COLUMN_MED_PRICE, priceMed);
-            values.put(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT, discountPriceMed);
-            values.put(InventoryMedEntry.COLUMN_MED_IMAGE, image);
-            values.put(InventoryMedEntry.COLUMN_MED_NOTE, noteMed);
-
-            if (mCurrentMedUri == null) {
-                // Insert the new row, returning the primary key value of the new row
-                Uri newUri = getContentResolver().insert(InventoryMedEntry.CONTENT_URI, values);
-
-                // Show a toast message depending on whether or not the insertion was successful
-                if (newUri == null) {
-                    // If the row ID is -1, then there was an error with insertion.
-                    Toast.makeText(this, getString(R.string.error_insert_med_failed), Toast.LENGTH_SHORT).show();
-                } else {
-                    // Otherwise, the insertion was successful and we can display a toast with the row ID.
-                    Toast.makeText(this, getString(R.string.label_insert_med_successful), Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                int rowAffected = getContentResolver().update(
-                        mCurrentMedUri,                     // the user dictionary content URI
-                        values,                             // the columns to update
-                        null,                               // the column to select on
-                        null                                // the value to compare to
-                );
-
-                // Show a toast message depending on whether or not the update was successful.
-                if (rowAffected == 0) {
-                    // If no rows were affected, then there was an error with the update.
-                    Toast.makeText(this, getString(R.string.error_update_med_failed),
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    // Otherwise, the update was successful and we can display a toast.
-                    Toast.makeText(this, getString(R.string.label_update_med_successful),
-                            Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-        finish();
-    }
-
-    /**
-     * Helper method to verify input before save data into database.
-     */
-    private boolean verifyInput(){
-
         nameMed = etMedName.getText().toString().trim();
         typeMed = mMedType;
         quantityMed = etMedQuantity.getText().toString().trim();
@@ -467,6 +418,19 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         expDateMed = etMedExpDate.getText().toString().trim();
         noteMed = etMedNote.getText().toString().trim();
 
+        try {
+            price = Double.parseDouble(priceMed);
+        } catch (NumberFormatException e) {
+            price = 0.00;
+        }
+        try {
+            discountPrice = Double.parseDouble(discountPriceMed);
+        } catch (NumberFormatException e) {
+            discountPrice = 0.00;
+        }
+
+
+        // if new med
         if (mCurrentMedUri == null) {
             if (mPickedImage != null) {
                 image = mPickedImage.toString();
@@ -482,39 +446,89 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 TextUtils.isEmpty(priceMed) && TextUtils.isEmpty(expDateMed) &&
                 mMedType == InventoryMedEntry.TYPE_UNKNOWN) {
 
-            // Since no fields were modified, we can return early without creating a new pet.
+            Toast.makeText(this, getString(R.string.empty_info_med), Toast.LENGTH_LONG).show();
+
+            // Since no fields were modified, we can return early without creating a new medicine.
             // No need to create ContentValues and no need to do any ContentProvider operations.
-            return false;
+            return;
         }
 
         // Check if name exist
         if (TextUtils.isEmpty(nameMed)) {
             etMedName.requestFocus();
             etMedName.setError(getString(R.string.error_empty_name));
-            return false;
+            return;
         }
 
         // Check if quantity exist
         if (TextUtils.isEmpty(quantityMed)) {
             etMedQuantity.requestFocus();
             etMedQuantity.setError(getString(R.string.error_empty_quantity));
-            return false;
+            return;
         }
 
         // Check if price exist
         if (TextUtils.isEmpty(priceMed)) {
             etMedPrice.requestFocus();
             etMedPrice.setError(getString(R.string.error_empty_price));
-            return false;
+            return;
         }
 
         // Check if Exp Date exist
         if (TextUtils.isEmpty(expDateMed)) {
             etMedExpDate.requestFocus();
             etMedExpDate.setError(getString(R.string.error_empty_exp_date));
-            return false;
+            return;
         }
 
-        return true;
+        // Check if image exist
+        if (TextUtils.isEmpty(image)) {
+            Toast.makeText(this, getString(R.string.empty_image), Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        // Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(InventoryMedEntry.COLUMN_MED_NAME, nameMed);
+        values.put(InventoryMedEntry.COLUMN_MED_TYPE, typeMed);
+        values.put(InventoryMedEntry.COLUMN_MED_QUANTITY, quantityMed);
+        values.put(InventoryMedEntry.COLUMN_MED_EXP_DATE, expDateMed);
+        values.put(InventoryMedEntry.COLUMN_MED_PRICE, price);
+        values.put(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT, discountPrice);
+        values.put(InventoryMedEntry.COLUMN_MED_IMAGE, image);
+        values.put(InventoryMedEntry.COLUMN_MED_NOTE, noteMed);
+
+        if (mCurrentMedUri == null) {
+            // Insert the new row, returning the primary key value of the new row
+            Uri newUri = getContentResolver().insert(InventoryMedEntry.CONTENT_URI, values);
+
+            // Show a toast message depending on whether or not the insertion was successful
+            if (newUri == null) {
+                // If the row ID is -1, then there was an error with insertion.
+                Toast.makeText(this, getString(R.string.error_insert_med_failed), Toast.LENGTH_SHORT).show();
+            } else {
+                // Otherwise, the insertion was successful and we can display a toast with the row ID.
+                Toast.makeText(this, getString(R.string.label_insert_med_successful), Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            int rowAffected = getContentResolver().update(
+                    mCurrentMedUri,                     // the user dictionary content URI
+                    values,                             // the columns to update
+                    null,                               // the column to select on
+                    null                                // the value to compare to
+            );
+
+            // Show a toast message depending on whether or not the update was successful.
+            if (rowAffected == 0) {
+                // If no rows were affected, then there was an error with the update.
+                Toast.makeText(this, getString(R.string.error_update_med_failed),
+                        Toast.LENGTH_SHORT).show();
+            } else {
+                // Otherwise, the update was successful and we can display a toast.
+                Toast.makeText(this, getString(R.string.label_update_med_successful),
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+        finish();
     }
 }

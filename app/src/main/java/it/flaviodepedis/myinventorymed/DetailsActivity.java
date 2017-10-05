@@ -163,7 +163,7 @@ public class DetailsActivity extends AppCompatActivity
             }
 
             // verify if image medicine exist
-            if(image == null) {
+            if(image == null || image.equals("")) {
                 Picasso.with(getApplicationContext()).load(R.drawable.ic_image_not_found).into(imgMedicine);
             } else {
                 Uri uri = Uri.parse(image);

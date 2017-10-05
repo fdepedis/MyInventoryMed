@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
@@ -77,7 +78,7 @@ public class Utils {
         values.put(InventoryMedEntry.COLUMN_MED_EXP_DATE, "2023/01/01");
         values.put(InventoryMedEntry.COLUMN_MED_PRICE, 120.00);
         values.put(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT, 100.00);
-        //values.put(InventoryMedEntry.COLUMN_MED_IMAGE, "");
+        values.put(InventoryMedEntry.COLUMN_MED_IMAGE, "");
         values.put(InventoryMedEntry.COLUMN_MED_NOTE, "Headache");
 
         // Insert a new row for Toto into the provider using the ContentResolver.

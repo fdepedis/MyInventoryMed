@@ -39,7 +39,7 @@ public class InventoryMedDbHelper extends SQLiteOpenHelper {
             + InventoryMedEntry.COLUMN_MED_EXP_DATE + " TEXT NOT NULL,"
             + InventoryMedEntry.COLUMN_MED_PRICE + " REAL NOT NULL,"
             + InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT + " REAL,"
-            + InventoryMedEntry.COLUMN_MED_IMAGE + " TEXT,"
+            + InventoryMedEntry.COLUMN_MED_IMAGE + " TEXT NOT NULL,"
             + InventoryMedEntry.COLUMN_MED_NOTE + " TEXT);";
 
     /**
