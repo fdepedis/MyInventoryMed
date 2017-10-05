@@ -3,14 +3,9 @@ package it.flaviodepedis.myinventorymed;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import it.flaviodepedis.myinventorymed.data.InventoryMedContract.InventoryMedEntry;
@@ -44,7 +39,7 @@ public class Utils {
      * Helper method to delete the current medicine data into the database.
      * ------------------------------------------------------------------------
      */
-    public static void deleteMedicine(final Activity context, Uri mCurrentMedUri) {
+    public static void deleteMedicine(Activity context, Uri mCurrentMedUri) {
 
         // Only perform the delete if this is an existing medicine.
         if (mCurrentMedUri != null) {
@@ -59,7 +54,7 @@ public class Utils {
                         Toast.LENGTH_SHORT).show();
             } else {
                 // Otherwise, the delete was successful and we can display a toast.
-                Toast.makeText(context, R.string.error_delete_med_successful,
+                Toast.makeText(context, R.string.label_delete_med_successful,
                         Toast.LENGTH_SHORT).show();
             }
             context.finish();
@@ -78,10 +73,10 @@ public class Utils {
         ContentValues values = new ContentValues();
         values.put(InventoryMedEntry.COLUMN_MED_NAME, "Momentdol - 30mg");
         values.put(InventoryMedEntry.COLUMN_MED_TYPE, InventoryMedEntry.TYPE_PASTICCHE);
-        values.put(InventoryMedEntry.COLUMN_MED_QUANTITY, 30);
+        values.put(InventoryMedEntry.COLUMN_MED_QUANTITY, 90);
         values.put(InventoryMedEntry.COLUMN_MED_EXP_DATE, "2023/01/01");
         values.put(InventoryMedEntry.COLUMN_MED_PRICE, 120.00);
-        values.put(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT, 0.00);
+        values.put(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT, 100.00);
         //values.put(InventoryMedEntry.COLUMN_MED_IMAGE, "");
         values.put(InventoryMedEntry.COLUMN_MED_NOTE, "Headache");
 

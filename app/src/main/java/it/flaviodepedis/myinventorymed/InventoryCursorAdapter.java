@@ -21,6 +21,8 @@ public class InventoryCursorAdapter extends CursorAdapter {
 
     private ViewHolder holder;
 
+    private String medTypeString;
+
     public InventoryCursorAdapter(Context context, Cursor c) {
         super(context, c, 0);
         mContext = context;
@@ -52,7 +54,7 @@ public class InventoryCursorAdapter extends CursorAdapter {
 
         // Read the medicine attributes from the Cursor for the current med
         String medName = cursor.getString(medNameColumnIndex);
-        String medType = cursor.getString(medTypeColumnIndex);
+        Integer medType = cursor.getInt(medTypeColumnIndex);
         int medQuantity = cursor.getInt(medQuantityColumnIndex);
         String medExpDate = cursor.getString(medExpDateColumnIndex);
         Double medPrice = cursor.getDouble(medPriceColumnIndex);
@@ -60,7 +62,33 @@ public class InventoryCursorAdapter extends CursorAdapter {
 
         // Update the TextViews with the attributes for the current med
         holder.tvMedName.setText(medName);
-        holder.tvMedType.setText(medType);
+
+        // Set spinner
+        switch (medType) {
+            case InventoryMedEntry.TYPE_LIQUIDO:
+                medTypeString = context.getString(R.string.label_type_med_liquido);
+                break;
+            case InventoryMedEntry.TYPE_SUPPOSTE:
+                medTypeString = context.getString(R.string.label_type_med_supposte);
+                break;
+            case InventoryMedEntry.TYPE_PASTICCHE:
+                medTypeString = context.getString(R.string.label_type_med_pasticche);
+                break;
+            case InventoryMedEntry.TYPE_SCIROPPO:
+                medTypeString = context.getString(R.string.label_type_med_sciroppo);
+                break;
+            case InventoryMedEntry.TYPE_CREMA:
+                medTypeString = context.getString(R.string.label_type_med_crema);
+                break;
+            case InventoryMedEntry.TYPE_GEL:
+                medTypeString = context.getString(R.string.label_type_med_gel);
+                break;
+            default:
+                medTypeString = context.getString(R.string.label_type_med_unknown);
+                break;
+        }
+        holder.tvMedType.setText(medTypeString);
+
         holder.tvMedQuantity.setText((String.valueOf(medQuantity)));
         holder.tvMedPrice.setText(context.getString(R.string.label_price, medPrice));
         //verify if discount exist

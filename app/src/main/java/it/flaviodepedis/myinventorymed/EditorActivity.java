@@ -2,6 +2,7 @@ package it.flaviodepedis.myinventorymed;
 
 import android.app.Activity;
 import android.app.LoaderManager;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
@@ -34,10 +35,6 @@ import it.flaviodepedis.myinventorymed.data.InventoryMedContract.InventoryMedEnt
 
 public class EditorActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private Uri mCurrentMedUri;
-
-    private static final int EXISTING_MED_LOADER = 0;
-
     /**
      * Initialize the spinner to TYPE_UNKNOWN
      */
@@ -47,12 +44,24 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
      * Boolean flag that keeps track of whether the medicine has been edited (true) or not (false)
      */
     private boolean mMedHasChanged = false;
-
-    //Stores the URI of image
     private Uri mPickedImage;
+    private Uri mCurrentMedUri;
     private static final int IMAGE_REQUEST_CODE = 0;
+    private static final int EXISTING_MED_LOADER = 0;
 
-    /** Declare all view in this activity */
+    /** Variables to check data from input fields */
+    String nameMed;
+    int typeMed;
+    String quantityMed;
+    String priceMed;
+    String discountPriceMed;
+    String expDateMed;
+    String noteMed;
+    String image;
+
+    /**
+     * Declare all view in this activity
+     */
     @BindView(R.id.et_value_editor_med_name) EditText etMedName;
     @BindView(R.id.spinner_med_type) Spinner mMedSpinner;
     @BindView(R.id.et_value_editor_med_quantity) EditText etMedQuantity;
@@ -167,7 +176,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
             // Extract out the value from the Cursor for the given column index
             String medName = cursor.getString(medNameColumnIndex);
-            int medType = cursor.getInt(medTypeColumnIndex);
+            Integer medType = cursor.getInt(medTypeColumnIndex);
             int medQuantity = cursor.getInt(medQuantityColumnIndex);
             String medExpDate = cursor.getString(medExpDateColumnIndex);
             Double medPrice = cursor.getDouble(medPriceColumnIndex);
@@ -181,19 +190,20 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             etMedQuantity.setText(String.valueOf(medQuantity));
             etMedPrice.setText(String.valueOf(medPrice));
 
-            if(medPriceDiscount > 0){
+            if (medPriceDiscount > 0) {
                 etMedDiscountPrice.setText(String.valueOf(medPriceDiscount));
                 etMedDiscountPrice.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
             } else {
-                etMedDiscountPrice.setText(getString(R.string.empty_discount_price_details));
+                etMedDiscountPrice.setText(String.valueOf(0.00));
             }
 
             // verify if image medicine exist
-            if(image == null) {
+            if (image == null) {
                 Picasso.with(getApplicationContext()).load(R.drawable.ic_image_not_found).into(imageMed);
             } else {
                 Uri uri = Uri.parse(image);
                 imageMed.setImageURI(uri);
+                mPickedImage = uri;
             }
             etMedExpDate.setText(medExpDate);
             etMedNote.setText(medNote);
@@ -230,7 +240,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
      *
      * @param requestCode
      * @param resultCode
-     * @param data contains the URI of image the user picked
+     * @param data        contains the URI of image the user picked
      */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -278,11 +288,11 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                         mMedType = InventoryMedEntry.TYPE_SUPPOSTE;                     // Supposte
                     } else if (selection.equals(getString(R.string.label_type_med_pasticche))) {
                         mMedType = InventoryMedEntry.TYPE_PASTICCHE;                    // Pasticche
-                    }else if (selection.equals(getString(R.string.label_type_med_sciroppo))) {
+                    } else if (selection.equals(getString(R.string.label_type_med_sciroppo))) {
                         mMedType = InventoryMedEntry.TYPE_SCIROPPO;                     // Sciroppo
-                    }else if (selection.equals(getString(R.string.label_type_med_crema))) {
+                    } else if (selection.equals(getString(R.string.label_type_med_crema))) {
                         mMedType = InventoryMedEntry.TYPE_CREMA;                        // Crema
-                    }else if (selection.equals(getString(R.string.label_type_med_gel))) {
+                    } else if (selection.equals(getString(R.string.label_type_med_gel))) {
                         mMedType = InventoryMedEntry.TYPE_GEL;                          // Gel
                     } else {
                         mMedType = InventoryMedEntry.TYPE_UNKNOWN;                      // Unknown
@@ -332,8 +342,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 Utils.showMessageDelete(this, mCurrentMedUri);
                 return true;
             case R.id.save_med:
-                //saveMedicine();
-                //finish();
+                saveMedicine();
+                finish();
                 return true;
             // Respond to a click on the "Up" arrow button in the app bar
             case android.R.id.home:
@@ -386,5 +396,113 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
         // Show dialog that there are unsaved changes
         Utils.showUnsavedChangesDialog(this, discardButtonClickListener);
+    }
+
+    /**
+     * ------------------ Save medicine data into the database -----------------
+     * Helper method to save medicine in the database.
+     * -------------------------------------------------------------------------
+     */
+    private void saveMedicine() {
+
+        boolean check = verifyInput();
+
+        if(check){
+
+            // Create a new map of values, where column names are the keys
+            ContentValues values = new ContentValues();
+            values.put(InventoryMedEntry.COLUMN_MED_NAME, nameMed);
+            values.put(InventoryMedEntry.COLUMN_MED_TYPE, typeMed);
+            values.put(InventoryMedEntry.COLUMN_MED_QUANTITY, quantityMed);
+            values.put(InventoryMedEntry.COLUMN_MED_EXP_DATE, expDateMed);
+            values.put(InventoryMedEntry.COLUMN_MED_PRICE, priceMed);
+            values.put(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT, discountPriceMed);
+            values.put(InventoryMedEntry.COLUMN_MED_IMAGE, image);
+            values.put(InventoryMedEntry.COLUMN_MED_NOTE, noteMed);
+
+            if (mCurrentMedUri == null) {
+                // Insert the new row, returning the primary key value of the new row
+                Uri newUri = getContentResolver().insert(InventoryMedEntry.CONTENT_URI, values);
+
+                // Show a toast message depending on whether or not the insertion was successful
+                if (newUri == null) {
+                    // If the row ID is -1, then there was an error with insertion.
+                    Toast.makeText(this, getString(R.string.error_insert_med_failed), Toast.LENGTH_SHORT).show();
+                } else {
+                    // Otherwise, the insertion was successful and we can display a toast with the row ID.
+                    Toast.makeText(this, getString(R.string.label_insert_med_successful), Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                int rowAffected = getContentResolver().update(
+                        mCurrentMedUri,                     // the user dictionary content URI
+                        values,                             // the columns to update
+                        null,                               // the column to select on
+                        null                                // the value to compare to
+                );
+
+                // Show a toast message depending on whether or not the update was successful.
+                if (rowAffected == 0) {
+                    // If no rows were affected, then there was an error with the update.
+                    Toast.makeText(this, getString(R.string.error_update_med_failed),
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    // Otherwise, the update was successful and we can display a toast.
+                    Toast.makeText(this, getString(R.string.label_update_med_successful),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
+
+    /**
+     * Helper method to verify input before save data into database.
+     */
+    private boolean verifyInput(){
+
+        nameMed = etMedName.getText().toString().trim();
+        typeMed = mMedType;
+        quantityMed = etMedQuantity.getText().toString().trim();
+        priceMed = etMedPrice.getText().toString().trim();
+        discountPriceMed = etMedDiscountPrice.getText().toString().trim();
+        expDateMed = etMedExpDate.getText().toString().trim();
+        noteMed = etMedNote.getText().toString().trim();
+/*
+        if (mCurrentMedUri == null) {
+            if (mPickedImage != null) {
+                image = mPickedImage.toString();
+            }
+        } else {
+            image = mPickedImage.toString();
+        }
+*/
+        // Check if name exist
+        if (TextUtils.isEmpty(nameMed)) {
+            etMedName.requestFocus();
+            etMedName.setError(getString(R.string.error_empty_name));
+            return false;
+        }
+
+        // Check if quantity exist
+        if (TextUtils.isEmpty(quantityMed)) {
+            etMedQuantity.requestFocus();
+            etMedQuantity.setError(getString(R.string.error_empty_quantity));
+            return false;
+        }
+
+        // Check if price exist
+        if (TextUtils.isEmpty(priceMed)) {
+            etMedPrice.requestFocus();
+            etMedPrice.setError(getString(R.string.error_empty_price));
+            return false;
+        }
+
+        // Check if Exp Date exist
+        if (TextUtils.isEmpty(expDateMed)) {
+            etMedExpDate.requestFocus();
+            etMedExpDate.setError(getString(R.string.error_empty_exp_date));
+            return false;
+        }
+
+        return true;
     }
 }

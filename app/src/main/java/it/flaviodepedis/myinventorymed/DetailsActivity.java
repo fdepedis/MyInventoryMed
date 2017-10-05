@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -116,7 +115,7 @@ public class DetailsActivity extends AppCompatActivity
 
             // Extract out the value from the Cursor for the given column index
             String medName = cursor.getString(medNameColumnIndex);
-            String medType = cursor.getString(medTypeColumnIndex);
+            Integer medType = cursor.getInt(medTypeColumnIndex);
             Integer medQuantity = cursor.getInt(medQuantityColumnIndex);
             String medExpDate = cursor.getString(medExpDateColumnIndex);
             Double medPrice = cursor.getDouble(medPriceColumnIndex);
@@ -126,8 +125,8 @@ public class DetailsActivity extends AppCompatActivity
 
             // Set TextView text with the value from the database
             tvValueMedName.setText(medName);
+
             // Set spinner
-            /*
             switch (medType) {
                 case InventoryMedEntry.TYPE_LIQUIDO:
                     medTypeString = getString(R.string.label_type_med_liquido);
@@ -152,8 +151,7 @@ public class DetailsActivity extends AppCompatActivity
                     break;
             }
             tvValueMedType.setText(medTypeString);
-            */
-            tvValueMedType.setText(medType);
+
             tvValueMedQuantity.setText(String.valueOf(medQuantity));
             tvValueMedPrice.setText(String.valueOf(medPrice));
 
