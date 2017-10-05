@@ -436,7 +436,11 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 image = mPickedImage.toString();
             }
         } else {
-            image = mPickedImage.toString();
+            if (mPickedImage == null) {
+                Toast.makeText(this, getString(R.string.empty_image), Toast.LENGTH_LONG).show();
+            } else {
+                image = mPickedImage.toString();
+            }
         }
 
         // Check if this is supposed to be a new medicine
