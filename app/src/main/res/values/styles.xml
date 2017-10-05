@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
     </style>
 
     <!-- Splash Screen Theme -->
@@ -13,9 +13,39 @@
         <item name="colorPrimaryDark">@color/colorPrimary</item>
     </style>
 
-    <!-- Label Activity Details Theme -->
-    <style name="LabelActivityDetails" >
+    <!-- Text Logo Splash Screen Theme -->
+    <style name="TextLogoSplashScreenTheme" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_dimen_30sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">@dimen/dimen_150dp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/colorTextSplashScreen</item>
+    </style>
 
+    <!-- Image Logo Splash Screen Theme -->
+    <style name="ImageLogoSplashScreenTheme" >
+        <item name="android:layout_width">@dimen/dimen_100dp</item>
+        <item name="android:layout_height">@dimen/dimen_100dp</item>
+        <item name="android:layout_below">@id/text_app_splash</item>
+        <item name="android:layout_marginTop">@dimen/dimen_30dp</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <!-- Legal Property Splash Screen Theme  -->
+    <style name="LegalPropertySplashScreenTheme" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_marginTop">@dimen/dimen_100dp</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_15dp</item>
+        <item name="android:textColor">@color/colorTextSplashScreen</item>
+        <item name="android:textSize">@dimen/text_dimen_14sp</item>
     </style>
 
 </resources>

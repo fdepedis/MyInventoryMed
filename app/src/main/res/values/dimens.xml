@@ -24,6 +24,7 @@
 
     <!-- Common Dimensions -->
     <dimen name="dimen_0dp">0dp</dimen>
+    <dimen name="dimen_15dp">15dp</dimen>
     <dimen name="dimen_20dp">20dp</dimen>
     <dimen name="dimen_30dp">30dp</dimen>
     <dimen name="dimen_40dp">40dp</dimen>
@@ -31,5 +32,10 @@
     <dimen name="dimen_56dp">56dp</dimen>
     <dimen name="dimen_80dp">80dp</dimen>
     <dimen name="dimen_100dp">100dp</dimen>
+    <dimen name="dimen_150dp">150dp</dimen>
+
+    <!-- Text Common Dimensions -->
+    <dimen name="text_dimen_14sp">14sp</dimen>
+    <dimen name="text_dimen_30sp">30sp</dimen>
 
 </resources>
