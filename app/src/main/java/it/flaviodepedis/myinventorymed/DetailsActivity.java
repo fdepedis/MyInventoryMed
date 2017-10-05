@@ -226,7 +226,6 @@ public class DetailsActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.delete_med:
                 Utils.showMessageDelete(this, mCurrentMedUri);
-                //this.finish();
                 return true;
             case R.id.edit_med:
                 openEditorActivity();
