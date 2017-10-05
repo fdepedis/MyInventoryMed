@@ -70,15 +70,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
                 startActivity(intent);
             }
         });
-/*
-        btnSale = (ImageView) findViewById(R.id.img_shopping_cart);
-        btnSale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Utils.adjustInventory(this, );
-            }
-        });
-*/
+
         // Find and set empty view on the ListView, so that it only shows when the list has 0 items.
         View emptyView = findViewById(R.id.empty_view);
         medListView.setEmptyView(emptyView);
