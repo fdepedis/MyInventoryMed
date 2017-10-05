@@ -20,36 +20,18 @@
 
         <ImageView
             android:id="@+id/empty_inventory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            style="@style/ImageEmptyLogoCatalogTheme"
             android:src="@drawable/ic_empty_med"/>
 
         <TextView
             android:id="@+id/empty_title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/empty_inventory"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="sans-serif-medium"
-            android:paddingTop="16dp"
-            android:text="@string/empty_view_title_text"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@color/primary_text"/>
+            style="@style/TextEmptyTitleTheme"
+            android:text="@string/empty_view_title_text" />
 
         <TextView
             android:id="@+id/empty_subtitle_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/empty_title_text"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="sans-serif"
-            android:paddingTop="8dp"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:text="@string/empty_view_subtitle_text"
-            android:textAppearance="?android:textAppearanceSmall"
-            android:textColor="@color/secondary_text"/>
+            style="@style/TextEmptySubtitleTheme"
+            android:text="@string/empty_view_subtitle_text" />
 
     </RelativeLayout>
 

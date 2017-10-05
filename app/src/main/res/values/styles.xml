@@ -48,4 +48,39 @@
         <item name="android:textSize">@dimen/text_dimen_14sp</item>
     </style>
 
+    <!-- Image Empty Logo Catalog Theme -->
+    <style name="ImageEmptyLogoCatalogTheme" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <!-- Text Empty Title Theme -->
+    <style name="TextEmptyTitleTheme" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_below">@id/empty_inventory</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:paddingTop">@dimen/dimen_16dp</item>
+        <item name="android:layout_marginTop">@dimen/dimen_16dp</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <!-- Text Empty Subtitle Theme -->
+    <style name="TextEmptySubtitleTheme" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_below">@id/empty_title_text</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:paddingTop">@dimen/dimen_8dp</item>
+        <item name="android:paddingStart">@dimen/dimen_8dp</item>
+        <item name="android:paddingEnd">@dimen/dimen_8dp</item>
+        <item name="android:layout_marginTop">@dimen/dimen_16dp</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+        <item name="android:textColor">@color/secondary_text</item>
+    </style>
+
 </resources>
