@@ -98,12 +98,14 @@ public class Utils {
                                        String previousValue, int variance){
 
         int currQuantity;
+        int prevValue = Integer.parseInt(previousValue);
 
         // if greater than 1
-        if(variance > 0){
-            currQuantity = Integer.parseInt(previousValue) + variance;
+        if ((prevValue > 0) || (prevValue >= 0 && variance > 0)) {
+            currQuantity = prevValue + variance;
         } else {
-            currQuantity = Integer.parseInt(previousValue) + variance;
+            Toast.makeText(context, R.string.error_negative_value, Toast.LENGTH_SHORT).show();
+            return;
         }
 
         ContentValues values = new ContentValues();

@@ -89,5 +89,6 @@
     <string name="error_empty_exp_date">Error empty exp date medicine</string>
     <string name="error_insert_med_failed">Failed to insert current medicine</string>
     <string name="error_update_med_failed">Failed to update current medicine</string>
+    <string name="error_negative_value">No negative value are allowed</string>
 
 </resources>

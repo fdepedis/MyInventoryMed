@@ -8,6 +8,7 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.net.Uri;
+import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -224,11 +225,17 @@ public class DetailsActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            // Respond to a click on Delete menu icon
             case R.id.delete_med:
                 Utils.showMessageDelete(this, mCurrentMedUri);
                 return true;
+            // Respond to a click on Edit menu icon
             case R.id.edit_med:
                 openEditorActivity();
+                return true;
+            // Respond to a click on the "Up" arrow button in the app bar
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(DetailsActivity.this);
                 return true;
         }
         return super.onOptionsItemSelected(item);

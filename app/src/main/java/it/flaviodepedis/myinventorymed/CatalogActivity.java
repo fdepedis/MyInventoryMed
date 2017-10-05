@@ -5,6 +5,7 @@ import android.content.ContentUris;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.media.Image;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.content.CursorLoader;
@@ -15,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import it.flaviodepedis.myinventorymed.data.InventoryMedContract.*;
@@ -30,8 +32,11 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
     public static final String LOG_TAG = CatalogActivity.class.getSimpleName();
 
     private static final int MED_LOADER_ID = 0;
+    private static final int MED_DEC = -1;
 
     InventoryCursorAdapter mCursorAdapter;
+
+    ImageView btnSale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +70,15 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
                 startActivity(intent);
             }
         });
-
+/*
+        btnSale = (ImageView) findViewById(R.id.img_shopping_cart);
+        btnSale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utils.adjustInventory(this, );
+            }
+        });
+*/
         // Find and set empty view on the ListView, so that it only shows when the list has 0 items.
         View emptyView = findViewById(R.id.empty_view);
         medListView.setEmptyView(emptyView);

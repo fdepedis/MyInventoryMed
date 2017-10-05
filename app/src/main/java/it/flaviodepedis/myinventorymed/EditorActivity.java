@@ -444,7 +444,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         if (mCurrentMedUri == null &&
                 TextUtils.isEmpty(nameMed) && TextUtils.isEmpty(quantityMed) &&
                 TextUtils.isEmpty(priceMed) && TextUtils.isEmpty(expDateMed) &&
-                mMedType == InventoryMedEntry.TYPE_UNKNOWN) {
+                mMedType == InventoryMedEntry.TYPE_UNKNOWN &&
+                (TextUtils.isEmpty(image) || image.equals("")) ){
 
             Toast.makeText(this, getString(R.string.empty_info_med), Toast.LENGTH_LONG).show();
 
@@ -482,7 +483,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         }
 
         // Check if image exist
-        if (TextUtils.isEmpty(image)) {
+        if (TextUtils.isEmpty(image) || image.equals("")) {
             Toast.makeText(this, getString(R.string.empty_image), Toast.LENGTH_LONG).show();
             return;
         }
