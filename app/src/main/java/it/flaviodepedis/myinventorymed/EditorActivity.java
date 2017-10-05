@@ -57,7 +57,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     String discountPriceMed;
     String expDateMed;
     String noteMed;
-    String image;
+    String image = null;
 
     /**
      * Declare all view in this activity
@@ -181,7 +181,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             String medExpDate = cursor.getString(medExpDateColumnIndex);
             Double medPrice = cursor.getDouble(medPriceColumnIndex);
             Double medPriceDiscount = cursor.getDouble(medPriceDiscountColumnIndex);
-            String image = cursor.getString(medImageColumnIndex);
+            String medImage = cursor.getString(medImageColumnIndex);
             String medNote = cursor.getString(medNoteColumnIndex);
 
             // Set TextView text with the value from the database
@@ -198,10 +198,10 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             }
 
             // verify if image medicine exist
-            if (image == null) {
+            if (medImage == null) {
                 Picasso.with(getApplicationContext()).load(R.drawable.ic_image_not_found).into(imageMed);
             } else {
-                Uri uri = Uri.parse(image);
+                Uri uri = Uri.parse(medImage);
                 imageMed.setImageURI(uri);
                 mPickedImage = uri;
             }
@@ -343,7 +343,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 return true;
             case R.id.save_med:
                 saveMedicine();
-                finish();
                 return true;
             // Respond to a click on the "Up" arrow button in the app bar
             case android.R.id.home:
@@ -452,6 +451,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 }
             }
         }
+        finish();
     }
 
     /**
@@ -466,7 +466,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         discountPriceMed = etMedDiscountPrice.getText().toString().trim();
         expDateMed = etMedExpDate.getText().toString().trim();
         noteMed = etMedNote.getText().toString().trim();
-/*
+
         if (mCurrentMedUri == null) {
             if (mPickedImage != null) {
                 image = mPickedImage.toString();
@@ -474,7 +474,19 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         } else {
             image = mPickedImage.toString();
         }
-*/
+
+        // Check if this is supposed to be a new medicine
+        // and check if all the fields in the editor are blank
+        if (mCurrentMedUri == null &&
+                TextUtils.isEmpty(nameMed) && TextUtils.isEmpty(quantityMed) &&
+                TextUtils.isEmpty(priceMed) && TextUtils.isEmpty(expDateMed) &&
+                mMedType == InventoryMedEntry.TYPE_UNKNOWN) {
+
+            // Since no fields were modified, we can return early without creating a new pet.
+            // No need to create ContentValues and no need to do any ContentProvider operations.
+            return false;
+        }
+
         // Check if name exist
         if (TextUtils.isEmpty(nameMed)) {
             etMedName.requestFocus();
