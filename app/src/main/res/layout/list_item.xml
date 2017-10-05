@@ -16,27 +16,13 @@
 
         <TextView
             android:id="@+id/tv_med_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:fontFamily="sans-serif-medium"
-            android:maxLines="1"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start"
-            android:paddingTop="@dimen/padding_top"
-            android:text="med_name"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@color/primary_text" />
+            style="@style/TextNameCatalogTheme"
+            android:text="med_name" />
 
         <TextView
             android:id="@+id/tv_med_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:paddingStart="@dimen/padding_start"
-            android:text="med_type"
-            android:textAppearance="?android:textAppearanceSmall"
-            android:textColor="@color/secondary_text" />
+            style="@style/TextTypeCatalogTheme"
+            android:text="med_type" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,13 +32,8 @@
             <TextView
                 android:id="@+id/tv_med_exp_date"
                 android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:paddingStart="@dimen/padding_start"
-                android:paddingTop="@dimen/padding_top"
-                android:text="@string/label_exp_date"
-                android:textAppearance="?android:textAppearanceSmall"
-                android:textColor="@color/primary_text" />
+                style="@style/TextExpDateCatalogTheme"
+                android:text="@string/label_exp_date" />
         </LinearLayout>
 
         <LinearLayout
@@ -64,13 +45,8 @@
 
             <TextView
                 android:id="@+id/tv_med_price"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingStart="@dimen/padding_start"
-                android:text="@string/label_price"
-                android:textAppearance="?android:textAppearanceSmall"
-                android:textColor="@color/primary_text" />
+               style="@style/TextPriceCatalogTheme"
+                android:text="@string/label_price" />
 
             <View
                 android:layout_width="1dp"
@@ -79,37 +55,19 @@
 
             <TextView
                 android:id="@+id/tv_med_price_discount"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:paddingStart="@dimen/padding_start"
-                android:text="@string/label_price_discount"
-                android:textAppearance="?android:textAppearanceSmall"
-                android:textColor="@color/colorAccent" />
+                style="@style/TextDiscountPriceCatalogTheme"
+                android:text="@string/label_price_discount" />
         </LinearLayout>
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/tv_med_quantity"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/colorPrimaryLight"
-        android:gravity="center"
-        android:text="qty"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/colorTextQty"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        style="@style/TextQtyCatalogTheme"
+        android:text="Qty" />
 
     <ImageView
         android:id="@+id/img_shopping_cart"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/colorPrimaryDark"
-        android:padding="@dimen/dimen_30dp"
-        android:src="@drawable/ic_shopping_cart"
-        android:scaleType="center"/>
+        style="@style/ImageSaleButtonTheme"
+        android:src="@drawable/ic_shopping_cart" />
 </LinearLayout>

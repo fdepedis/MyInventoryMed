@@ -92,4 +92,82 @@
         <item name="android:layout_margin">@dimen/fab_margin</item>
     </style>
 
+    <!-- Text Name Catalog Theme -->
+    <style name="TextNameCatalogTheme" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:paddingTop">@dimen/padding_top</item>
+        <item name="android:paddingStart">@dimen/padding_start</item>
+        <item name="android:paddingEnd">@dimen/padding_end</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <!-- Text Type Catalog Theme -->
+    <style name="TextTypeCatalogTheme" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:paddingStart">@dimen/padding_start</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+        <item name="android:textColor">@color/secondary_text</item>
+    </style>
+
+    <!-- Text ExpDate Catalog Theme -->
+    <style name="TextExpDateCatalogTheme" >
+        <item name="android:layout_width">@dimen/dimen_0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1.5</item>
+        <item name="android:paddingStart">@dimen/padding_start</item>
+        <item name="android:paddingTop">@dimen/padding_top</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <!-- Text Price Catalog Theme -->
+    <style name="TextPriceCatalogTheme" >
+        <item name="android:layout_width">@dimen/dimen_0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingStart">@dimen/padding_start</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <!-- Text Discount Price Catalog Theme -->
+    <style name="TextDiscountPriceCatalogTheme" >
+        <item name="android:layout_width">@dimen/dimen_0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1.5</item>
+        <item name="android:paddingStart">@dimen/padding_start</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <!-- Text Quantity Catalog Theme -->
+    <style name="TextQtyCatalogTheme" >
+        <item name="android:layout_width">@dimen/dimen_0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@color/colorPrimaryLight</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:textColor">@color/colorTextQty</item>
+        <item name="android:textSize">@dimen/text_dimen_20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Image Sale Button Theme -->
+    <style name="ImageSaleButtonTheme" >
+        <item name="android:layout_width">@dimen/dimen_0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:padding">@dimen/dimen_30dp</item>
+        <item name="android:scaleType">center</item>
+    </style>
+
 </resources>
