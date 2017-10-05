@@ -90,6 +90,4 @@
     <string name="error_insert_med_failed">Failed to insert current medicine</string>
     <string name="error_update_med_failed">Failed to update current medicine</string>
 
-
-
 </resources>
