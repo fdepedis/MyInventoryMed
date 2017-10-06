@@ -105,7 +105,7 @@ public class InventoryCursorAdapter extends CursorAdapter {
         }
         holder.tvMedExpDate.setText(context.getString(R.string.label_exp_date, medExpDate));
 
-        // Sale button decrease by one the quantity present in the database for current item
+        // Sale button to decrease the stock quantity by one every time this button is clicked.
         holder.imgSale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
