@@ -12,64 +12,32 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_30dp"></View>
+            android:layout_height="@dimen/dimen_30dp">
+        </View>
 
         <LinearLayout
             android:id="@+id/med_name"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_med_name"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_details"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_details_med_name"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelDetailsTheme"
+                android:text="@string/label_details_med_name" />
 
             <TextView
                 android:id="@+id/tv_value_med_name"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center_vertical"
-                android:paddingStart="@dimen/padding_start"
-                android:text="Name"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                style="@style/LayoutTextEditorDetailsTheme"
+                android:text="Name" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/med_type"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_med_type"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_details"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_details_med_type"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelDetailsTheme"
+                android:text="@string/label_details_med_type" />
 
             <TextView
                 android:id="@+id/tv_value_med_type"
@@ -85,35 +53,18 @@
 
         <LinearLayout
             android:id="@+id/med_quantity"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_med_quantity"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_details"
+                style="@style/LayoutLabelDetailsTheme"
                 android:layout_weight="1.35"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_details_med_quantity"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                android:text="@string/label_details_med_quantity" />
 
             <ImageButton
                 android:id="@+id/img_med_inc"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
+                style="@style/LayoutImageButtonTheme"
                 android:layout_marginEnd="@dimen/margin_end_details"
-                android:layout_weight="0.5"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center"
-                android:scaleType="fitCenter"
                 android:src="@drawable/ic_add" />
 
             <TextView
@@ -130,296 +81,144 @@
 
             <ImageButton
                 android:id="@+id/img_med_dec"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center"
-                android:scaleType="fitCenter"
+                style="@style/LayoutImageButtonTheme"
                 android:src="@drawable/ic_remove" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/med_price"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_med_price"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_details"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_details_med_price"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelDetailsTheme"
+                android:text="@string/label_details_med_price" />
 
             <TextView
                 android:id="@+id/tv_value_med_price"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center_vertical"
-                android:paddingStart="@dimen/padding_start"
-                android:text="Price"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                style="@style/LayoutTextEditorDetailsTheme"
+                android:text="Price" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/med_discount"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_med_discount"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_details"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_details_med_disc_price"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelDetailsTheme"
+                android:text="@string/label_details_med_disc_price" />
 
             <TextView
                 android:id="@+id/tv_value_med_discount"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center_vertical"
-                android:paddingStart="@dimen/padding_start"
-                android:text="Discount"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                style="@style/LayoutTextEditorDetailsTheme"
+                android:text="Discount"/>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/med_exp_date"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_med_exp_date"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_details"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_details_med_exp_date"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelDetailsTheme"
+                android:text="@string/label_details_med_exp_date" />
 
             <TextView
                 android:id="@+id/tv_value_med_exp_date"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center_vertical"
-                android:paddingStart="@dimen/padding_start"
-                android:text="Date"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                style="@style/LayoutTextEditorDetailsTheme"
+                android:text="Date"/>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/med_sup_name"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_med_sup_name"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_details"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_details_med_sup_name"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelDetailsTheme"
+                android:text="@string/label_details_med_sup_name" />
 
             <TextView
                 android:id="@+id/tv_value_med_sup_name"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center_vertical"
-                android:paddingStart="@dimen/padding_start"
-                android:text="Supplier Name"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                style="@style/LayoutTextEditorDetailsTheme"
+                android:text="Supplier Name"/>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/med_sup_phone"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_med_sup_phone"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_details"
+                style="@style/LayoutLabelDetailsTheme"
                 android:layout_weight="1.3"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_details_med_sup_phone"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                android:text="@string/label_details_med_sup_phone" />
 
             <TextView
                 android:id="@+id/tv_value_med_sup_phone"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
+                style="@style/LayoutTextEditorDetailsTheme"
                 android:layout_marginEnd="@dimen/margin_end_details"
-                android:layout_weight="2"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center_vertical"
-                android:paddingStart="@dimen/padding_start"
-                android:text="Phone"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                android:text="Phone" />
 
             <ImageButton
                 android:id="@+id/img_sup_phone"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
+                style="@style/LayoutImageButtonTheme"
                 android:background="@color/icons"
-                android:scaleType="center"
                 android:src="@drawable/ic_sup_phone" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/med_exp_sup_email"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_med_sup_email"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_details"
+                style="@style/LayoutLabelDetailsTheme"
                 android:layout_weight="1.3"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_details_med_sup_email"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                android:text="@string/label_details_med_sup_email" />
 
             <TextView
                 android:id="@+id/tv_value_med_sup_email"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
+                style="@style/LayoutTextEditorDetailsTheme"
                 android:layout_marginEnd="@dimen/margin_end_details"
-                android:layout_weight="2"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center_vertical"
-                android:paddingStart="@dimen/padding_start"
                 android:text="Email"
                 android:maxLines="1"
-                android:ellipsize="end"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                android:ellipsize="end" />
 
             <ImageButton
                 android:id="@+id/img_sup_email"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
+                style="@style/LayoutImageButtonTheme"
                 android:background="@color/icons"
-                android:scaleType="center"
                 android:src="@drawable/ic_sup_email" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/img_medicine"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_200dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/dimen_30dp"
-            android:layout_marginEnd="@dimen/dimen_30dp"
-            android:layout_marginStart="@dimen/dimen_30dp"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:scaleType="centerCrop"
+            style="@style/LayoutImageMedicine"
             android:src="@drawable/ic_image_not_found" />
 
         <LinearLayout
             android:id="@+id/med_note"
+            style="@style/LayoutDetailsTheme"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tv_label_med_note"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_details"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|top"
-                android:text="@string/label_details_med_note"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelNoteTheme"
+                android:text="@string/label_details_med_note" />
 
             <TextView
                 android:id="@+id/tv_value_med_note"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_100dp"
-                android:background="@color/colorPrimaryLight"
-                android:ellipsize="end"
-                android:gravity="center_vertical|top"
-                android:maxLines="10"
-                android:paddingStart="@dimen/padding_start"
-                android:text="XXX"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                style="@style/LayoutTextEditorDetailsNoteTheme"
+                android:text="@string/label_hint_editor_med_note" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_30dp"></View>
+            android:layout_height="@dimen/dimen_30dp">
+        </View>
 
     </LinearLayout>
 

@@ -51,7 +51,7 @@
     <string name="label_hint_editor_med_name">Insert name of medicine</string>
     <string name="label_hint_editor_med_quantity">Insert quantity</string>
     <string name="label_hint_editor_med_price">Insert price</string>
-    <string name="label_hint_editor_med_disc_price">Insert Discount (if applicable)</string>
+    <string name="label_hint_editor_med_disc_price">Insert discount</string>
     <string name="label_hint_editor_med_exp_date">(yyyy/mm/dd)</string>
     <string name="label_hint_editor_med_sup_name">Insert supplier name</string>
     <string name="label_hint_editor_med_sup_email">Insert supplier email</string>

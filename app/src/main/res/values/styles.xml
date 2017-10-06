@@ -170,4 +170,94 @@
         <item name="android:scaleType">center</item>
     </style>
 
+    <!-- Layout Details Theme -->
+    <style name="LayoutDetailsTheme" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dimen_50dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingBottom">@dimen/padding_bottom</item>
+        <item name="android:paddingEnd">@dimen/padding_end</item>
+        <item name="android:paddingStart">@dimen/padding_start</item>
+    </style>
+
+    <!-- Layout Label Details Theme -->
+    <style name="LayoutLabelDetailsTheme" >
+        <item name="android:layout_width">@dimen/dimen_0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginEnd">@dimen/margin_end_details</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:gravity">center_vertical|end</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <!-- Layout Label Editor Theme -->
+    <style name="LayoutLabelEditorTheme" parent="LayoutLabelDetailsTheme">
+        <item name="android:layout_marginEnd">@dimen/margin_end_editor</item>
+    </style>
+
+    <!-- Layout Image Button Theme -->
+    <style name="LayoutImageButtonTheme" >
+        <item name="android:layout_width">@dimen/dimen_0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">0.5</item>
+        <item name="android:background">@color/colorPrimaryLight</item>
+        <item name="android:gravity">center</item>
+        <item name="android:scaleType">center</item>
+    </style>
+
+    <!-- Layout Text Editor/Details Theme -->
+    <style name="LayoutTextEditorDetailsTheme" >
+        <item name="android:layout_width">@dimen/dimen_0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">2</item>
+        <item name="android:background">@color/colorPrimaryLight</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">@dimen/padding_start</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:textColor">@color/secondary_text_edit_details</item>
+    </style>
+
+    <!-- Layout Image Medicine -->
+    <style name="LayoutImageMedicine" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dimen_200dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_30dp</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_30dp</item>
+        <item name="android:layout_marginStart">@dimen/dimen_30dp</item>
+        <item name="android:layout_marginTop">@dimen/dimen_20dp</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <!-- Layout Label Note Theme -->
+    <style name="LayoutLabelNoteTheme" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginEnd">@dimen/margin_end_editor</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:gravity">center_vertical|top</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <!-- Layout Text Editor/Details Note Theme -->
+    <style name="LayoutTextEditorDetailsNoteTheme" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dimen_100dp</item>
+        <item name="android:background">@color/colorPrimaryLight</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical|top</item>
+        <item name="android:maxLines">10</item>
+        <item name="android:paddingStart">@dimen/padding_start</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:textColor">@color/secondary_text_edit_details</item>
+    </style>
+
+
+
+
+
 </resources>

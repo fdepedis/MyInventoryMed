@@ -23,61 +23,28 @@
 
         <LinearLayout
             android:id="@+id/editor_med_name"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_editor_med_name"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_editor"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_editor_med_name"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelEditorTheme"
+                android:text="@string/label_editor_med_name" />
 
             <EditText
                 android:id="@+id/et_value_editor_med_name"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center_vertical"
+                style="@style/LayoutTextEditorDetailsTheme"
                 android:hint="@string/label_hint_editor_med_name"
-                android:inputType="textCapWords"
-                android:paddingStart="@dimen/padding_start"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                android:inputType="textCapWords" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/editor_med_type"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_editor_med_type"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_editor"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_editor_med_type"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelEditorTheme"
+                android:text="@string/label_editor_med_type" />
 
             <Spinner
                 android:id="@+id/spinner_med_type"
@@ -93,301 +60,138 @@
 
         <LinearLayout
             android:id="@+id/editor_med_quantity"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_editor_med_quantity"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_editor"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_editor_med_quantity"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelEditorTheme"
+                android:text="@string/label_editor_med_quantity" />
 
             <EditText
                 android:id="@+id/et_value_editor_med_quantity"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center_vertical"
+                style="@style/LayoutTextEditorDetailsTheme"
                 android:hint="@string/label_hint_editor_med_quantity"
-                android:inputType="number"
-                android:paddingStart="@dimen/padding_start"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                android:inputType="number" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/editor_med_price"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_editor_med_price"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_editor"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_editor_med_price"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelEditorTheme"
+                android:text="@string/label_editor_med_price" />
 
             <EditText
                 android:id="@+id/et_value_editor_med_price"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center_vertical"
+                style="@style/LayoutTextEditorDetailsTheme"
                 android:hint="@string/label_hint_editor_med_price"
-                android:inputType="numberDecimal"
-                android:paddingStart="@dimen/padding_start"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                android:inputType="numberDecimal" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/editor_med_discount"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_editor_med_discount"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_editor"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_editor_med_disc_price"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelEditorTheme"
+                android:text="@string/label_editor_med_disc_price" />
 
             <EditText
                 android:id="@+id/et_value_editor_med_discount"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center_vertical"
+                style="@style/LayoutTextEditorDetailsTheme"
                 android:hint="@string/label_hint_editor_med_disc_price"
-                android:inputType="numberDecimal"
-                android:paddingStart="@dimen/padding_start"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                android:inputType="numberDecimal" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/editor_med_exp_date"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_editor_med_exp_date"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_editor"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_editor_med_exp_date"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelEditorTheme"
+                android:text="@string/label_editor_med_exp_date" />
 
             <EditText
                 android:id="@+id/et_value_editor_med_exp_date"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center_vertical"
+                style="@style/LayoutTextEditorDetailsTheme"
                 android:hint="@string/label_hint_editor_med_exp_date"
-                android:inputType="date"
-                android:paddingStart="@dimen/padding_start"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                android:inputType="date" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/editor_med_sup_name"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_editor_med_sup_name"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_editor"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_editor_med_sup_name"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelEditorTheme"
+                android:text="@string/label_editor_med_sup_name" />
 
             <EditText
                 android:id="@+id/et_value_editor_med_sup_name"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center_vertical"
+                style="@style/LayoutTextEditorDetailsTheme"
                 android:hint="@string/label_hint_editor_med_sup_name"
-                android:inputType="textCapWords"
-                android:paddingStart="@dimen/padding_start"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                android:inputType="textCapWords" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/editor_med_sup_phone"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_editor_med_sup_phone"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_editor"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_editor_med_sup_phone"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelEditorTheme"
+                android:text="@string/label_editor_med_sup_phone" />
 
             <EditText
                 android:id="@+id/et_value_editor_med_sup_phone"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center_vertical"
+                style="@style/LayoutTextEditorDetailsTheme"
                 android:hint="@string/label_hint_editor_med_sup_phone"
-                android:inputType="phone"
-                android:paddingStart="@dimen/padding_start"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                android:inputType="phone" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/editor_med_sup_email"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/padding_bottom"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            style="@style/LayoutDetailsTheme">
 
             <TextView
                 android:id="@+id/tv_label_editor_med_sup_email"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_editor"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|end"
-                android:text="@string/label_editor_med_sup_email"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelEditorTheme"
+                android:text="@string/label_editor_med_sup_email" />
 
             <EditText
                 android:id="@+id/et_value_editor_med_sup_email"
-                android:layout_width="@dimen/dimen_0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/colorPrimaryLight"
-                android:gravity="center_vertical"
+                style="@style/LayoutTextEditorDetailsTheme"
                 android:hint="@string/label_hint_editor_med_sup_email"
-                android:inputType="textEmailAddress"
-                android:paddingStart="@dimen/padding_start"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                android:inputType="textEmailAddress" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/image_editor_med"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_200dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/dimen_30dp"
-            android:layout_marginEnd="@dimen/dimen_30dp"
-            android:layout_marginStart="@dimen/dimen_30dp"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:scaleType="centerCrop"
+            style="@style/LayoutImageMedicine"
             android:src="@drawable/ic_image_not_found" />
 
         <LinearLayout
             android:id="@+id/editor_med_note"
+            style="@style/LayoutDetailsTheme"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingEnd="@dimen/padding_end"
-            android:paddingStart="@dimen/padding_start">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tv_label_editor_med_note"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_end_editor"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical|top"
-                android:text="@string/label_editor_med_note"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/primary_text" />
+                style="@style/LayoutLabelNoteTheme"
+                android:text="@string/label_editor_med_note" />
 
             <EditText
                 android:id="@+id/et_value_editor_med_note"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_100dp"
-                android:background="@color/colorPrimaryLight"
-                android:ellipsize="end"
-                android:gravity="center_vertical|top"
+                style="@style/LayoutTextEditorDetailsNoteTheme"
                 android:hint="@string/label_hint_editor_med_note"
                 android:inputType="text"
-                android:maxLines="10"
-                android:paddingStart="@dimen/padding_start"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                android:maxLines="10" />
         </LinearLayout>
 
         <View
