@@ -12,6 +12,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,6 +46,9 @@ public class DetailsActivity extends AppCompatActivity
     @BindView(R.id.tv_label_med_discount) TextView tvLabelMedDiscountPrice;
     @BindView(R.id.tv_label_med_exp_date) TextView tvLabelMedExpDate;
     @BindView(R.id.tv_label_med_note) TextView tvLabelMedNote;
+    @BindView(R.id.tv_label_med_sup_name) TextView tvLabelMedSupName;
+    @BindView(R.id.tv_label_med_sup_phone) TextView tvLabelMedSupPhone;
+    @BindView(R.id.tv_label_med_sup_email) TextView tvLabelMedSupEmail;
 
     // TextView for values
     @BindView(R.id.tv_value_med_name) TextView tvValueMedName;
@@ -54,11 +58,16 @@ public class DetailsActivity extends AppCompatActivity
     @BindView(R.id.tv_value_med_discount) TextView tvValueMedDiscountPrice;
     @BindView(R.id.tv_value_med_exp_date) TextView tvValueMedExpDate;
     @BindView(R.id.tv_value_med_note) TextView tvValueMedNote;
+    @BindView(R.id.tv_value_med_sup_name) TextView tvValueMedSupName;
+    @BindView(R.id.tv_value_med_sup_phone) TextView tvValueMedSupPhone;
+    @BindView(R.id.tv_value_med_sup_email) TextView tvValueMedSupEmail;
 
     // ImageView and ImageButton
     @BindView(R.id.img_med_inc) ImageButton imgBtnAdd;
     @BindView(R.id.img_med_dec) ImageButton imgBtnRemove;
-    @BindView(R.id.image_product) ImageView imgMedicine;
+    @BindView(R.id.img_medicine) ImageView imgMedicine;
+    @BindView(R.id.img_sup_phone) ImageView imgSupPhone;
+    @BindView(R.id.img_sup_email) ImageView imgSupEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,10 +83,15 @@ public class DetailsActivity extends AppCompatActivity
 
         imgBtnAdd.setOnClickListener(this);
         imgBtnRemove.setOnClickListener(this);
+        imgSupPhone.setOnClickListener(this);
+        imgSupEmail.setOnClickListener(this);
     }
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+
+        // Get all column from database respect to current mCurrentMedUri and
+        // no projection needed, because retrieve all column
         return new CursorLoader(
                 this,                       // Parent activity context
                 mCurrentMedUri,             // Provider content URI to query
@@ -97,6 +111,8 @@ public class DetailsActivity extends AppCompatActivity
          */
         DatabaseUtils.dumpCursor(cursor);
 
+        Log.i(LOG_TAG, "into - onLoadFinished");
+
         if (cursor == null || cursor.getCount() < 1) {
             return;
         }
@@ -112,6 +128,9 @@ public class DetailsActivity extends AppCompatActivity
             int medPriceColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_PRICE);
             int medPriceDiscountColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT);
             int medImageColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_IMAGE);
+            int medSupNameColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_SUP_NAME);
+            int medSupPhoneColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_SUP_PHONE);
+            int medSupEmailColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_SUP_EMAIL);
             int medNoteColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_NOTE);
 
             // Extract out the value from the Cursor for the given column index
@@ -122,6 +141,9 @@ public class DetailsActivity extends AppCompatActivity
             Double medPrice = cursor.getDouble(medPriceColumnIndex);
             Double medPriceDiscount = cursor.getDouble(medPriceDiscountColumnIndex);
             String image = cursor.getString(medImageColumnIndex);
+            String medSupName = cursor.getString(medSupNameColumnIndex);
+            String medSupPhone = cursor.getString(medSupPhoneColumnIndex);
+            String medSupEmail = cursor.getString(medSupEmailColumnIndex);
             String medNote = cursor.getString(medNoteColumnIndex);
 
             // Set TextView text with the value from the database
@@ -171,6 +193,9 @@ public class DetailsActivity extends AppCompatActivity
                 imgMedicine.setImageURI(uri);
             }
             tvValueMedExpDate.setText(medExpDate);
+            tvValueMedSupName.setText(medSupName);
+            tvValueMedSupPhone.setText(medSupPhone);
+            tvValueMedSupEmail.setText(medSupEmail);
             tvValueMedNote.setText(medNote);
         }
     }
@@ -185,6 +210,9 @@ public class DetailsActivity extends AppCompatActivity
         tvValueMedDiscountPrice.setText("");
         imgMedicine.setImageURI(null);
         tvValueMedExpDate.setText("");
+        tvValueMedSupPhone.setText("");
+        tvValueMedSupEmail.setText("");
+        tvValueMedNote.setText("");
         tvValueMedNote.setText("");
     }
 
@@ -209,6 +237,18 @@ public class DetailsActivity extends AppCompatActivity
                         mCurrentMedUri,
                         String.valueOf(tvValueMedQuantity.getText()),
                         MED_DEC);
+                break;
+            case R.id.img_sup_phone:
+                Utils.callSupplierPhone(
+                        this,
+                        mCurrentMedUri,
+                        String.valueOf(tvValueMedSupPhone.getText()));
+                break;
+            case R.id.img_sup_email:
+                Utils.sendSupplierEmail(
+                        this,
+                        mCurrentMedUri,
+                        String.valueOf(tvValueMedSupEmail.getText()));
                 break;
         }
     }
