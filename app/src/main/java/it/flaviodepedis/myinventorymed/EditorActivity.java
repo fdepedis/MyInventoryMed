@@ -32,6 +32,7 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import it.flaviodepedis.myinventorymed.data.InventoryMedContract.InventoryMedEntry;
+import it.flaviodepedis.myinventorymed.util.Utils;
 
 public class EditorActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -52,19 +53,19 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     /**
      * Variables to check data from input fields
      */
-    String nameMed;
-    int typeMed;
-    String quantityMed;
-    String priceMed;
-    String discountPriceMed;
-    String expDateMed;
-    String noteMed;
-    String image = null;
-    Double price;
-    Double discountPrice;
-    String supNameMed;
-    String supPhoneMed;
-    String supEmailMed;
+    private String nameMed;
+    private int typeMed;
+    private String quantityMed;
+    private String priceMed;
+    private String discountPriceMed;
+    private String expDateMed;
+    private String noteMed;
+    private String image = null;
+    private Double price;
+    private Double discountPrice;
+    private String supNameMed;
+    private String supPhoneMed;
+    private String supEmailMed;
 
     /**
      * Declare all view in this activity

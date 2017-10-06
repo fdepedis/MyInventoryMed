@@ -1,4 +1,4 @@
-package it.flaviodepedis.myinventorymed;
+package it.flaviodepedis.myinventorymed.util;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
+import it.flaviodepedis.myinventorymed.R;
 import it.flaviodepedis.myinventorymed.data.InventoryMedContract.InventoryMedEntry;
 
 /**

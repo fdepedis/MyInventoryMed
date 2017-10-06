@@ -70,9 +70,10 @@ public class InventoryMedDbHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         // Execute the SQL statement to delete table and recreate again
-        sqLiteDatabase.execSQL(SQL_DROP_MEDICINES_TABLE);
-        onCreate(sqLiteDatabase);
-    }
 
+        // COMMENT FOR APP READY TO PRODUCTION ENVIRONMENT
+        /*sqLiteDatabase.execSQL(SQL_DROP_MEDICINES_TABLE);
+        onCreate(sqLiteDatabase);*/
+    }
 }
 

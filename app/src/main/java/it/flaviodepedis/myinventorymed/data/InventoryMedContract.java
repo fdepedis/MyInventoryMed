@@ -7,8 +7,7 @@ import android.provider.BaseColumns;
 /**
  * Created by flavio.depedis on 28/09/2017.
  */
-
-public class InventoryMedContract {
+public final class InventoryMedContract {
 
     /**
      * Tag for the log messages

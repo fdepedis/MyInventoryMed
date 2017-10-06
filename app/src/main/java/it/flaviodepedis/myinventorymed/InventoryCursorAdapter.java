@@ -14,6 +14,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import it.flaviodepedis.myinventorymed.data.InventoryMedContract.InventoryMedEntry;
+import it.flaviodepedis.myinventorymed.util.Utils;
 
 /**
  * Created by flavio.depedis on 01/10/2017.

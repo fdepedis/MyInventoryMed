@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
-import android.media.Image;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.content.CursorLoader;
@@ -17,10 +16,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import it.flaviodepedis.myinventorymed.data.InventoryMedContract.*;
+import it.flaviodepedis.myinventorymed.util.Utils;
 
 /**
  * Created by flavio.depedis on 28/09/2017.

@@ -23,6 +23,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import it.flaviodepedis.myinventorymed.data.InventoryMedContract.InventoryMedEntry;
+import it.flaviodepedis.myinventorymed.util.Utils;
 
 public class DetailsActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<Cursor>, View.OnClickListener{
