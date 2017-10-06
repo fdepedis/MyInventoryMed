@@ -249,6 +249,111 @@
                 android:textColor="@color/secondary_text_edit_details" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/med_sup_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_bottom"
+            android:paddingEnd="@dimen/padding_end"
+            android:paddingStart="@dimen/padding_start">
+
+            <TextView
+                android:id="@+id/tv_label_med_sup_name"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/margin_end_details"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_vertical|end"
+                android:text="@string/label_details_med_sup_name"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/primary_text" />
+
+            <TextView
+                android:id="@+id/tv_value_med_sup_name"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/colorPrimaryLight"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/padding_start"
+                android:text="Supplier Name"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/secondary_text_edit_details" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/med_sup_phone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_bottom"
+            android:paddingEnd="@dimen/padding_end"
+            android:paddingStart="@dimen/padding_start">
+
+            <TextView
+                android:id="@+id/tv_label_med_sup_phone"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/margin_end_details"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_vertical|end"
+                android:text="@string/label_details_med_sup_phone"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/primary_text" />
+
+            <TextView
+                android:id="@+id/tv_value_med_sup_phone"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/colorPrimaryLight"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/padding_start"
+                android:text="Phone"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/secondary_text_edit_details" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/med_exp_sup_email"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_bottom"
+            android:paddingEnd="@dimen/padding_end"
+            android:paddingStart="@dimen/padding_start">
+
+            <TextView
+                android:id="@+id/tv_label_med_sup_email"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/margin_end_details"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_vertical|end"
+                android:text="@string/label_details_med_sup_email"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/primary_text" />
+
+            <TextView
+                android:id="@+id/tv_value_med_sup_email"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/colorPrimaryLight"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/padding_start"
+                android:text="Email"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/secondary_text_edit_details" />
+        </LinearLayout>
+
         <ImageView
             android:id="@+id/image_product"
             android:layout_width="match_parent"
