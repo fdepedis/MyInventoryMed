@@ -12,8 +12,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_30dp">
-        </View>
+            android:layout_height="@dimen/dimen_30dp"></View>
 
         <LinearLayout
             android:id="@+id/med_name"
@@ -114,10 +113,8 @@
                 android:layout_weight="0.5"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
-                android:src="@drawable/ic_add"
                 android:scaleType="fitCenter"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                android:src="@drawable/ic_add" />
 
             <TextView
                 android:id="@+id/tv_value_med_quantity"
@@ -138,10 +135,8 @@
                 android:layout_weight="0.5"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
-                android:src="@drawable/ic_remove"
                 android:scaleType="fitCenter"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/secondary_text_edit_details" />
+                android:src="@drawable/ic_remove" />
         </LinearLayout>
 
         <LinearLayout
@@ -299,7 +294,7 @@
                 android:layout_width="@dimen/dimen_0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/margin_end_details"
-                android:layout_weight="1"
+                android:layout_weight="1.3"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_vertical|end"
                 android:text="@string/label_details_med_sup_phone"
@@ -310,6 +305,7 @@
                 android:id="@+id/tv_value_med_sup_phone"
                 android:layout_width="@dimen/dimen_0dp"
                 android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/margin_end_details"
                 android:layout_weight="2"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center_vertical"
@@ -317,6 +313,15 @@
                 android:text="Phone"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/secondary_text_edit_details" />
+
+            <ImageButton
+                android:id="@+id/img_sup_phone"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@color/icons"
+                android:scaleType="center"
+                android:src="@drawable/ic_sup_phone" />
         </LinearLayout>
 
         <LinearLayout
@@ -334,7 +339,7 @@
                 android:layout_width="@dimen/dimen_0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/margin_end_details"
-                android:layout_weight="1"
+                android:layout_weight="1.3"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_vertical|end"
                 android:text="@string/label_details_med_sup_email"
@@ -345,6 +350,7 @@
                 android:id="@+id/tv_value_med_sup_email"
                 android:layout_width="@dimen/dimen_0dp"
                 android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/margin_end_details"
                 android:layout_weight="2"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center_vertical"
@@ -352,6 +358,15 @@
                 android:text="Email"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/secondary_text_edit_details" />
+
+            <ImageButton
+                android:id="@+id/img_sup_email"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@color/icons"
+                android:scaleType="center"
+                android:src="@drawable/ic_sup_email" />
         </LinearLayout>
 
         <ImageView
@@ -360,11 +375,11 @@
             android:layout_height="@dimen/dimen_200dp"
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/dimen_30dp"
-            android:layout_marginTop="@dimen/dimen_20dp"
             android:layout_marginEnd="@dimen/dimen_30dp"
             android:layout_marginStart="@dimen/dimen_30dp"
-            android:src="@drawable/ic_image_not_found"
-            android:scaleType="centerCrop" />
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_image_not_found" />
 
         <LinearLayout
             android:id="@+id/med_note"
@@ -390,10 +405,10 @@
                 android:id="@+id/tv_value_med_note"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_100dp"
-                android:maxLines="10"
-                android:ellipsize="end"
                 android:background="@color/colorPrimaryLight"
+                android:ellipsize="end"
                 android:gravity="center_vertical|top"
+                android:maxLines="10"
                 android:paddingStart="@dimen/padding_start"
                 android:text="XXX"
                 android:textAppearance="?android:textAppearanceMedium"
@@ -402,8 +417,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_30dp">
-        </View>
+            android:layout_height="@dimen/dimen_30dp"></View>
 
     </LinearLayout>
 

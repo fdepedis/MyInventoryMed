@@ -32,6 +32,7 @@
     <!-- Color for background list -->
     <color name="background_list_item">#e8e8e8</color>
 
-    <color name="icons">#212121</color>
+    <!-- Color for background icons in Details Activity -->
+    <color name="icons">#3b3d3a</color>
 
 </resources>

@@ -19,7 +19,8 @@
     <dimen name="padding_top_details">26dp</dimen>
 
     <!-- Margin for text in Details Activity -->
-    <dimen name="margin_end_details">10dp</dimen>
+    <dimen name="margin_start_details">5dp</dimen>
+    <dimen name="margin_end_details">8dp</dimen>
     <dimen name="margin_end_editor">10dp</dimen>
 
     <!-- Common Dimensions -->
