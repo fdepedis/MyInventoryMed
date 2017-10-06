@@ -228,8 +228,6 @@ public class InventoryMedProvider extends ContentProvider {
 
     /**
      * Method to sanityCheck the values in ContentValues object.
-     * The sanity check is implemented on the fields of table #TABLE_NAME
-     * for only NOT NULL clause.
      * This method is called from insertMedicine() and updateMedicine() method.
      *
      * @param values key-value pairs of data
@@ -268,7 +266,7 @@ public class InventoryMedProvider extends ContentProvider {
             // Check that the expiry date is not null
             String date = values.getAsString(InventoryMedEntry.COLUMN_MED_EXP_DATE);
             if (date == null) {
-                throw new IllegalArgumentException("Medicine requires a valid date");
+                throw new IllegalArgumentException("Medicine requires a valid expiry date");
             }
         }
 
@@ -282,7 +280,7 @@ public class InventoryMedProvider extends ContentProvider {
         }
 
         // Check valid data for column price discount
-        if (values.containsKey(InventoryMedEntry.COLUMN_MED_EXP_DATE)) {
+        if (values.containsKey(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT)) {
             // Check that the expiry date is not null
             Double price_discount = values.getAsDouble(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT);
             if (price_discount == null || price_discount < 0) {
@@ -290,12 +288,39 @@ public class InventoryMedProvider extends ContentProvider {
             }
         }
 
-        // Check valid data for column expiry date
-        if (values.containsKey(InventoryMedEntry.COLUMN_MED_EXP_DATE)) {
+        // Check valid data for column supplier name
+        if (values.containsKey(InventoryMedEntry.COLUMN_MED_SUP_NAME)) {
+            // Check that the name is not null
+            String name = values.getAsString(InventoryMedEntry.COLUMN_MED_SUP_NAME);
+            if (name == null) {
+                throw new IllegalArgumentException("Medicine requires a supplier name");
+            }
+        }
+
+        // Check valid data for column supplier phone
+        if (values.containsKey(InventoryMedEntry.COLUMN_MED_SUP_PHONE)) {
+            // Check that the name is not null
+            String name = values.getAsString(InventoryMedEntry.COLUMN_MED_SUP_PHONE);
+            if (name == null) {
+                throw new IllegalArgumentException("Medicine requires a supplier phone");
+            }
+        }
+
+        // Check valid data for column supplier email
+        if (values.containsKey(InventoryMedEntry.COLUMN_MED_SUP_EMAIL)) {
+            // Check that the name is not null
+            String name = values.getAsString(InventoryMedEntry.COLUMN_MED_SUP_EMAIL);
+            if (name == null) {
+                throw new IllegalArgumentException("Medicine requires a supplier email");
+            }
+        }
+
+        // Check valid data for column note
+        if (values.containsKey(InventoryMedEntry.COLUMN_MED_NOTE)) {
             // Check that the expiry date is not null
-            String date = values.getAsString(InventoryMedEntry.COLUMN_MED_EXP_DATE);
+            String date = values.getAsString(InventoryMedEntry.COLUMN_MED_NOTE);
             if (date == null) {
-                throw new IllegalArgumentException("Medicine requires a valid date");
+                throw new IllegalArgumentException("Medicine requires a valid note");
             }
         }
     }
