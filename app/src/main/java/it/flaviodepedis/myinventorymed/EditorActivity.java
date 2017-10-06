@@ -62,6 +62,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     String image = null;
     Double price;
     Double discountPrice;
+    String supNameMed;
+    String supPhoneMed;
+    String supEmailMed;
 
     /**
      * Declare all view in this activity
@@ -73,6 +76,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     @BindView(R.id.et_value_editor_med_discount) EditText etMedDiscountPrice;
     @BindView(R.id.et_value_editor_med_exp_date) EditText etMedExpDate;
     @BindView(R.id.image_editor_med) ImageView imageMed;
+    @BindView(R.id.et_value_editor_med_sup_name) EditText etMedSupName;
+    @BindView(R.id.et_value_editor_med_sup_phone) EditText etMedSupPhone;
+    @BindView(R.id.et_value_editor_med_sup_email) EditText etMedSupEmail;
     @BindView(R.id.et_value_editor_med_note) EditText etMedNote;
 
     @Override
@@ -108,6 +114,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         etMedExpDate.setOnTouchListener(mTouchListener);
         imageMed.setOnTouchListener(mTouchListener);
         etMedNote.setOnTouchListener(mTouchListener);
+        etMedSupName.setOnTouchListener(mTouchListener);
+        etMedSupPhone.setOnTouchListener(mTouchListener);
+        etMedSupEmail.setOnTouchListener(mTouchListener);
 
         //Image picker intent
         imageMed.setOnClickListener(new View.OnClickListener() {
@@ -140,6 +149,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 InventoryMedEntry.COLUMN_MED_PRICE,
                 InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT,
                 InventoryMedEntry.COLUMN_MED_IMAGE,
+                InventoryMedEntry.COLUMN_MED_SUP_NAME,
+                InventoryMedEntry.COLUMN_MED_SUP_PHONE,
+                InventoryMedEntry.COLUMN_MED_SUP_EMAIL,
                 InventoryMedEntry.COLUMN_MED_EXP_DATE,
                 InventoryMedEntry.COLUMN_MED_NOTE
         };
@@ -177,6 +189,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             int medPriceColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_PRICE);
             int medPriceDiscountColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT);
             int medImageColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_IMAGE);
+            int medSupNameColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_SUP_NAME);
+            int medSupPhoneColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_SUP_PHONE);
+            int medSupEmailColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_SUP_EMAIL);
             int medNoteColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_NOTE);
 
             // Extract out the value from the Cursor for the given column index
@@ -187,6 +202,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             Double medPrice = cursor.getDouble(medPriceColumnIndex);
             Double medPriceDiscount = cursor.getDouble(medPriceDiscountColumnIndex);
             String medImage = cursor.getString(medImageColumnIndex);
+            String medSupName = cursor.getString(medSupNameColumnIndex);
+            String medSupPhone = cursor.getString(medSupPhoneColumnIndex);
+            String medSupEmail = cursor.getString(medSupEmailColumnIndex);
             String medNote = cursor.getString(medNoteColumnIndex);
 
             // Set TextView text with the value from the database
@@ -211,6 +229,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 mPickedImage = uri;
             }
             etMedExpDate.setText(medExpDate);
+            etMedSupName.setText(medSupName);
+            etMedSupPhone.setText(medSupPhone);
+            etMedSupEmail.setText(medSupEmail);
             etMedNote.setText(medNote);
         }
     }
@@ -225,6 +246,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         etMedDiscountPrice.setText("");
         etMedExpDate.setText("");
         imageMed.setImageURI(null);
+        etMedSupName.setText("");
+        etMedSupPhone.setText("");
+        etMedSupEmail.setText("");
         etMedNote.setText("");
     }
 
@@ -416,6 +440,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         priceMed = etMedPrice.getText().toString().trim();
         discountPriceMed = etMedDiscountPrice.getText().toString().trim();
         expDateMed = etMedExpDate.getText().toString().trim();
+        supNameMed = etMedSupName.getText().toString().trim();
+        supPhoneMed = etMedSupPhone.getText().toString().trim();
+        supEmailMed = etMedSupEmail.getText().toString().trim();
         noteMed = etMedNote.getText().toString().trim();
 
         try {
@@ -429,8 +456,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             discountPrice = 0.00;
         }
 
-
-        // if new med
+        // if is a new mCurrentMedUri
         if (mCurrentMedUri == null) {
             if (mPickedImage != null) {
                 image = mPickedImage.toString();
@@ -444,7 +470,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         }
 
         // Check if this is supposed to be a new medicine
-        // and check if all the fields in the editor are blank
+        // and check if all the fields required in the editor are blank (at least one)
+        // ONLY FOR NOT NULL FIELDS
         if (mCurrentMedUri == null &&
                 TextUtils.isEmpty(nameMed) && TextUtils.isEmpty(quantityMed) &&
                 TextUtils.isEmpty(priceMed) && TextUtils.isEmpty(expDateMed) &&
@@ -501,6 +528,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         values.put(InventoryMedEntry.COLUMN_MED_PRICE, price);
         values.put(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT, discountPrice);
         values.put(InventoryMedEntry.COLUMN_MED_IMAGE, image);
+        values.put(InventoryMedEntry.COLUMN_MED_SUP_NAME, supNameMed);
+        values.put(InventoryMedEntry.COLUMN_MED_SUP_PHONE, supPhoneMed);
+        values.put(InventoryMedEntry.COLUMN_MED_SUP_EMAIL, supEmailMed);
         values.put(InventoryMedEntry.COLUMN_MED_NOTE, noteMed);
 
         if (mCurrentMedUri == null) {
