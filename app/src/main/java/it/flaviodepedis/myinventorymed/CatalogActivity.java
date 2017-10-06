@@ -62,7 +62,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 
                 Uri currentMedUri = ContentUris.withAppendedId(InventoryMedEntry.CONTENT_URI, id);
 
-                Log.w("CatalogActivity", InventoryMedEntry.CONTENT_URI + "/" + id);
+                Log.i(LOG_TAG, InventoryMedEntry.CONTENT_URI + "/" + id);
 
                 intent.setData(currentMedUri);
                 startActivity(intent);
@@ -114,6 +114,8 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
          * ------------------------------------------------------------------------------
          */
         DatabaseUtils.dumpCursor(data);
+
+        Log.i(LOG_TAG, "into - onLoadFinished");
 
         // Swap the new cursor cursor data.
         mCursorAdapter.swapCursor(data);
