@@ -94,10 +94,10 @@ public class Utils {
     /**
      * Helper method to adjust quantity medicine data into the database.
      *
-     * @param context - Context of activity
+     * @param context        - Context of activity
      * @param mCurrentMedUri - current mCurrentMedUri
-     * @param previousValue - previous value of quantity
-     * @param variance - variance to apply to quantity
+     * @param previousValue  - previous value of quantity
+     * @param variance       - variance to apply to quantity
      */
     public static void adjustInventory(Activity context, Uri mCurrentMedUri,
                                        String previousValue, int variance) {
@@ -212,25 +212,41 @@ public class Utils {
     /**
      * Method to call supplier
      *
-     * @param context - context parent activity
+     * @param context             - context parent activity
      * @param supplierPhoneNumber - supplier's phone number
      */
     public static void callSupplierPhone(Activity context, String supplierPhoneNumber) {
 
-        Intent intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse("tel:" + supplierPhoneNumber));
-        if (intent.resolveActivity(context.getPackageManager()) != null) {
-            context.startActivity(intent);
+        if (supplierPhoneNumber.isEmpty()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle(R.string.label_title_show_message);
+            builder.setMessage(R.string.empty_number_supplier);
+            builder.setPositiveButton(R.string.label_positive_show_message, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    return;
+                }
+            });
+            // Create and show the AlertDialog
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+
+        } else {
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:" + supplierPhoneNumber));
+            if (intent.resolveActivity(context.getPackageManager()) != null) {
+                context.startActivity(intent);
+            }
         }
     }
 
     /**
      * Method to send email to supplier
      *
-     * @param context - context parent activity
-     * @param supplierName - supplier's name
+     * @param context       - context parent activity
+     * @param supplierName  - supplier's name
      * @param supplierEmail - supplier's email
      */
+
     public static void sendSupplierEmail(Activity context, String supplierName,
                                          String supplierEmail) {
 
@@ -243,15 +259,13 @@ public class Utils {
         intent.putExtra(Intent.EXTRA_TEXT, message);
         if (intent.resolveActivity(context.getPackageManager()) != null) {
             Log.i(LOG_TAG, "Start activity mail");
-            try{
+            try {
                 context.startActivity(Intent.createChooser(intent,
                         context.getString(R.string.label_create_chooser_email)));
-            }
-            catch(ActivityNotFoundException e){
+            } catch (ActivityNotFoundException e) {
                 Toast.makeText(context, R.string.error_no_client, Toast.LENGTH_SHORT);
             }
-        }
-        else{
+        } else {
             Toast.makeText(context, R.string.error_no_package_manager, Toast.LENGTH_SHORT);
         }
     }

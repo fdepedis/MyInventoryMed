@@ -265,7 +265,7 @@
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center_vertical"
                 android:hint="@string/label_hint_editor_med_sup_name"
-                android:inputType="date"
+                android:inputType="textCapWords"
                 android:paddingStart="@dimen/padding_start"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/secondary_text_edit_details" />

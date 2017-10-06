@@ -87,6 +87,7 @@
     <string name="empty_image_med_details">No image medicine available</string>
     <string name="empty_info_med">Insert all fields required to save medicine data</string>
     <string name="empty_image">Image required for this insertion</string>
+    <string name="empty_number_supplier">No number supplier is present.\n\nNo call is Available</string>
 
     <!-- Error messages -->
     <string name="error_delete_all_medicines">Failed to delete all medicines</string>
