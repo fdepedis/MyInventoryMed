@@ -94,10 +94,10 @@ public class Utils {
     /**
      * Helper method to adjust quantity medicine data into the database.
      *
-     * @param context        Context of activity
-     * @param mCurrentMedUri current mCurrentMedUri
-     * @param previousValue  previous value of quantity
-     * @param variance       variance to apply to quantity
+     * @param context - Context of activity
+     * @param mCurrentMedUri - current mCurrentMedUri
+     * @param previousValue - previous value of quantity
+     * @param variance - variance to apply to quantity
      */
     public static void adjustInventory(Activity context, Uri mCurrentMedUri,
                                        String previousValue, int variance) {
@@ -238,8 +238,7 @@ public class Utils {
 
         // Create a Intent to send an email. SENDTO recall app with only email type
         Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-        intent.putExtra(Intent.EXTRA_EMAIL, supplierEmail);
+        intent.setData(Uri.parse("mailto:" + supplierEmail)); // only email apps should handle this
         intent.putExtra(Intent.EXTRA_SUBJECT, "Request info to: " + supplierName);
         intent.putExtra(Intent.EXTRA_TEXT, message);
         if (intent.resolveActivity(context.getPackageManager()) != null) {

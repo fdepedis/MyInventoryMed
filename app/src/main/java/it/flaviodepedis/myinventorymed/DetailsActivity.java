@@ -241,13 +241,13 @@ public class DetailsActivity extends AppCompatActivity
             case R.id.img_sup_phone:
                 Utils.callSupplierPhone(
                         this,
-                        String.valueOf(tvValueMedSupPhone.getText()));
+                        tvValueMedSupPhone.getText().toString());
                 break;
             case R.id.img_sup_email:
                 Utils.sendSupplierEmail(
                         this,
-                        String.valueOf(tvValueMedSupName.getText()),
-                        String.valueOf(tvValueMedSupEmail.getText()));
+                        tvValueMedSupName.getText().toString(),
+                        tvValueMedSupEmail.getText().toString());
                 break;
         }
     }

@@ -356,6 +356,8 @@
                 android:gravity="center_vertical"
                 android:paddingStart="@dimen/padding_start"
                 android:text="Email"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/secondary_text_edit_details" />
 
