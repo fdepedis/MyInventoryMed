@@ -40,7 +40,10 @@ public class InventoryMedDbHelper extends SQLiteOpenHelper {
             + InventoryMedEntry.COLUMN_MED_PRICE + " REAL NOT NULL,"
             + InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT + " REAL,"
             + InventoryMedEntry.COLUMN_MED_IMAGE + " TEXT NOT NULL,"
-            + InventoryMedEntry.COLUMN_MED_NOTE + " TEXT);";
+            + InventoryMedEntry.COLUMN_MED_NOTE + " TEXT,"
+            + InventoryMedEntry.COLUMN_MED_SUP_NAME + " TEXT,"
+            + InventoryMedEntry.COLUMN_MED_SUP_PHONE + " TEXT,"
+            + InventoryMedEntry.COLUMN_MED_SUP_EMAIL + " TEXT);";
 
     /**
      * Create a String that contains the SQL statement to create the medicines table
@@ -52,12 +55,18 @@ public class InventoryMedDbHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /**
+     * This is called when the database is created for the first time.
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         // Execute the SQL statement to create table
         db.execSQL(SQL_CREATE_MEDICINES_TABLE);
     }
 
+    /**
+     * This is called when the database needs to be upgraded.
+     */
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         // Execute the SQL statement to delete table and recreate again
