@@ -56,6 +56,9 @@ public class InventoryMedContract {
         public static final String COLUMN_MED_PRICE_DISCOUNT = "med_price_discount";// Type: REAL
         public static final String COLUMN_MED_IMAGE = "med_image";                  // Type: TEXT
         public static final String COLUMN_MED_NOTE = "med_note";                    // Type: TEXT
+        public static final String COLUMN_MED_SUP_NAME = "med_sup_name";            // Type: TEXT
+        public static final String COLUMN_MED_SUP_PHONE = "med_sup_phone";          // Type: TEXT
+        public static final String COLUMN_MED_SUP_EMAIL = "med_sup_email";          // Type: TEXT
 
         /**
          * Name of constants for medicines
