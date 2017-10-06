@@ -5,6 +5,7 @@ import android.content.ContentUris;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.media.Image;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
@@ -32,11 +33,8 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
     public static final String LOG_TAG = CatalogActivity.class.getSimpleName();
 
     private static final int MED_LOADER_ID = 0;
-    private static final int MED_DEC = -1;
 
     InventoryCursorAdapter mCursorAdapter;
-
-    ImageView btnSale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +96,8 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
                 InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT
         };
 
-        return new CursorLoader(this,               // Parent activity context
+        return new CursorLoader(
+                this,                               // Parent activity context
                 InventoryMedEntry.CONTENT_URI,      // Provider content URI to query
                 projection,                         // Columns to include in the resulting Cursor
                 null,                               // No Where clause
@@ -108,6 +107,14 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
+        /**
+         * ------------------------------------------------------------------------------
+         * Prints all cursor content (Thank you at my last reviewer on the last project)
+         * ------------------------------------------------------------------------------
+         */
+        DatabaseUtils.dumpCursor(data);
+
         // Swap the new cursor cursor data.
         mCursorAdapter.swapCursor(data);
     }
