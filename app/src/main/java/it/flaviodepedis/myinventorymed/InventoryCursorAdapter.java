@@ -1,11 +1,14 @@
 package it.flaviodepedis.myinventorymed;
 
+import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -22,6 +25,8 @@ public class InventoryCursorAdapter extends CursorAdapter {
     private ViewHolder holder;
 
     private String medTypeString;
+
+    private static final int MED_DEC = -1;
 
     public InventoryCursorAdapter(Context context, Cursor c) {
         super(context, c, 0);
@@ -41,10 +46,10 @@ public class InventoryCursorAdapter extends CursorAdapter {
     }
 
     @Override
-    public void bindView(View view, Context context, Cursor cursor) {
+    public void bindView(View view, final Context context, Cursor cursor) {
 
         // Find the columns of pet attributes that we're interested in
-        int idColumnIndex = cursor.getColumnIndex(InventoryMedEntry._ID);
+        int medIdColumnIndex = cursor.getColumnIndex(InventoryMedEntry._ID);
         int medNameColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_NAME);
         int medTypeColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_TYPE);
         int medQuantityColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_QUANTITY);
@@ -53,9 +58,10 @@ public class InventoryCursorAdapter extends CursorAdapter {
         int medPriceDiscountColumnIndex = cursor.getColumnIndex(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT);
 
         // Read the medicine attributes from the Cursor for the current med
+        final int medId = cursor.getInt(medIdColumnIndex);
         String medName = cursor.getString(medNameColumnIndex);
         Integer medType = cursor.getInt(medTypeColumnIndex);
-        int medQuantity = cursor.getInt(medQuantityColumnIndex);
+        final int medQuantity = cursor.getInt(medQuantityColumnIndex);
         String medExpDate = cursor.getString(medExpDateColumnIndex);
         Double medPrice = cursor.getDouble(medPriceColumnIndex);
         Double medPriceDiscount = cursor.getDouble(medPriceDiscountColumnIndex);
@@ -98,6 +104,15 @@ public class InventoryCursorAdapter extends CursorAdapter {
             holder.tvMedPriceDiscount.setText(context.getString(R.string.empty_discount_price, medPriceDiscount));
         }
         holder.tvMedExpDate.setText(context.getString(R.string.label_exp_date, medExpDate));
+
+        // Sale button decrease by one the quantity present in the database for current item
+        holder.imgSale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri mCurrMedUri = ContentUris.withAppendedId(InventoryMedEntry.CONTENT_URI, medId);
+                Utils.adjustInventory(context, mCurrMedUri, String.valueOf(medQuantity), MED_DEC);
+            }
+        });
     }
 
     static class ViewHolder {
@@ -107,6 +122,7 @@ public class InventoryCursorAdapter extends CursorAdapter {
         @BindView(R.id.tv_med_price_discount) TextView tvMedPriceDiscount;
         @BindView(R.id.tv_med_quantity) TextView tvMedQuantity;
         @BindView(R.id.tv_med_exp_date) TextView tvMedExpDate;
+        @BindView(R.id.img_shopping_cart) ImageView imgSale;
 
         public ViewHolder(View view) {
             ButterKnife.bind(this, view);

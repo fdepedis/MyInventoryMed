@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -93,13 +94,12 @@ public class Utils {
 
     /**
      * Helper method to adjust quantity medicine data into the database.
-     *
-     * @param context        - Context of activity
+     *  @param context        - Context of activity
      * @param mCurrentMedUri - current mCurrentMedUri
      * @param previousValue  - previous value of quantity
      * @param variance       - variance to apply to quantity
      */
-    public static void adjustInventory(Activity context, Uri mCurrentMedUri,
+    public static void adjustInventory(Context context, Uri mCurrentMedUri,
                                        String previousValue, int variance) {
 
         int currQuantity;
