@@ -66,6 +66,7 @@
     <string name="label_type_med_gel">Gel</string>
     <string name="label_type_med_unknown">Sconosciuto</string>
     <string name="label_create_chooser_activity">Select Picture</string>
+    <string name="label_create_chooser_email">Email Client</string>
     <!--
     Price for the medicine. It will be shown in the format of
     "Price: €10" where €10 is the price.
@@ -99,5 +100,7 @@
     <string name="error_insert_med_failed">Failed to insert current medicine</string>
     <string name="error_update_med_failed">Failed to update current medicine</string>
     <string name="error_negative_value">No negative value are allowed</string>
+    <string name="error_no_client">No Client</string>
+    <string name="error_no_package_manager">No Package Manager</string>
 
 </resources>

@@ -2,9 +2,10 @@ package it.flaviodepedis.myinventorymed;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
@@ -79,6 +80,9 @@ public class Utils {
         values.put(InventoryMedEntry.COLUMN_MED_PRICE, 120.00);
         values.put(InventoryMedEntry.COLUMN_MED_PRICE_DISCOUNT, 100.00);
         values.put(InventoryMedEntry.COLUMN_MED_IMAGE, "");
+        values.put(InventoryMedEntry.COLUMN_MED_SUP_NAME, "Farmacia Corsetti");
+        values.put(InventoryMedEntry.COLUMN_MED_SUP_PHONE, "+39065912956");
+        values.put(InventoryMedEntry.COLUMN_MED_SUP_EMAIL, "info@farmaciacorsetti.it");
         values.put(InventoryMedEntry.COLUMN_MED_NOTE, "Headache");
 
         // Insert a new row for Toto into the provider using the ContentResolver.
@@ -89,13 +93,14 @@ public class Utils {
 
     /**
      * Helper method to adjust quantity medicine data into the database.
-     * @param context Context of activity
-     * @param mCurrentProductUri
-     * @param previousValue
-     * @param variance
+     *
+     * @param context        Context of activity
+     * @param mCurrentMedUri current mCurrentMedUri
+     * @param previousValue  previous value of quantity
+     * @param variance       variance to apply to quantity
      */
-    public static void adjustInventory(Activity context, Uri mCurrentProductUri,
-                                       String previousValue, int variance){
+    public static void adjustInventory(Activity context, Uri mCurrentMedUri,
+                                       String previousValue, int variance) {
 
         int currQuantity;
         int prevValue = Integer.parseInt(previousValue);
@@ -110,7 +115,7 @@ public class Utils {
 
         ContentValues values = new ContentValues();
         values.put(InventoryMedEntry.COLUMN_MED_QUANTITY, currQuantity);
-        context.getContentResolver().update(mCurrentProductUri, values, null, null);
+        context.getContentResolver().update(mCurrentMedUri, values, null, null);
     }
 
     /**
@@ -183,7 +188,7 @@ public class Utils {
      *                                   the user confirms they want to discard their changes
      */
     public static void showUnsavedChangesDialog(final Activity context,
-            DialogInterface.OnClickListener discardButtonClickListener) {
+                                                DialogInterface.OnClickListener discardButtonClickListener) {
         // Create an AlertDialog.Builder and set the message, and click listeners
         // for the positive and negative buttons on the dialog.
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -202,5 +207,53 @@ public class Utils {
         // Create and show the AlertDialog
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    /**
+     * Method to call supplier
+     *
+     * @param context - context parent activity
+     * @param supplierPhoneNumber - supplier's phone number
+     */
+    public static void callSupplierPhone(Activity context, String supplierPhoneNumber) {
+
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + supplierPhoneNumber));
+        if (intent.resolveActivity(context.getPackageManager()) != null) {
+            context.startActivity(intent);
+        }
+    }
+
+    /**
+     * Method to send email to supplier
+     *
+     * @param context - context parent activity
+     * @param supplierName - supplier's name
+     * @param supplierEmail - supplier's email
+     */
+    public static void sendSupplierEmail(Activity context, String supplierName,
+                                         String supplierEmail) {
+
+        String message = "\n\n\n" + "Regards";
+
+        // Create a Intent to send an email. SENDTO recall app with only email type
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_EMAIL, supplierEmail);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Request info to: " + supplierName);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        if (intent.resolveActivity(context.getPackageManager()) != null) {
+            Log.i(LOG_TAG, "Start activity mail");
+            try{
+                context.startActivity(Intent.createChooser(intent,
+                        context.getString(R.string.label_create_chooser_email)));
+            }
+            catch(ActivityNotFoundException e){
+                Toast.makeText(context, R.string.error_no_client, Toast.LENGTH_SHORT);
+            }
+        }
+        else{
+            Toast.makeText(context, R.string.error_no_package_manager, Toast.LENGTH_SHORT);
+        }
     }
 }
